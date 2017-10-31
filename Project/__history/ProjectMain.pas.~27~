@@ -1,0 +1,74 @@
+unit ProjectMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseGridDetail, Data.DB, RzButton,
+  Vcl.StdCtrls, Vcl.Mask, RzEdit, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
+  Vcl.ExtCtrls, RzPanel, Bde.DBTables, RzDBEdit, Vcl.DBCtrls, RzBtnEdt,
+  uProject;
+
+type
+  TfrmProjectMain = class(TfrmBaseGridDetail)
+    Label2: TLabel;
+    Label3: TLabel;
+    edContact: TRzDBEdit;
+    Label5: TLabel;
+    mmAddress: TRzDBMemo;
+    RzButtonEdit1: TRzButtonEdit;
+    Label4: TLabel;
+    RzDBDateTimeEdit1: TRzDBDateTimeEdit;
+    Label6: TLabel;
+    RzDBDateTimeEdit2: TRzDBDateTimeEdit;
+    Label7: TLabel;
+    RzDBMemo1: TRzDBMemo;
+    Label8: TLabel;
+    RzDBNumericEdit1: TRzDBNumericEdit;
+  private
+    { Private declarations }
+    Project: TProject;
+    procedure SearchList; override;
+    procedure BindToObject; override;
+    function EntryIsValid: boolean; override;
+  public
+    { Public declarations }
+    procedure SetIdentity; override;
+  end;
+
+var
+  frmProjectMain: TfrmProjectMain;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  AppData;
+
+{ TfrmProjectMain }
+
+procedure TfrmProjectMain.BindToObject;
+begin
+  inherited;
+
+end;
+
+function TfrmProjectMain.EntryIsValid: boolean;
+begin
+
+end;
+
+procedure TfrmProjectMain.SearchList;
+begin
+  inherited;
+
+end;
+
+procedure TfrmProjectMain.SetIdentity;
+begin
+  inherited;
+
+end;
+
+end.

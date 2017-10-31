@@ -1,0 +1,306 @@
+inherited frmLogin: TfrmLogin
+  BorderIcons = [biSystemMenu]
+  Caption = ''
+  ClientHeight = 243
+  ClientWidth = 434
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
+  ExplicitWidth = 434
+  ExplicitHeight = 243
+  PixelsPerInch = 96
+  TextHeight = 14
+  inherited pnlTitle: TRzPanel
+    Width = 434
+    OnMouseDown = pnlTitleMouseDown
+    ExplicitWidth = 434
+    inherited imgClose: TImage
+      Left = 412
+      ExplicitLeft = 410
+    end
+    inherited lblCaption: TRzLabel
+      Width = 30
+      Caption = 'Login'
+      ExplicitWidth = 30
+    end
+  end
+  inherited pnlMain: TRzPanel
+    Width = 434
+    Height = 222
+    ExplicitWidth = 434
+    ExplicitHeight = 222
+    object imgLogo: TImage
+      Left = 100
+      Top = 31
+      Width = 64
+      Height = 64
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000800000
+        00800803000000F4E091F900000177504C544500000000FF00007F7F55AA552A
+        AA553F9F3F38A95433B24C3AB04E33AA443CA54B38A94635AE4333A54C39A245
+        38A94B34A74633AA4C37A74737A54B34A94737A74A36A94835A64734A84B38A8
+        4737AA4B35A64938A94637A64A36A84839A74A38A84937AA4836A74735A84A36
+        A84A37A64936A74838A64A37A84836A64737A64736A84937A84937A84836A947
+        37A94837A84938A84937A74836A64936A74937A74937A84936A74736A84937A7
+        4836A84936A74937A74937A84836A84936A84937A74837A84936A84837A74935
+        A84936A84937A74937A84836A74937A84837A84836A74937A84837A84935A749
+        36A84736A84837A74937A84936A64935A74937A64936A74937A84735A64937A7
+        4737A64935A74737A64837A84937A64935A84835A64937A84737A64935A84937
+        A64837A84935A84937A84935A84835A84936A64937A84737A74937A74737A649
+        37A84935A64737A84937A64735A64735A84936A64937A64737A84935A64935A6
+        4736A84736A84837A849FD4EA6900000007C74524E53000102030608090A0D0F
+        11121314161B1D1E202527292A2B2C3233343637383A3B3C3D3E414546484A4B
+        4E505358595C6164696B6C7273757678797A7D858788898B8D98999FA0A2A3A5
+        B0B2B3B4B5B6B7B8B9BBC3C7C9CBCDCFD0D2D3D4D5DADBDDDEDFE1E3E5E6E8E9
+        EAEBECEFF0F1F2F4F5F6F7F8F9FAFBFCFDFD07DF6786000003C14944415478DA
+        EDDB594C13411800E0BF40398C25B6065ACA21728AA81C2A788020464105D118
+        23483031C283D1270F78F1D1C4E341DF24263CA820467C120401231148244002
+        8528B10562552C3708C82105715A2A50E82EDD76D90DE69F84EECCBF6DE79BEE
+        D27FA79D0A80E72240C09A0688433CDD6C34DF9A87F80108220E38E82BBFAB1A
+        667900080EED99AFD7565A2CB01C10797851A3A29E73803883BCFE1F9B34200F
+        0F0698CCFDC93520368AF45F3C436AB6C95B01AAABB906A46F02C8FBAAAF6E4E
+        0350E7730DC8B207B8ABD557EDB300A6EEF10870B8C107407708F2D5FAAA6F2A
+        C097675C0362A2015A5FE94FC293410055355C033664381281A253E0114AFA9F
+        C81DE610200A74934984CBC2CD1AE52F2E004E7BC31D29764D34D64EAE3AC02B
+        5E4AB3B7BBAC7395015B121D69F74F162BD904D80478CB5D961FED1675E7C8F4
+        9298ADB387CFF665F7D4F66AD42ADA4C490BF08CF23511EDA9ECA0B8BF5F9CAB
+        89687BCD0F0B01E1F1B626A27F72A82F8024974C3DDF7479934580F06326C395
+        1F68CC51B126C325D4026A80571A197FBFA26368E168EF4A20C7BF08E8CA2972
+        7150DA38DFB413FB8549C8A990A7610CB049F101F8FC666C712C2904A0A88516
+        109204D054B238224A0804682BA43A13290141A701FAF2C68D6299746F010BA5
+        3BD7A8294A27AF41A18A29E0E84E80F206E358B610CC294B53F3BE3880FA0AA6
+        808B6E003903C6B1CB62B3000339C66D692640E763A600DD686FCF18C7826324
+        E6F45FD56A1C1066D35CB050026E92BF5B660D78E542F75C0840000210800004
+        2000010858530069A4FFACAAAE8F378034753DB91D2D602E60097062877E333F
+        F1DA16BB81E2B143EF3FAD06E09A937E33F6C0D0BE42D53FC0E0C3D5005C5D67
+        0CA099272D991BB104480CD56F1A4B0D6DEA79D2D2B9114B00977322723BFCBC
+        1F9816B6FE0D5D22024059CFBCFFFFE78D080108E01D208BF407655D2F6F0059
+        0ACFD93079EEC370FEB2E1F5B96F0AC6EF1BDA9C67430380BF6CA8FBA418F8CC
+        86AEA9BA6C3852C067360C9CC56C880004F00AC06C88D910B32166438B0B0210
+        8000042000010840000210B03601BAE57C77A6818D62D972BE0BEE008F2CF89A
+        D6449165007C7FC21410BF1BE05D2D2B80FD0701EADE3205049E2193DCBC5116
+        FA773E4FA6D12FDA98020467FD009465D60B9C130200542F192FEB05F7743BF2
+        1A283A06B556F42EDCE81B46C6AF7DDA453950EA07871DB77AF4FFCA6B05E52E
+        BAC5ED6147CC5B47BC52D19653F74FBFBC5F1EEDCF42FFAA9A2E9ABDF43F7010
+        F87BCB5DEDADE87CAA47A36EB7FC070E5C140420000108E01DF017CABAB290DB
+        FF1A820000000049454E44AE426082}
+      Proportional = True
+      Transparent = True
+    end
+    object Label4: TLabel
+      Left = 161
+      Top = 37
+      Width = 224
+      Height = 58
+      Alignment = taCenter
+      Caption = 'JET Construction'
+      Color = 10196313
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 7038525
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+    object Label5: TLabel
+      Left = 187
+      Top = 67
+      Width = 184
+      Height = 37
+      AutoSize = False
+      Caption = 'Expense Management System'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 7038525
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+    object Label1: TLabel
+      Left = 125
+      Top = 107
+      Width = 54
+      Height = 14
+      Caption = 'Username'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 125
+      Top = 131
+      Width = 51
+      Height = 14
+      Caption = 'Password'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbErrorMessage: TLabel
+      Left = 14
+      Top = 203
+      Width = 69
+      Height = 13
+      Anchors = [akLeft, akBottom]
+      Caption = 'Error Message'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+    end
+    object prbStatus: TRzProgressBar
+      Left = 14
+      Top = 210
+      Width = 406
+      Height = 6
+      Anchors = [akLeft, akBottom]
+      BarColor = 6008319
+      BarColorStop = 6008319
+      BarStyle = bsGradient
+      BorderOuter = fsFlat
+      BorderWidth = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 6008319
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      InteriorOffset = 0
+      ParentFont = False
+      PartsComplete = 0
+      Percent = 0
+      ShowPercent = False
+      ThemeAware = False
+      TotalParts = 0
+      Visible = False
+    end
+    object lblStatus: TLabel
+      Left = 14
+      Top = 195
+      Width = 3
+      Height = 13
+      Anchors = [akLeft, akBottom]
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblVersion: TLabel
+      Left = 344
+      Top = 203
+      Width = 75
+      Height = 13
+      Alignment = taRightJustify
+      Anchors = [akRight, akBottom]
+      AutoSize = False
+      Caption = 'Version 2.0'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 7038525
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+    object edUsername: TRzEdit
+      Left = 189
+      Top = 101
+      Width = 121
+      Height = 22
+      Text = ''
+      CharCase = ecUpperCase
+      DisabledColor = 14273211
+      FrameColor = 7827778
+      FrameVisible = True
+      FramingPreference = fpCustomFraming
+      TabOnEnter = True
+      TabOrder = 0
+      OnChange = edUsernameChange
+    end
+    object edPassword: TRzEdit
+      Left = 189
+      Top = 125
+      Width = 121
+      Height = 22
+      Text = ''
+      DisabledColor = 14273211
+      FrameColor = 7827778
+      FrameVisible = True
+      FramingPreference = fpCustomFraming
+      PasswordChar = '*'
+      TabOrder = 1
+      OnKeyPress = edPasswordKeyPress
+    end
+    object pnlClose: TRzPanel
+      Left = 227
+      Top = 164
+      Width = 50
+      Height = 22
+      Anchors = [akLeft, akBottom]
+      BorderOuter = fsNone
+      BorderColor = clBlack
+      BorderWidth = 1
+      Color = 9077581
+      TabOrder = 2
+      object btnClose: TRzShapeButton
+        Left = 0
+        Top = 0
+        Width = 50
+        Height = 22
+        BorderStyle = bsNone
+        Caption = 'Close'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = btnCloseClick
+      end
+    end
+    object pnlLogin: TRzPanel
+      Left = 171
+      Top = 164
+      Width = 50
+      Height = 22
+      Anchors = [akLeft, akBottom]
+      BorderOuter = fsNone
+      BorderColor = clBlack
+      BorderWidth = 1
+      Color = 9077581
+      TabOrder = 3
+      object btnLogin: TRzShapeButton
+        Left = 0
+        Top = 0
+        Width = 50
+        Height = 22
+        BorderStyle = bsNone
+        Caption = 'Login'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = btnLoginClick
+      end
+    end
+  end
+end

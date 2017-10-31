@@ -1,0 +1,36 @@
+unit DBUtil;
+
+interface
+
+uses
+  AppData, SysUtils;
+
+procedure SetExpenseTypeIdentity;
+
+implementation
+
+procedure SetExpenseTypeIdentity;
+var
+  sql: string;
+  id: integer;
+begin
+  with dmApplication.fdqApp do
+  begin
+    try
+      sql := 'SELECT MAX(EXPENSE_ID) FROM T_EXPENSETYPE';
+      SQL.Text := sql;
+      Open;
+
+      // get the result
+      id := Fields[0].Value;
+
+      // set the identity
+      sql := 'ALTER TABLE T_EXPENSETYPE ALTER EXPENSE_ID RESTART WITH ' + IntToStr(id);
+      ExecSQL;
+    finally
+      Close;
+    end;
+  end;
+end;
+
+end.

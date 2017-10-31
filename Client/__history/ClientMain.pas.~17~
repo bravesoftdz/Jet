@@ -1,0 +1,82 @@
+unit ClientMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseGridDetail, Data.DB, RzButton,
+  Vcl.StdCtrls, Vcl.Mask, RzEdit, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
+  Vcl.ExtCtrls, RzPanel, uClient, Data.Bind.Components, Data.Bind.ObjectScope,
+  Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
+  Vcl.Bind.Editors, RzDBEdit, Vcl.DBCtrls;
+
+type
+  TfrmClientMain = class(TfrmBaseGridDetail)
+    RzDBEdit1: TRzDBEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    RzDBMemo1: TRzDBMemo;
+    procedure bsClientCreateAdapter(Sender: TObject;
+      var ABindSourceAdapter: TBindSourceAdapter);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+    Client: TClient;
+  protected
+    procedure SearchList; override;
+    procedure BindToObject; override;
+    function EntryIsValid: boolean; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmClientMain: TfrmClientMain;
+
+implementation
+
+uses
+  AppData, AppDialogs;
+
+{$R *.dfm}
+
+{ TfrmClientMain }
+
+procedure TfrmClientMain.BindToObject;
+begin
+  inherited;
+
+end;
+
+procedure TfrmClientMain.bsClientCreateAdapter(Sender: TObject;
+  var ABindSourceAdapter: TBindSourceAdapter);
+begin
+  inherited;
+  ABindSourceAdapter := TObjectBindSourceAdapter<TClient>.Create(Self, Client, True);
+end;
+
+function TfrmClientMain.EntryIsValid: boolean;
+begin
+  if Trim(Client.Name) = '' then ShowErrorBox('Please enter client name.');
+end;
+
+procedure TfrmClientMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  Client.Free;
+end;
+
+procedure TfrmClientMain.FormCreate(Sender: TObject);
+begin
+  Client := TClient.Create;
+  inherited;
+end;
+
+procedure TfrmClientMain.SearchList;
+begin
+  inherited;
+
+end;
+
+end.

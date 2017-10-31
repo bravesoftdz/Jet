@@ -1,0 +1,25 @@
+unit AppData;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TdmApplication = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dmApplication: TdmApplication;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+end.

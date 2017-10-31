@@ -1,0 +1,9 @@
+object dmBDE: TdmBDE
+  OldCreateOrder = False
+  Height = 186
+  Width = 281
+  object tbProjects: TTable
+    Left = 64
+    Top = 24
+  end
+end

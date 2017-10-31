@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DB2E4246-4828-4F1A-9D13-FA511A26F37B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Admin\Admin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Base\Base.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\Client.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Common\Common.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project\Project.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Construction\Construction.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Admin">
+        <MSBuild Projects="Admin\Admin.dproj"/>
+    </Target>
+    <Target Name="Admin:Clean">
+        <MSBuild Projects="Admin\Admin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Admin:Make">
+        <MSBuild Projects="Admin\Admin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Base">
+        <MSBuild Projects="Base\Base.dproj"/>
+    </Target>
+    <Target Name="Base:Clean">
+        <MSBuild Projects="Base\Base.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Base:Make">
+        <MSBuild Projects="Base\Base.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Client">
+        <MSBuild Projects="Client\Client.dproj"/>
+    </Target>
+    <Target Name="Client:Clean">
+        <MSBuild Projects="Client\Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Client:Make">
+        <MSBuild Projects="Client\Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Common">
+        <MSBuild Projects="Common\Common.dproj"/>
+    </Target>
+    <Target Name="Common:Clean">
+        <MSBuild Projects="Common\Common.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Common:Make">
+        <MSBuild Projects="Common\Common.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project">
+        <MSBuild Projects="Project\Project.dproj"/>
+    </Target>
+    <Target Name="Project:Clean">
+        <MSBuild Projects="Project\Project.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project:Make">
+        <MSBuild Projects="Project\Project.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Construction">
+        <MSBuild Projects="Construction\Construction.dproj"/>
+    </Target>
+    <Target Name="Construction:Clean">
+        <MSBuild Projects="Construction\Construction.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Construction:Make">
+        <MSBuild Projects="Construction\Construction.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Admin;Base;Client;Common;Project;Construction"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Admin:Clean;Base:Clean;Client:Clean;Common:Clean;Project:Clean;Construction:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Admin:Make;Base:Make;Client:Make;Common:Make;Project:Make;Construction:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

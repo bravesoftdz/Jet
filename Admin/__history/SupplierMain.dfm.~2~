@@ -1,0 +1,12 @@
+inherited frmSupplierMain: TfrmSupplierMain
+  Caption = 'frmSupplierMain'
+  PixelsPerInch = 96
+  TextHeight = 14
+  inherited pnlTitle: TRzPanel
+    inherited lblTitle: TRzLabel
+      Width = 72
+      Caption = 'Supplier list'
+      ExplicitWidth = 72
+    end
+  end
+end

@@ -1,0 +1,16 @@
+unit DBUtil;
+
+interface
+
+function GetExpenseTypeLastId: integer;
+
+implementation
+
+function GetLastId(const tableName: string): integer;
+begin
+
+end;
+
+function GetExpenseTypeLastId: integer;
+
+end.

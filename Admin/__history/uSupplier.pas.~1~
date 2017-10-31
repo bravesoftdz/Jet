@@ -1,0 +1,24 @@
+unit uSupplier;
+
+interface
+
+type
+  TSupplier = class
+  private
+    FName: string;
+    FPhone: string;
+    FId: integer;
+    FContact: string;
+    FAddress: string;
+  public
+    property Id: integer read FId write FId;
+    property Name: string read FName write FName;
+    property ContactPerson: string read FContact write FContact;
+    property Phone: string read FPhone write FPhone;
+    property Address: string read FAddress write FAddress;
+
+  end;
+
+implementation
+
+end.

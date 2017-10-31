@@ -1,0 +1,13 @@
+unit AppConstants;
+
+interface
+
+type TForms = (fmProjectMain, fmClientList, fmGroupList, fmEmployerList,
+                fmBanksList, fmDesignationList, fmLoanClassList, fmLoanMain,
+                fmLoanList, fmCompetitorList, fmPurposeList,fmLoanTypeList,
+                fmAcctTypeList, fmLoanCancelReasonList, fmLoanRejectReasonList,
+                fmSettings, fmPaymentMain, fmPaymentList, fmWithdrawalList);
+
+implementation
+
+end.

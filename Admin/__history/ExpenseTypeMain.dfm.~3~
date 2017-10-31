@@ -1,0 +1,37 @@
+inherited frmExpenseTypeMain: TfrmExpenseTypeMain
+  Caption = 'frmExpenseTypeMain'
+  PixelsPerInch = 96
+  TextHeight = 14
+  inherited pnlList: TRzPanel
+    inherited grList: TRzDBGrid
+      DataSource = dmApplication.dscExpenseTypes
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'EXPENSE_NAME'
+          Title.Alignment = taCenter
+          Title.Caption = 'Name'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -12
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Width = 250
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EXPENSE_DESCRIPTION'
+          Title.Alignment = taCenter
+          Title.Caption = 'Description'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -12
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Width = 350
+          Visible = True
+        end>
+    end
+  end
+end
