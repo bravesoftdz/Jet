@@ -101,7 +101,7 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <DCC_DcpOutput>..\_dcp</DCC_DcpOutput>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
-        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Client;..\Admin;..\Construction;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -131,6 +131,10 @@
         <DCCReference Include="Jcl.dcp"/>
         <DCCReference Include="JvCore.dcp"/>
         <DCCReference Include="JvStdCtrls.dcp"/>
+        <DCCReference Include="bindengine.dcp"/>
+        <DCCReference Include="bindcomp.dcp"/>
+        <DCCReference Include="bindcompvcl.dcp"/>
+        <DCCReference Include="JvPageComps.dcp"/>
         <DCCReference Include="..\Base\BaseGridDetail.pas">
             <Form>frmBaseGridDetail</Form>
             <FormType>dfm</FormType>

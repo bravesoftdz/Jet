@@ -17,6 +17,7 @@ type
     property Name: string read FName write FName;
     property Description: string read FDescription write FDescription;
     property HasName: boolean read GetHasName;
+
   end;
 
 implementation

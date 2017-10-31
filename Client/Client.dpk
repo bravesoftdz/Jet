@@ -45,11 +45,15 @@ requires
   bindcompvcl,
   Jcl,
   JvCore,
-  JvStdCtrls;
+  JvStdCtrls,
+  JvPageComps,
+  bdertl;
 
 contains
   BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},
   ClientMain in 'ClientMain.pas' {frmClientMain},
-  uClient in 'uClient.pas';
+  uClient in 'uClient.pas',
+  BaseSearch in '..\Base\BaseSearch.pas' {frmBaseSearch},
+  ClientSearch in 'ClientSearch.pas' {frmClientSearch};
 
 end.

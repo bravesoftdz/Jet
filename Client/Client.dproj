@@ -101,7 +101,7 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <DCC_DcpOutput>..\_dcp</DCC_DcpOutput>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
-        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Project;..\Construction;..\Admin;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -133,6 +133,8 @@
         <DCCReference Include="Jcl.dcp"/>
         <DCCReference Include="JvCore.dcp"/>
         <DCCReference Include="JvStdCtrls.dcp"/>
+        <DCCReference Include="JvPageComps.dcp"/>
+        <DCCReference Include="bdertl.dcp"/>
         <DCCReference Include="..\Base\BaseGridDetail.pas">
             <Form>frmBaseGridDetail</Form>
             <FormType>dfm</FormType>
@@ -142,6 +144,14 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uClient.pas"/>
+        <DCCReference Include="..\Base\BaseSearch.pas">
+            <Form>frmBaseSearch</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ClientSearch.pas">
+            <Form>frmClientSearch</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -537,7 +547,6 @@
                 <Platform value="iOSDevice32">False</Platform>
                 <Platform value="iOSDevice64">False</Platform>
                 <Platform value="iOSSimulator">False</Platform>
-                <Platform value="Linux64">False</Platform>
                 <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>

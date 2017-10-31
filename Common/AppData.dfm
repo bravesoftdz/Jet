@@ -15,6 +15,7 @@ object dmApplication: TdmApplication
   end
   object fdtProjects: TFDTable
     AfterClose = fdtProjectsAfterClose
+    AfterScroll = fdtProjectsAfterScroll
     IndexFieldNames = 'PROJECT_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
@@ -26,6 +27,67 @@ object dmApplication: TdmApplication
     TableName = 'PROJECT'
     Left = 200
     Top = 32
+    object fdtProjectsPROJECT_ID: TFDAutoIncField
+      FieldName = 'PROJECT_ID'
+      Origin = 'PROJECT_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
+    end
+    object fdtProjectsCLIENT_ID: TIntegerField
+      FieldName = 'CLIENT_ID'
+      Origin = 'CLIENT_ID'
+    end
+    object fdtProjectsPROJECT_NAME: TStringField
+      FieldName = 'PROJECT_NAME'
+      Origin = 'PROJECT_NAME'
+      Required = True
+      Size = 50
+    end
+    object fdtProjectsPROJECT_DESCRIPTION: TStringField
+      FieldName = 'PROJECT_DESCRIPTION'
+      Origin = 'PROJECT_DESCRIPTION'
+      Size = 100
+    end
+    object fdtProjectsSTART_DATE: TSQLTimeStampField
+      FieldName = 'START_DATE'
+      Origin = 'START_DATE'
+    end
+    object fdtProjectsEND_DATE: TSQLTimeStampField
+      FieldName = 'END_DATE'
+      Origin = 'END_DATE'
+    end
+    object fdtProjectsADDRESS: TStringField
+      FieldName = 'ADDRESS'
+      Origin = 'ADDRESS'
+      Size = 150
+    end
+    object fdtProjectsBUDGET: TBCDField
+      FieldName = 'BUDGET'
+      Origin = 'BUDGET'
+      Precision = 18
+      Size = 2
+    end
+    object fdtProjectsSTATUS_ID: TStringField
+      FieldName = 'STATUS_ID'
+      Origin = 'STATUS_ID'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object fdtProjectsOLD_PROJECT_ID: TIntegerField
+      FieldName = 'OLD_PROJECT_ID'
+      Origin = 'OLD_PROJECT_ID'
+    end
+    object fdtProjectsCLIENT_NAME: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = fdtClients
+      LookupKeyFields = 'CLIENT_ID'
+      LookupResultField = 'CLIENT_NAME'
+      KeyFields = 'CLIENT_ID'
+      Size = 100
+      Lookup = True
+    end
   end
   object dscProjects: TDataSource
     DataSet = fdtProjects

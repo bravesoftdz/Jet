@@ -30,11 +30,26 @@ type
     property HasName: boolean read GetHasName;
     property HasClient: boolean read GetHasClient;
 
+    procedure ClearClient;
+
+    destructor Destroy; override;
   end;
 
 implementation
 
 { TProject }
+
+procedure TProject.ClearClient;
+begin
+  if Assigned(FClient) then
+    FreeAndNil(FClient);
+end;
+
+destructor TProject.Destroy;
+begin
+  ClearClient;
+  inherited;
+end;
 
 function TProject.GetHasClient: boolean;
 begin

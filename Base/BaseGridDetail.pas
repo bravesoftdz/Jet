@@ -33,6 +33,7 @@ type
   protected
     procedure SearchList; virtual; abstract;
     procedure BindToObject; virtual; abstract;
+    procedure SetFieldsFromUnboundControls; virtual;
     function EntryIsValid: boolean; virtual; abstract;
   public
     { Public declarations }
@@ -113,6 +114,7 @@ begin
   BindToObject;
   with grList.DataSource.DataSet do
   begin
+    SetFieldsFromUnboundControls;
     if State in [dsInsert,dsEdit] then
       if EntryIsValid then
       begin
@@ -126,6 +128,11 @@ end;
 procedure TfrmBaseGridDetail.sbtnNewClick(Sender: TObject);
 begin
   New;
+end;
+
+procedure TfrmBaseGridDetail.SetFieldsFromUnboundControls;
+begin
+
 end;
 
 procedure TfrmBaseGridDetail.SetIdentity;

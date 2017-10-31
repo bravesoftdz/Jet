@@ -149,7 +149,7 @@ inherited frmProjectMain: TfrmProjectMain
       ReadOnlyColor = 15794175
       ReadOnlyColorOnFocus = True
       TabOnEnter = True
-      TabOrder = 2
+      TabOrder = 3
     end
     object mmDescription: TRzDBMemo
       Tag = 1
@@ -159,7 +159,7 @@ inherited frmProjectMain: TfrmProjectMain
       Height = 55
       DataField = 'PROJECT_DESCRIPTION'
       DataSource = dmApplication.dscProjects
-      TabOrder = 3
+      TabOrder = 4
       FrameColor = 7038525
       FrameVisible = True
       FramingPreference = fpCustomFraming
@@ -173,14 +173,22 @@ inherited frmProjectMain: TfrmProjectMain
       Width = 249
       Height = 22
       Text = ''
+      Color = 15794175
       FrameColor = 7038525
       FrameVisible = True
       FramingPreference = fpCustomFraming
-      TabOrder = 4
+      ReadOnly = True
+      ReadOnlyColor = 15794175
+      TabOrder = 2
+      AltBtnKind = bkReject
       ButtonKind = bkFind
+      AltBtnVisible = True
       AltBtnWidth = 15
       ButtonWidth = 15
       FlatButtons = True
+      HideButtonsOnReadOnly = False
+      OnAltBtnClick = bteClientAltBtnClick
+      OnButtonClick = bteClientButtonClick
     end
     object dteStart: TRzDBDateTimeEdit
       Left = 13
@@ -193,7 +201,7 @@ inherited frmProjectMain: TfrmProjectMain
       FrameVisible = True
       FramingPreference = fpCustomFraming
       ReadOnlyColor = 15794175
-      TabOrder = 5
+      TabOrder = 6
       EditType = etDate
       Format = 'mm/dd/yyyy'
     end
@@ -208,7 +216,7 @@ inherited frmProjectMain: TfrmProjectMain
       FrameVisible = True
       FramingPreference = fpCustomFraming
       ReadOnlyColor = 15794175
-      TabOrder = 6
+      TabOrder = 7
       EditType = etDate
       Format = 'mm/dd/yyyy'
     end
@@ -220,7 +228,7 @@ inherited frmProjectMain: TfrmProjectMain
       Height = 55
       DataField = 'ADDRESS'
       DataSource = dmApplication.dscProjects
-      TabOrder = 7
+      TabOrder = 5
       FrameColor = 7038525
       FrameVisible = True
       FramingPreference = fpCustomFraming

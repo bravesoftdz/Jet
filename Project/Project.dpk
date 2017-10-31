@@ -43,7 +43,11 @@ requires
   vclimg,
   Jcl,
   JvCore,
-  JvStdCtrls;
+  JvStdCtrls,
+  bindengine,
+  bindcomp,
+  bindcompvcl,
+  JvPageComps;
 
 contains
   BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},
