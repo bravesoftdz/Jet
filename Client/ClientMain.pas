@@ -72,9 +72,11 @@ begin
 end;
 
 procedure TfrmClientMain.SearchList;
+var
+  filterStr: string;
 begin
-  inherited;
-
+  filterStr := 'CLIENT_NAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
+  grList.DataSource.DataSet.Filter := filterStr;
 end;
 
 procedure TfrmClientMain.SetIdentity;

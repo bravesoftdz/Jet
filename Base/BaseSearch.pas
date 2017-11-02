@@ -28,6 +28,7 @@ type
     procedure btnSelectClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure grSearchTitleClick(Column: TColumn);
   private
     { Private declarations }
     procedure EnableControls;
@@ -45,6 +46,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  FormsUtil;
 
 procedure TfrmBaseSearch.btnNewClick(Sender: TObject);
 begin
@@ -89,6 +93,7 @@ begin
     begin
       grSearch.DataSource.DataSet.Open;
       EnableControls;
+      SortGrid(grSearch,grSearch.Columns[0]);
     end;
 end;
 
@@ -103,6 +108,12 @@ begin
   inherited;
   if grSearch.DataSource.DataSet.RecordCount > 0 then
     ModalResult := mrOK;
+end;
+
+procedure TfrmBaseSearch.grSearchTitleClick(Column: TColumn);
+begin
+  inherited;
+  SortGrid(grSearch,Column);
 end;
 
 procedure TfrmBaseSearch.btnCancelClick(Sender: TObject);

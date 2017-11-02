@@ -8,7 +8,6 @@ object dmApplication: TdmApplication
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 32
@@ -16,6 +15,8 @@ object dmApplication: TdmApplication
   object fdtProjects: TFDTable
     AfterClose = fdtProjectsAfterClose
     AfterScroll = fdtProjectsAfterScroll
+    Filtered = True
+    FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'PROJECT_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
@@ -109,7 +110,7 @@ object dmApplication: TdmApplication
     FormatOptions.SortOptions = [soNoSymbols]
     UpdateOptions.UpdateTableName = 'SUPPLIER'
     TableName = 'SUPPLIER'
-    Left = 192
+    Left = 200
     Top = 104
   end
   object dscSuppliers: TDataSource
@@ -119,6 +120,7 @@ object dmApplication: TdmApplication
   end
   object fdtExpenseTypes: TFDTable
     AfterClose = fdtExpenseTypesAfterClose
+    Filtered = True
     IndexFieldNames = 'EXPENSE_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
@@ -146,7 +148,7 @@ object dmApplication: TdmApplication
     UpdateOptions.UpdateTableName = 'EXPENSE'
     UpdateOptions.AutoIncFields = 'EXPENSE_ENTRY_ID'
     TableName = 'EXPENSE'
-    Left = 376
+    Left = 384
     Top = 104
   end
   object dscExpenses: TDataSource
@@ -156,6 +158,7 @@ object dmApplication: TdmApplication
   end
   object fdtClients: TFDTable
     AfterClose = fdtClientsAfterClose
+    Filtered = True
     IndexFieldNames = 'CLIENT_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
@@ -165,7 +168,7 @@ object dmApplication: TdmApplication
     UpdateOptions.UpdateTableName = 'CLIENT'
     UpdateOptions.AutoIncFields = 'CLIENT_ID'
     TableName = 'CLIENT'
-    Left = 192
+    Left = 200
     Top = 184
   end
   object dscClients: TDataSource
@@ -177,5 +180,23 @@ object dmApplication: TdmApplication
     Connection = fdcMain
     Left = 40
     Top = 104
+  end
+  object fdtUnits: TFDTable
+    IndexFieldNames = 'UNIT_ID'
+    Connection = fdcMain
+    FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
+    FormatOptions.StrsTrim = False
+    FormatOptions.SortLocale = 0
+    FormatOptions.SortOptions = [soNoSymbols]
+    UpdateOptions.UpdateTableName = 'T_UNIT'
+    UpdateOptions.AutoIncFields = 'UNIT_ID'
+    TableName = 'T_UNIT'
+    Left = 384
+    Top = 184
+  end
+  object dscUnits: TDataSource
+    DataSet = fdtUnits
+    Left = 296
+    Top = 184
   end
 end

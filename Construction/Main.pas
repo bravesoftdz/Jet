@@ -58,6 +58,8 @@ type
     acAddActiveLoan: TAction;
     pnlClients: TRzPanel;
     imgClients: TImage;
+    pnlUnits: TRzPanel;
+    imgUnit: TImage;
     procedure FormCreate(Sender: TObject);
     procedure pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -76,10 +78,12 @@ type
     procedure imgExpenseTypesClick(Sender: TObject);
     procedure imgProjectsClick(Sender: TObject);
     procedure imgClientsClick(Sender: TObject);
+    procedure imgUnitClick(Sender: TObject);
   private
     { Private declarations }
     DOCKED_FORM: TForms;
     procedure Save(retry: boolean = true);
+    procedure GetActiveForm(var frm: TForm);
   public
     { Public declarations }
     procedure DockForm(const fm: TForms; const title: string = '');
@@ -94,7 +98,7 @@ implementation
 
 uses
   AppDialogs, SaveIntf, FormsUtil, NewIntf, ProjectMain, Migrate, SupplierMain,
-  ExpenseTypeMain, ClientMain, SetIdentityIntf;
+  ExpenseTypeMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain;
 
 procedure TfrmMain.pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -139,6 +143,7 @@ begin
       fmProjectMain: frm := TfrmProjectMain.Create(Application);
       fmSupplierMain: frm := TfrmSupplierMain.Create(Application);
       fmExpenseTypes: frm := TfrmExpenseTypeMain.Create(Application);
+      fmUnitMain: frm := TfrmUnitMain.Create(Application);
       fmMigrate: frm := TfrmMigrate.Create(Application);
       else
         frm := TForm.Create(Application);
@@ -152,21 +157,31 @@ begin
   else ShowInfoBox('The window is already open.');
 end;
 
+procedure TfrmMain.GetActiveForm(var frm: TForm);
+begin
+  frm := nil;
+  // check if a popup is active
+  if Application.MainForm <> Screen.ActiveForm then frm := Screen.ActiveForm
+  else if pnlDockMain.ControlCount > 0 then frm := pnlDockMain.Controls[0] as TForm;
+end;
+
 procedure TfrmMain.Save(retry: boolean);
 var
   intf: ISave;
-  tries: word;
   identIntf: ISetIdentity;
+  frm: TForm;
 begin
   try
-    if pnlDockMain.ControlCount > 0 then
-      if Supports(pnlDockMain.Controls[0] as TForm, ISave, intf) then
+    GetActiveForm(frm);
+
+    if Assigned(frm) then
+      if Supports(frm, ISave, intf) then
         if intf.Save then ShowConfirmationBox;
   except
     on e: Exception do
     begin
       // try to reset the identity column
-      if (Supports(pnlDockMain.Controls[0] as TForm, ISetIdentity, identIntf)) and retry then
+      if (Supports(frm, ISetIdentity, identIntf)) and retry then
       begin
         identIntf.SetIdentity;
         Save(false);
@@ -188,9 +203,9 @@ procedure TfrmMain.FormShow(Sender: TObject);
 begin
 //  lblCaption.Caption := ifn.AppName + ' - ' + ifn.AppDescription;
 //  lblWelcome.Caption := 'Welcome back ' + ifn.User.Name + '.';
-//  lblDate.Caption := 'Today is ' + FormatDateTime('mmmm dd, yyyy.',ifn.AppDate);
+  lblDate.Caption := 'Today is ' + FormatDateTime('mmmm dd, yyyy.',app.AppDate);
 //  lblLocation.Caption := 'Location: ' + ifn.GetLocationNameByCode(ifn.LocationCode);
-//  lblVersion.Caption :=  'Version ' + ifn.Version;
+  lblVersion.Caption :=  'Version ' + app.Version;
 end;
 
 procedure TfrmMain.imgProjectsClick(Sender: TObject);
@@ -213,10 +228,12 @@ end;
 procedure TfrmMain.imgCancelClick(Sender: TObject);
 var
   intf: ISave;
+  frm: TForm;
 begin
   try
-    if pnlDockMain.ControlCount > 0 then
-      if Supports(pnlDockMain.Controls[0] as TForm,ISave,intf) then
+    GetActiveForm(frm);
+    if Assigned(frm) then
+      if Supports(frm,ISave,intf) then
         intf.Cancel;
   except
     on e:Exception do
@@ -249,13 +266,20 @@ begin
   DockForm(fmSupplierMain);
 end;
 
+procedure TfrmMain.imgUnitClick(Sender: TObject);
+begin
+  DockForm(fmUnitMain);
+end;
+
 procedure TfrmMain.acGenericNewExecute(Sender: TObject);
 var
   intf: INew;
+  frm: TForm;
 begin
   try
-    if pnlDockMain.ControlCount > 0 then
-      if Supports(pnlDockMain.Controls[0] as TForm,INew,intf) then
+    GetActiveForm(frm);
+    if Assigned(frm) then
+      if Supports(frm,INew,intf) then
         intf.New;
   except
     on e:Exception do

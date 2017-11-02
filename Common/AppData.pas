@@ -36,6 +36,8 @@ type
     fdtProjectsSTATUS_ID: TStringField;
     fdtProjectsOLD_PROJECT_ID: TIntegerField;
     fdtProjectsCLIENT_NAME: TStringField;
+    fdtUnits: TFDTable;
+    dscUnits: TDataSource;
     procedure fdtProjectsAfterClose(DataSet: TDataSet);
     procedure fdtSuppliersAfterClose(DataSet: TDataSet);
     procedure fdtExpenseTypesAfterClose(DataSet: TDataSet);

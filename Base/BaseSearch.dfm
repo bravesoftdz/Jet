@@ -80,6 +80,7 @@ inherited frmBaseSearch: TfrmBaseSearch
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnDblClick = grSearchDblClick
+        OnTitleClick = grSearchTitleClick
         FrameColor = 7038525
         FrameStyle = fsNone
         FrameVisible = True

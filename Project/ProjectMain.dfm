@@ -1,5 +1,6 @@
 inherited frmProjectMain: TfrmProjectMain
   Caption = 'frmProjectMain'
+  Position = poOwnerFormCenter
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlTitle: TRzPanel
@@ -12,6 +13,7 @@ inherited frmProjectMain: TfrmProjectMain
   inherited pnlList: TRzPanel
     inherited grList: TRzDBGrid
       DataSource = dmApplication.dscProjects
+      OnDblClick = grListDblClick
       Columns = <
         item
           Expanded = False
@@ -28,6 +30,19 @@ inherited frmProjectMain: TfrmProjectMain
         end
         item
           Expanded = False
+          FieldName = 'CLIENT_NAME'
+          Title.Alignment = taCenter
+          Title.Caption = 'Client'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -12
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = [fsBold]
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'PROJECT_DESCRIPTION'
           Title.Alignment = taCenter
           Title.Caption = 'Description'
@@ -36,7 +51,7 @@ inherited frmProjectMain: TfrmProjectMain
           Title.Font.Height = -12
           Title.Font.Name = 'Tahoma'
           Title.Font.Style = [fsBold]
-          Width = 460
+          Width = 260
           Visible = True
         end>
     end
@@ -248,6 +263,7 @@ inherited frmProjectMain: TfrmProjectMain
       FrameVisible = True
       FramingPreference = fpCustomFraming
       TabOrder = 8
+      IntegersOnly = False
       DisplayFormat = '###,###,##0.00'
     end
   end

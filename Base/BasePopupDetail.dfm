@@ -21,6 +21,7 @@ inherited frmBasePopupDetail: TfrmBasePopupDetail
   inherited pnlMain: TRzPanel
     Width = 533
     Height = 232
+    Color = 12630669
     ExplicitWidth = 533
     ExplicitHeight = 232
     DesignSize = (
@@ -33,7 +34,7 @@ inherited frmBasePopupDetail: TfrmBasePopupDetail
       Height = 183
       Anchors = [akLeft, akTop, akRight, akBottom]
       BorderOuter = fsNone
-      BorderColor = 6572079
+      BorderColor = 7827778
       BorderWidth = 1
       Color = 14273211
       TabOrder = 0
@@ -56,11 +57,9 @@ inherited frmBasePopupDetail: TfrmBasePopupDetail
         TabStop = False
         FixedDimension = 20
         object tsDetail: TRzTabSheet
-          Color = 14273211
+          Color = 14276027
           TabVisible = False
           Caption = 'Change caption here'
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
       end
     end
@@ -71,9 +70,15 @@ inherited frmBasePopupDetail: TfrmBasePopupDetail
       Height = 22
       Anchors = [akRight, akBottom]
       BorderOuter = fsNone
-      BorderColor = 6572079
+      BorderColor = 6577975
       BorderWidth = 1
-      Color = 14273211
+      Color = 9077581
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       object btnCancel: TRzShapeButton
         Left = 0
@@ -92,9 +97,15 @@ inherited frmBasePopupDetail: TfrmBasePopupDetail
       Height = 22
       Anchors = [akRight, akBottom]
       BorderOuter = fsNone
-      BorderColor = 6572079
+      BorderColor = 6577975
       BorderWidth = 1
-      Color = 14273211
+      Color = 9077581
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
       object btnSave: TRzShapeButton
         Left = 0

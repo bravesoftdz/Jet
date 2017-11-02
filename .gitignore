@@ -1,3 +1,10 @@
 
 *.exe
 *.bpl
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.dcu

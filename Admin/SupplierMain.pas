@@ -19,6 +19,7 @@ type
     Label5: TLabel;
     mmAddress: TRzDBMemo;
     procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     Supplier: TSupplier;
@@ -62,6 +63,12 @@ begin
   if not Result then ShowErrorBox(error);
 end;
 
+procedure TfrmSupplierMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  Supplier.Free;
+end;
+
 procedure TfrmSupplierMain.FormCreate(Sender: TObject);
 begin
   Supplier := TSupplier.Create;
@@ -69,9 +76,11 @@ begin
 end;
 
 procedure TfrmSupplierMain.SearchList;
+var
+  filterStr: string;
 begin
-  inherited;
-  Supplier.Free;
+  filterStr := 'SUPPLIER_NAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
+  grList.DataSource.DataSet.Filter := filterStr;
 end;
 
 procedure TfrmSupplierMain.SetIdentity;

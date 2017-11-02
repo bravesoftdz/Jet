@@ -13,7 +13,7 @@ type
   private
     { Private declarations }
     Client: TClient;
-   protected
+  protected
     { Public declarations }
     procedure SearchList; override;
     procedure SetReturn; override;
@@ -64,7 +64,7 @@ procedure TfrmClientSearch.SearchList;
 var
   filterStr: string;
 begin
-  filterStr := 'CLIENT_NAME = ' + QuotedStr(edSearchKey.Text);
+  filterStr := 'CLIENT_NAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
   grSearch.DataSource.DataSet.Filter := filterStr;
 end;
 

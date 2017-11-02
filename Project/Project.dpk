@@ -9,21 +9,21 @@ package Project;
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
-{$LOCALSYMBOLS ON}
+{$LOCALSYMBOLS OFF}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
@@ -52,6 +52,11 @@ requires
 contains
   BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},
   ProjectMain in 'ProjectMain.pas' {frmProjectMain},
-  uProject in 'uProject.pas';
+  uProject in 'uProject.pas',
+  BasePopupDetail in '..\Base\BasePopupDetail.pas' {frmBasePopupDetail},
+  BasePopup in '..\Base\BasePopup.pas' {frmBasePopup},
+  ExpenseList in 'ExpenseList.pas' {frmExpenseList},
+  ProjectData in 'ProjectData.pas' {dmProject: TDataModule},
+  uExpense in 'uExpense.pas';
 
 end.

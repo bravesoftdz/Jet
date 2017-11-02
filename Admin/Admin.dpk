@@ -9,21 +9,21 @@ package Admin;
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
-{$LOCALSYMBOLS ON}
+{$LOCALSYMBOLS OFF}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
@@ -42,7 +42,12 @@ requires
   vclimg,
   Jcl,
   JvCore,
-  JvStdCtrls;
+  JvStdCtrls,
+  bindengine,
+  bindcomp,
+  bindcompvcl,
+  JvPageComps,
+  bdertl;
 
 contains
   BaseDocked in '..\Base\BaseDocked.pas' {frmBaseDocked},
@@ -50,6 +55,11 @@ contains
   SupplierMain in 'SupplierMain.pas' {frmSupplierMain},
   ExpenseTypeMain in 'ExpenseTypeMain.pas' {frmExpenseTypeMain},
   uExpenseType in 'uExpenseType.pas',
-  uSupplier in 'uSupplier.pas';
+  uSupplier in 'uSupplier.pas',
+  BaseSearch in '..\Base\BaseSearch.pas' {frmBaseSearch},
+  ExpenseTypeSearch in 'ExpenseTypeSearch.pas' {frmExpenseTypeSearch},
+  SupplierSearch in 'SupplierSearch.pas' {frmSupplierSearch},
+  UnitMain in 'UnitMain.pas' {frmUnitMain},
+  uUnit in 'uUnit.pas';
 
 end.

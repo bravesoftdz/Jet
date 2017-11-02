@@ -72,9 +72,11 @@ begin
 end;
 
 procedure TfrmExpenseTypeMain.SearchList;
+var
+  filterStr: string;
 begin
-  inherited;
-
+  filterStr := 'EXPENSE_NAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
+  grList.DataSource.DataSet.Filter := filterStr;
 end;
 
 procedure TfrmExpenseTypeMain.SetIdentity;

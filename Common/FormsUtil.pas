@@ -4,7 +4,7 @@ interface
 
 uses
   Vcl.Controls, RzDBCmbo, RzDBGrid, RzGrids, DB, RzLstBox, RzChkLst, Vcl.ExtCtrls,
-  System.Classes, RzCmboBx, VCL.DBGrids, FireDAC.Comp.Client;
+  System.Classes, RzCmboBx, VCL.DBGrids, FireDAC.Comp.Client, SysUtils;
 
 procedure OpenDropdownDataSources(const parentCtrl: TWinControl;
   const open: boolean = true);
@@ -16,11 +16,15 @@ procedure ExtendLastColumn(grid: TRzDBGrid); overload;
 procedure ExtendLastColumn(grid: TRzStringGrid); overload;
 procedure PopulateComboBox(source: TDataSet; comboBox: TRzComboBox;
   const codeField, nameField: string); overload;
-procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ASort: string = '');
+procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ASort: string = ''); overload;
+procedure SortGrid(grid: TRzDBGrid; const AIndexFieldNames: string = ''); overload;
 
 function FirstRow(grid: TRzStringGrid): boolean;
 
 implementation
+
+uses
+  AppDialogs;
 
 procedure OpenDropdownDataSources(const parentCtrl: TWinControl;
   const open: boolean = true);
@@ -142,17 +146,51 @@ var
   currentIndex: string;
   LSort: string;
 begin
-  with grid.DataSource.DataSet as TFDTable do
+  try
+  if grid.DataSource.DataSet is TFDTable then
   begin
-    if ASort <> '' then LSort := ASort
-    else LSort := Column.FieldName;
+    with grid.DataSource.DataSet as TFDTable do
+    begin
+      if ASort <> '' then LSort := ASort
+      else LSort := Column.FieldName;
 
-    currentIndex := IndexFieldNames;
+      currentIndex := IndexFieldNames;
 
-    if currentIndex <> LSort then
-      IndexFieldNames := LSort          // ascending
-    else
-      IndexFieldNames := LSort + ':D';  // descending
+      if currentIndex <> LSort then
+        IndexFieldNames := LSort          // ascending
+      else
+        IndexFieldNames := LSort + ':D';  // descending
+    end;
+  end
+  else if grid.DataSource.DataSet is TFDStoredProc then
+  begin
+    with grid.DataSource.DataSet as TFDStoredProc do
+    begin
+      if ASort <> '' then LSort := ASort
+      else LSort := Column.FieldName;
+
+      currentIndex := IndexFieldNames;
+
+      if currentIndex <> LSort then
+        IndexFieldNames := LSort          // ascending
+      else
+        IndexFieldNames := LSort + ':D';  // descending
+    end;
+  end;
+  except
+    on E: Exception do ShowErrorBox(E.Message);
+  end;
+end;
+
+procedure SortGrid(grid: TRzDBGrid; const AIndexFieldNames: string);
+begin
+  try
+    if grid.DataSource.DataSet is TFDTable then
+      with grid.DataSource.DataSet as TFDTable do IndexFieldNames := AIndexFieldNames
+    else if grid.DataSource.DataSet is TFDStoredProc then
+      with grid.DataSource.DataSet as TFDStoredProc do IndexFieldNames := AIndexFieldNames;
+  except
+    on E: Exception do ShowErrorBox(E.Message);
   end;
 end;
 

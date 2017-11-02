@@ -9,21 +9,21 @@ package Common;
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
-{$LOCALSYMBOLS ON}
+{$LOCALSYMBOLS OFF}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
@@ -68,6 +68,7 @@ contains
   Migrate in 'Migrate.pas' {frmMigrate},
   DBUtil in 'DBUtil.pas',
   SetIdentityIntf in 'SetIdentityIntf.pas',
-  SetUnboundControlsIntf in 'SetUnboundControlsIntf.pas';
+  SetUnboundControlsIntf in 'SetUnboundControlsIntf.pas',
+  SearchUtil in 'SearchUtil.pas';
 
 end.

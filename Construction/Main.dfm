@@ -126,7 +126,6 @@ object frmMain: TfrmMain
       Top = 571
       Width = 144
       Height = 14
-      Alignment = taRightJustify
       Anchors = [akRight, akBottom]
       Caption = 'Today is January 01, 2017'
       Font.Charset = DEFAULT_CHARSET
@@ -163,7 +162,7 @@ object frmMain: TfrmMain
       BorderColor = 7827778
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 0
+      TabOrder = 10
     end
     object pnlProjects: TRzPanel
       Left = 60
@@ -249,7 +248,7 @@ object frmMain: TfrmMain
       end
     end
     object pnlSave: TRzPanel
-      Left = 203
+      Left = 246
       Top = 11
       Width = 40
       Height = 40
@@ -257,7 +256,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 2
+      TabOrder = 5
       object imgSave: TImage
         Left = 4
         Top = 4
@@ -345,7 +344,7 @@ object frmMain: TfrmMain
       end
     end
     object pnlCancel: TRzPanel
-      Left = 246
+      Left = 289
       Top = 11
       Width = 40
       Height = 40
@@ -353,7 +352,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 3
+      TabOrder = 6
       object imgCancel: TImage
         Left = 4
         Top = 4
@@ -445,7 +444,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 4
+      TabOrder = 2
       object imgSuppliers: TImage
         Left = 4
         Top = 4
@@ -506,7 +505,7 @@ object frmMain: TfrmMain
       end
     end
     object pnlSecurity: TRzPanel
-      Left = 303
+      Left = 346
       Top = 11
       Width = 40
       Height = 40
@@ -514,7 +513,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 5
+      TabOrder = 7
       object imgSecurity: TImage
         Left = 4
         Top = 4
@@ -587,7 +586,7 @@ object frmMain: TfrmMain
       end
     end
     object pnlReports: TRzPanel
-      Left = 346
+      Left = 389
       Top = 11
       Width = 40
       Height = 40
@@ -595,7 +594,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 6
+      TabOrder = 8
       object imgReports: TImage
         Left = 4
         Top = 4
@@ -663,7 +662,7 @@ object frmMain: TfrmMain
       end
     end
     object pnlMigrate: TRzPanel
-      Left = 389
+      Left = 432
       Top = 11
       Width = 40
       Height = 40
@@ -671,7 +670,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 7
+      TabOrder = 9
       object imgMigrate: TImage
         Left = 4
         Top = 4
@@ -770,7 +769,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 8
+      TabOrder = 3
       object imgExpenseTypes: TImage
         Left = 4
         Top = 4
@@ -843,7 +842,7 @@ object frmMain: TfrmMain
       BorderColor = 6577975
       BorderWidth = 1
       Color = 14276027
-      TabOrder = 9
+      TabOrder = 0
       object imgClients: TImage
         Left = 4
         Top = 4
@@ -917,6 +916,69 @@ object frmMain: TfrmMain
           07EB511298390DAF8CFF00B4E18952335A8C990000000049454E44AE426082}
         ShowHint = True
         OnClick = imgClientsClick
+        OnMouseDown = imgProjectsMouseDown
+        OnMouseUp = imgProjectsMouseUp
+      end
+    end
+    object pnlUnits: TRzPanel
+      Left = 189
+      Top = 11
+      Width = 40
+      Height = 40
+      BorderOuter = fsNone
+      BorderColor = 6577975
+      BorderWidth = 1
+      Color = 14276027
+      TabOrder = 4
+      object imgUnit: TImage
+        Left = 4
+        Top = 4
+        Width = 32
+        Height = 32
+        Cursor = crHandPoint
+        Hint = 'Units'
+        AutoSize = True
+        ParentShowHint = False
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+          00200806000000737A7AF4000004564944415478DAC597DB6B1C551CC7BF73DF
+          CD5E726BB26962D2C4D4A022087D12148B0F4541D0FA2AE4F620A22FE24B29F8
+          50C54BA16F82F8A00FB9BD095E0A369017E91F2078ADD492184D48BAD9D624EE
+          253BB3B333E3EF7776669AC841E9261B7FE1E4EC65F69CCFF99DEFF7FC661400
+          FADCDCDC578AA23CEFFB3E8220402B83E681AAAA3CCFB5C9C9C9F30A7D96999F
+          9F2F8E8F8FB774E27FC6C2C202262626B20CD0333B3B5B201AACFEBE4684AD9D
+          98133C323C04CA3AA6A6A67A79BADE9999992D7A833FD6D6458A941651F0F672
+          3B3534085A34A6A7A7730700D6D637687F5A9B02DF0F303438200758DFD8841A
+          AE9EFFF34B6E9C36FF88B4E9D3608303FD72808DCDDB71FA3515B07415BF161C
+          8C769B70FD00476110DE8281FE937280CDDBF98606E8435357F0CA67797CBBEE
+          E0E70BC3D8ABF9F0E91BB5497DF0CA116AA0FF649F1C209FDF8A010C4D41D1F1
+          F1CCC76BF8E5C208CA351A4051611A06544D8B9683205CD5FE6830DE13B3EF79
+          A8B92E3CEAF9DABEBE9C1C606BAB70600BB29686B1CBCBB8797114151734B18E
+          17CFBF844C368B8465C1B212D42C2412164C7AADD28F1CDB86ED3870A9716F57
+          AB28954AF8F28BCFE112041F76B95CAF1CA050B873002065AA187B7F19B7DE3A
+          8D4A98018332A0FD5706C2344463F1CADD7D19E8EDED9103DCF9F32E1A1BD000
+          6833548CBC730BAB97C6B0E7920682E6CF88E80CE0BF9EEE137280BBDBDB8886
+          670D240D45F4AE075409C0F50E6F031EE14457971C607B6727169149133FFDE1
+          0A72191D6953C3C2C420AAF5204A70D319E0E8EAEC9403ECECEEC67BA813401B
+          6940B5540C5FBC8195B71F81ED29D0744354B3FD6B6A382C903A40B8808457AB
+          D58406383A3B3AE400BB7F1563008344E091F33F58CAE3A78D2AAEBE7A1A2E74
+          9C3BF79C70413261090758911BE83DDBD3261738A4FE9AED506F8BF7EC82C5C5
+          6BC28A4CDBD19E9503148B2501C0E58005F8C2A7CBC8A54D7CF2F2A01060DD57
+          A1B30BC20C04FB32101F93E139827FC940369B9103944AE5182045FB3E7CE947
+          A18507BB2D7CFDDA4370BCA3D1402693960394CB951880EB806669E18401EA8E
+          07A7EE1F493D48A75372804A652F1612033CFBD14D2449881E15A2C5D71F864D
+          560C9ACD80DF38033852A93639C09E5D151BCB002C42DDD050D8B1F1C4951BF8
+          EDF219D4EB102EB85F049ED6756BA8871A684B24E50055522FE738027877711D
+          577FD8C5E30F10F1F4185DAAE1C9A7CE22D3DE8E64E400523FD705AE05DA7E17
+          388DBE5A65171471FDFA3742880CC3BF9502880B420093CF6271E6AB387BE53B
+          2CBDF1282C43A772A035B5059E578757F7447A4DD3940370C188000CD2C099F7
+          BE472E6B8ADBA8A5371FA3010EA181D0057C4071419302D46993C5459C6CB282
+          A2891BB350443EAD229251F3C100BAAECB01A27209DCBB270C5DD8386E0F3979
+          04C05A91021CE7939114E038E300003D9A6DFD4F8F6631C00AF5E9A858B43AC2
+          5BBA32018C324007B5116A9D68B6D2DC7FB0D0F8EE6755947E6A296AE6314D1E
+          458D5AE56F90F5A8CC635EE9070000000049454E44AE426082}
+        ShowHint = True
+        OnClick = imgUnitClick
         OnMouseDown = imgProjectsMouseDown
         OnMouseUp = imgProjectsMouseUp
       end

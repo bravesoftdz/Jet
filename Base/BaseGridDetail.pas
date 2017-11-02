@@ -69,7 +69,7 @@ begin
   for i := 0 to cnt do
   begin
     winCtrl := pnlDetail.Controls[i];
-    readOnly := grList.DataSource.DataSet.RecordCount = 0;
+    readOnly := (grList.DataSource.DataSet.RecordCount = 0) and (grList.DataSource.DataSet.State = dsBrowse);
     if winCtrl.Tag = 1 then
     begin
       if  winCtrl is TRzDBEdit then
@@ -85,6 +85,8 @@ procedure TfrmBaseGridDetail.FormClose(Sender: TObject;
 begin
   OpenDropdownDataSources(pnlDetail,false);
   OpenGridDataSources(pnlList,false);
+  // remove any filters
+  grList.DataSource.DataSet.Filter := '';
   inherited;
 end;
 
@@ -149,6 +151,8 @@ end;
 procedure TfrmBaseGridDetail.New;
 begin
   grList.DataSource.DataSet.Append;
+
+  EnableControls;
 
   // disable the grid
   grList.Enabled := false;

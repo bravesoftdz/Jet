@@ -16,8 +16,10 @@ type
     FStartDate: TDateTime;
     FAddress: string;
     FClient: TClient;
+    FStatus: string;
     function GetHasClient: boolean;
     function GetHasName: boolean;
+    function GetIsClosed: boolean;
   public
     property Id: integer read FId write FId;
     property Client: TClient read FClient write FClient;
@@ -29,6 +31,8 @@ type
     property Budget: single read FBudget write FBudget;
     property HasName: boolean read GetHasName;
     property HasClient: boolean read GetHasClient;
+    property IsClosed: boolean read GetIsClosed;
+    property Status: string read FStatus write FStatus;
 
     procedure ClearClient;
 
@@ -59,6 +63,11 @@ end;
 function TProject.GetHasName: boolean;
 begin
   Result := Trim(FName) <> '';
+end;
+
+function TProject.GetIsClosed: boolean;
+begin
+  Result := FStatus = 'C';
 end;
 
 end.

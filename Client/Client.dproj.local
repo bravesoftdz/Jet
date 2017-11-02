@@ -25,11 +25,11 @@
     <Transaction>2017/10/30 22:09:14.000.947,=bindcompvcl.dcp</Transaction>
     <Transaction>2017/10/30 22:09:14.000.966,=JvCore.dcp</Transaction>
     <Transaction>2017/10/30 22:09:14.000.975,=JvStdCtrls.dcp</Transaction>
-    <Transaction>2017/10/31 19:53:25.545,=C:\Projects\Jet\Base\BaseSearch.pas</Transaction>
-    <Transaction>2017/10/31 19:56:14.473,=C:\Projects\Jet\Client\Unit1.pas</Transaction>
-    <Transaction>2017/10/31 19:56:30.688,C:\Projects\Jet\Client\ClientSearch.dfm=C:\Projects\Jet\Client\Unit1.dfm</Transaction>
-    <Transaction>2017/10/31 19:56:30.688,C:\Projects\Jet\Client\ClientSearch.pas=C:\Projects\Jet\Client\Unit1.pas</Transaction>
-    <Transaction>2017/10/31 23:00:17.576,=JvPageComps.dcp</Transaction>
-    <Transaction>2017/10/31 23:00:17.588,=bdertl.dcp</Transaction>
+    <Transaction>2017/10/31 19:53:25.000.545,=C:\Projects\Jet\Base\BaseSearch.pas</Transaction>
+    <Transaction>2017/10/31 19:56:14.000.473,=C:\Projects\Jet\Client\Unit1.pas</Transaction>
+    <Transaction>2017/10/31 19:56:30.000.688,C:\Projects\Jet\Client\ClientSearch.dfm=C:\Projects\Jet\Client\Unit1.dfm</Transaction>
+    <Transaction>2017/10/31 19:56:30.000.688,C:\Projects\Jet\Client\ClientSearch.pas=C:\Projects\Jet\Client\Unit1.pas</Transaction>
+    <Transaction>2017/10/31 23:00:17.000.576,=JvPageComps.dcp</Transaction>
+    <Transaction>2017/10/31 23:00:17.000.588,=bdertl.dcp</Transaction>
   </Transactions>
 </BorlandProject>

@@ -210,7 +210,7 @@ begin
 //  begin
 //    Open;
 //
-//    ifn.AppDate := Date;
+    app.AppDate := Date;
 //
 //    // location code
 //    Locate('sysconfig_code','LOCATION_CODE',[]);
@@ -231,7 +231,7 @@ begin
 //    ifn.AppImagesPath := ExtractFilePath(Application.ExeName) + '_images\';
 //
 //    // version
-//    ifn.Version := GetAppVersionStr(ParamStr(0));
+    app.Version := GetAppVersionStr(ParamStr(0));
 //
 //    // get all locations
 //    GetLocations;

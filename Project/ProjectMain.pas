@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseGridDetail, Data.DB, RzButton,
   Vcl.StdCtrls, Vcl.Mask, RzEdit, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
   Vcl.ExtCtrls, RzPanel, Bde.DBTables, RzDBEdit, Vcl.DBCtrls, RzBtnEdt,
-  uProject, uClient, ClientSearch, SetUnboundControlsIntf;
+  uProject, uClient, ClientSearch, SetUnboundControlsIntf, FireDac.Comp.Client;
 
 type
   TfrmProjectMain = class(TfrmBaseGridDetail, ISetUnboundControls)
@@ -30,6 +30,7 @@ type
     procedure bteClientButtonClick(Sender: TObject);
     procedure bteClientAltBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure grListDblClick(Sender: TObject);
   private
     { Private declarations }
     Project: TProject;
@@ -38,13 +39,15 @@ type
     procedure BindToObject; override;
     procedure SearchClient;
     procedure SetFieldsFromUnboundControls; override;
+    procedure OpenProjectRecord;
 
     function EntryIsValid: boolean; override;
-    function Save: boolean; override;
   public
     { Public declarations }
     procedure SetIdentity; override;
     procedure SetUnboundControls;
+    procedure Cancel; override;
+    function Save: boolean; override;
   end;
 
 var
@@ -55,18 +58,20 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, DBUtil, FormsUtil;
+  AppData, AppDialogs, DBUtil, FormsUtil, ExpenseList, SearchUtil;
 
 { TfrmProjectMain }
 
 procedure TfrmProjectMain.BindToObject;
 begin
+  Project.Id := grList.DataSource.DataSet.FieldByName('PROJECT_ID').AsInteger;
   Project.Name := edName.Text;
   Project.Description := mmDescription.Text;
   Project.Address := mmAddress.Text;
   Project.StartDate := dteStart.Date;
   Project.EndDate := dteEnd.Date;
   Project.Budget := edBudget.Value;
+  Project.Status := grList.DataSource.DataSet.FieldByName('STATUS_ID').AsString;
 end;
 
 procedure TfrmProjectMain.bteClientAltBtnClick(Sender: TObject);
@@ -79,6 +84,12 @@ procedure TfrmProjectMain.bteClientButtonClick(Sender: TObject);
 begin
   inherited;
   SearchClient;
+end;
+
+procedure TfrmProjectMain.Cancel;
+begin
+  inherited;
+  SetUnboundControls;
 end;
 
 function TfrmProjectMain.EntryIsValid: boolean;
@@ -116,23 +127,49 @@ begin
   SetUnboundControls;
 end;
 
+procedure TfrmProjectMain.grListDblClick(Sender: TObject);
+begin
+  BindToObject;
+  OpenProjectRecord;
+end;
+
+procedure TfrmProjectMain.OpenProjectRecord;
+begin
+  with TfrmExpenseList.Create(self,Project) do
+  begin
+    try
+      WinApi.Windows.SetParent(Handle,self.Parent.Handle);
+      Show;
+    finally
+
+    end;
+  end;
+end;
+
 function TfrmProjectMain.Save: boolean;
 var
-  id:integer;
+  LIndexFieldNames: string;
 begin
-  inherited Save;
+  Result := inherited Save;
 
   if Result then
   begin
     // reopen the table to refresh the lookup
     with grList.DataSource.DataSet do
     begin
+      LIndexFieldNames := (grList.DataSource.DataSet as TFDTable).IndexFieldNames;
+
+      DisableControls;
       Refresh;
-      id := FieldByName('PROJECT_ID').AsInteger;
+
       Close;
       Open;
-      SortGrid(grList,grList.Columns[0]);
-      Locate('PROJECT_ID',id,[]);
+
+      SortGrid(grList,LIndexFieldNames);
+
+      Locate('PROJECT_ID',Project.Id,[]);
+
+      EnableControls;
     end;
   end;
 end;
@@ -142,29 +179,19 @@ var
   LClient: TClient;
 begin
   LClient := TClient.Create;
-  try
-    with TfrmClientSearch.Create(self,LClient) do
-    begin
-      ShowModal;
-      if ModalResult = mrOk then
-      begin
-        Project.Client := LClient;
-        bteClient.Text := LClient.Name;
-      end;
-    end;
-  except
-    on E: Exception do
-    begin
-      LClient.Free;
-      ShowErrorBox(E.Message);
-    end;
+  if SearchUtil.SearchClient(self,LClient) then
+  begin
+    Project.Client := LClient;
+    bteClient.Text := LClient.Name;
   end;
 end;
 
 procedure TfrmProjectMain.SearchList;
+var
+  filterStr: string;
 begin
-  inherited;
-
+  filterStr := 'PROJECT_NAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
+  grList.DataSource.DataSet.Filter := filterStr;
 end;
 
 procedure TfrmProjectMain.SetFieldsFromUnboundControls;
@@ -172,7 +199,7 @@ begin
   inherited;
   with grList.DataSource.DataSet do
   begin
-    Edit;
+    if State <> dsInsert then Edit;
     if Project.HasClient then FieldByName('CLIENT_ID').AsInteger := Project.Client.Id
     else FieldByName('CLIENT_ID').AsVariant := null;
   end;
@@ -196,6 +223,7 @@ begin
     end
     else
     begin
+      BindToObject;
       LClient := TClient.Create;
 
       LClient.Id := FieldByName('CLIENT_ID').AsInteger;

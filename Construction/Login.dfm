@@ -12,7 +12,6 @@ inherited frmLogin: TfrmLogin
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 434
-    BorderColor = 6577975
     OnMouseDown = pnlTitleMouseDown
     ExplicitWidth = 434
     inherited imgClose: TImage
@@ -28,7 +27,6 @@ inherited frmLogin: TfrmLogin
   inherited pnlMain: TRzPanel
     Width = 434
     Height = 222
-    BorderColor = 7827778
     ExplicitWidth = 434
     ExplicitHeight = 222
     object imgLogo: TImage
