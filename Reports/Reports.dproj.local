@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/11/03 14:51:09.000.621,=rtl.dcp</Transaction>
+    <Transaction>2017/11/03 14:51:56.000.675,C:\Users\Bryan - Lenovo\Documents\Embarcadero\Studio\Projects\Package1.dproj=C:\Projects\Jet\Reports\Reports.dproj</Transaction>
+    <Transaction>2017/11/03 14:53:35.000.718,=C:\Projects\Jet\Base\BaseForm.pas</Transaction>
+    <Transaction>2017/11/04 13:36:53.000.467,=C:\Projects\Jet\Base\BasePrint.pas</Transaction>
+    <Transaction>2017/11/04 13:37:14.000.274,=C:\Projects\Jet\Reports\Unit1.pas</Transaction>
+    <Transaction>2017/11/04 13:37:51.000.249,C:\Projects\Jet\Reports\TestReport.pas=C:\Projects\Jet\Reports\Unit1.pas</Transaction>
+    <Transaction>2017/11/04 13:37:51.000.249,C:\Projects\Jet\Reports\TestReport.dfm=C:\Projects\Jet\Reports\Unit1.dfm</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.949,=vcl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.969,=dbrtl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.980,=FireDAC.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.959,=vclimg.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.989,=FireDACCommonDriver.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:07.000.999,=FireDACCommon.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.070,=Jcl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.081,=JvCore.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.108,=bdertl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.061,=RaizeComponentsVclDb.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.008,=vcldb.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.090,=JvStdCtrls.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.118,=frce.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.099,=JvPageComps.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.034,=bindcomp.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.052,=RaizeComponentsVcl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.043,=bindcompvcl.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.018,=bindengine.dcp</Transaction>
+    <Transaction>2017/11/04 13:41:08.000.025,=FireDACIBDriver.dcp</Transaction>
+    <Transaction>2017/11/04 20:50:38.485,=C:\Projects\Jet\Base\BaseReport.pas</Transaction>
+  </Transactions>
+</BorlandProject>

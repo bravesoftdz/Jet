@@ -37,11 +37,11 @@ type
     Label9: TLabel;
     Label10: TLabel;
     mmRemarks: TRzDBMemo;
-    lblProject: TLabel;
     pnlAdd: TRzPanel;
     sbtnNew: TRzShapeButton;
     Label11: TLabel;
     dbluUnit: TRzDBLookupComboBox;
+    lblProject: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grListTitleClick(Column: TColumn);
     procedure imgCloseClick(Sender: TObject);
@@ -219,7 +219,7 @@ var
   error: string;
 begin
   if not Expense.HasReceipt then error := 'Please enter receipt number.'
-  else if not Expense.HasExpenseType then error := 'Please select an expense type.'
+  else if not Expense.HasExpenseType then error := 'Please select an item.'
   else if not Expense.HasSupplier then error := 'Please select a supplier.'
   else if Expense.AmountIsInvalid then error := 'Please enter an amount.';
 
@@ -296,7 +296,7 @@ begin
   dteUntil.OnChange := dteFromChange;
 
   // set project name
-  lblProject.Caption := 'Project: ' + Expense.Project.Name;
+  lblProject.Caption := Expense.Project.Name;
 
   FilterGrid;
   SetUnboundControls;

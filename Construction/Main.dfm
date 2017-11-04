@@ -107,22 +107,22 @@ object frmMain: TfrmMain
       1093
       599)
     object lblWelcome: TRzLabel
-      Left = 893
+      Left = 916
       Top = 7
-      Width = 179
+      Width = 156
       Height = 19
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Welcome back, Bryan.'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = 5525550
       Font.Height = -16
       Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object lblDate: TLabel
-      Left = 17
+      Left = 625
       Top = 571
       Width = 144
       Height = 14
@@ -151,6 +151,34 @@ object frmMain: TfrmMain
       ParentFont = False
       ExplicitLeft = 1075
       ExplicitTop = 651
+    end
+    object Label1: TLabel
+      Left = 17
+      Top = 571
+      Width = 73
+      Height = 14
+      Anchors = [akLeft, akBottom]
+      Caption = 'Ctrl N - New'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 130
+      Top = 571
+      Width = 76
+      Height = 14
+      Anchors = [akLeft, akBottom]
+      Caption = 'Ctrl S - Save'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object pnlDockMain: TRzPanel
       Left = 17
@@ -657,6 +685,7 @@ object frmMain: TfrmMain
           2FA7FF79FB1B1760504B8DBBB2D50000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgReportsClick
         OnMouseDown = imgProjectsMouseDown
         OnMouseUp = imgProjectsMouseUp
       end
@@ -776,7 +805,7 @@ object frmMain: TfrmMain
         Width = 32
         Height = 32
         Cursor = crHandPoint
-        Hint = 'Expense types'
+        Hint = 'Items'
         AutoSize = True
         ParentShowHint = False
         Picture.Data = {

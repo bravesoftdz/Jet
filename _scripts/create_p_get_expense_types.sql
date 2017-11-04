@@ -12,6 +12,7 @@ BEGIN
                EXPENSE_NAME,
                EXPENSE_DESCRIPTION
           FROM T_EXPENSETYPE
+         WHERE COALESCE(ACTIVE,FALSE) = TRUE
       ORDER BY EXPENSE_NAME
           INTO :R_EXPENSE_ID,
                :R_EXPENSE_NAME,

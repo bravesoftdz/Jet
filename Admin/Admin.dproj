@@ -119,7 +119,7 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Client;..\Project;..\Construction;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Client;..\Project;..\Construction;..\Reports;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
         <DCC_DcpOutput>..\_dcu</DCC_DcpOutput>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
@@ -149,6 +149,7 @@
         <DCCReference Include="bindcompvcl.dcp"/>
         <DCCReference Include="JvPageComps.dcp"/>
         <DCCReference Include="bdertl.dcp"/>
+        <DCCReference Include="frce.dcp"/>
         <DCCReference Include="..\Base\BaseDocked.pas">
             <Form>frmBaseDocked</Form>
             <FormType>dfm</FormType>

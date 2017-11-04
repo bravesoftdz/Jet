@@ -47,7 +47,8 @@ requires
   bindengine,
   bindcomp,
   bindcompvcl,
-  JvPageComps;
+  JvPageComps,
+  frce;
 
 contains
   BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},

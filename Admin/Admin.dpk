@@ -47,7 +47,8 @@ requires
   bindcomp,
   bindcompvcl,
   JvPageComps,
-  bdertl;
+  bdertl,
+  frce;
 
 contains
   BaseDocked in '..\Base\BaseDocked.pas' {frmBaseDocked},

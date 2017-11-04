@@ -91,7 +91,7 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <DCC_UnitSearchPath>..\Base;..\Common;..\Client;..\Project;..\Construction;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\Base;..\Common;..\Client;..\Project;..\Construction;..\Admin;..\Reports;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
@@ -113,6 +113,13 @@
         <DCCReference Include="FireDAC.dcp"/>
         <DCCReference Include="FireDACCommonDriver.dcp"/>
         <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="frce.dcp"/>
+        <DCCReference Include="bindengine.dcp"/>
+        <DCCReference Include="FireDACIBDriver.dcp"/>
+        <DCCReference Include="bindcomp.dcp"/>
+        <DCCReference Include="bindcompvcl.dcp"/>
+        <DCCReference Include="JvPageComps.dcp"/>
+        <DCCReference Include="bdertl.dcp"/>
         <DCCReference Include="BaseForm.pas">
             <Form>frmBase</Form>
             <FormType>dfm</FormType>
@@ -141,6 +148,14 @@
             <Form>frmBaseSearch</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="BasePrint.pas">
+            <Form>frmBasePrint</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="BaseReport.pas">
+            <Form>frmBaseReport</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -167,6 +182,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="..\_bpl\Base.bpl" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Base.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="..\_bpl\Base.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Base.bpl</RemoteName>

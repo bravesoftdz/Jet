@@ -60,6 +60,8 @@ type
     imgClients: TImage;
     pnlUnits: TRzPanel;
     imgUnit: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -79,6 +81,7 @@ type
     procedure imgProjectsClick(Sender: TObject);
     procedure imgClientsClick(Sender: TObject);
     procedure imgUnitClick(Sender: TObject);
+    procedure imgReportsClick(Sender: TObject);
   private
     { Private declarations }
     DOCKED_FORM: TForms;
@@ -98,7 +101,7 @@ implementation
 
 uses
   AppDialogs, SaveIntf, FormsUtil, NewIntf, ProjectMain, Migrate, SupplierMain,
-  ExpenseTypeMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain;
+  ExpenseTypeMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain, TestReport;
 
 procedure TfrmMain.pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -144,6 +147,7 @@ begin
       fmSupplierMain: frm := TfrmSupplierMain.Create(Application);
       fmExpenseTypes: frm := TfrmExpenseTypeMain.Create(Application);
       fmUnitMain: frm := TfrmUnitMain.Create(Application);
+      fmTestReport: frm := TfrmTestReport.Create(Application);
       fmMigrate: frm := TfrmMigrate.Create(Application);
       else
         frm := TForm.Create(Application);
@@ -154,7 +158,7 @@ begin
     frm.ManualDock(pnlDockMain);
     frm.Show;
   end
-  else ShowInfoBox('The window is already open.');
+  else ShowInfoBox('Window is already open.');
 end;
 
 procedure TfrmMain.GetActiveForm(var frm: TForm);
@@ -223,6 +227,11 @@ procedure TfrmMain.imgProjectsMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   ButtonUp(Sender);
+end;
+
+procedure TfrmMain.imgReportsClick(Sender: TObject);
+begin
+  DockForm(fmTestReport);
 end;
 
 procedure TfrmMain.imgCancelClick(Sender: TObject);

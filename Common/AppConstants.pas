@@ -3,7 +3,7 @@ unit AppConstants;
 interface
 
 type TForms = (fmProjectMain, fmSupplierMain, fmExpenseTypes, fmSecurity,
-                fmReports,fmMigrate,fmClientMain,fmUnitMain);
+                fmReports,fmMigrate,fmClientMain,fmUnitMain,fmTestReport);
 
 implementation
 

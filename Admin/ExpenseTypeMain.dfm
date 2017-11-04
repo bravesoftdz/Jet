@@ -4,9 +4,9 @@ inherited frmExpenseTypeMain: TfrmExpenseTypeMain
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     inherited lblTitle: TRzLabel
-      Width = 104
-      Caption = 'Expense type list'
-      ExplicitWidth = 104
+      Width = 51
+      Caption = 'Item list'
+      ExplicitWidth = 51
     end
   end
   inherited pnlList: TRzPanel
@@ -101,6 +101,20 @@ inherited frmExpenseTypeMain: TfrmExpenseTypeMain
       ReadOnlyColor = 15794175
       ReadOnlyColorOnFocus = True
       TabOnEnter = True
+    end
+    object cbxActive: TRzDBCheckBox
+      Left = 16
+      Top = 165
+      Width = 53
+      Height = 16
+      DataField = 'ACTIVE'
+      DataSource = dmApplication.dscExpenseTypes
+      NullAsUnchecked = False
+      ValueChecked = 'True'
+      ValueUnchecked = 'False'
+      Caption = 'Active'
+      FrameColor = 7038525
+      TabOrder = 4
     end
   end
 end

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseGridDetail, Data.DB, RzButton,
   Vcl.StdCtrls, Vcl.Mask, RzEdit, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
-  Vcl.ExtCtrls, RzPanel, Vcl.DBCtrls, RzDBEdit, uExpenseType;
+  Vcl.ExtCtrls, RzPanel, Vcl.DBCtrls, RzDBEdit, uExpenseType, RzRadChk, RzDBChk;
 
 type
   TfrmExpenseTypeMain = class(TfrmBaseGridDetail)
@@ -14,6 +14,7 @@ type
     edName: TRzDBEdit;
     Label3: TLabel;
     mmDescription: TRzDBMemo;
+    cbxActive: TRzDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

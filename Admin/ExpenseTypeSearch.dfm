@@ -8,24 +8,31 @@ inherited frmExpenseTypeSearch: TfrmExpenseTypeSearch
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 627
+    ExplicitWidth = 627
     inherited imgClose: TImage
       Left = 606
+      ExplicitLeft = 606
     end
     inherited lblCaption: TRzLabel
-      Width = 117
-      Caption = 'Expense type search'
-      ExplicitWidth = 117
+      Width = 69
+      Caption = 'Item search'
+      ExplicitWidth = 69
     end
   end
   inherited pnlMain: TRzPanel
     Width = 627
     Height = 344
+    ExplicitWidth = 627
+    ExplicitHeight = 344
     inherited edSearchKey: TRzEdit
       Width = 570
+      ExplicitWidth = 570
     end
     inherited pnlSearch: TRzPanel
       Width = 609
       Height = 268
+      ExplicitWidth = 609
+      ExplicitHeight = 268
       inherited grSearch: TRzDBGrid
         Width = 607
         Height = 266
@@ -61,14 +68,18 @@ inherited frmExpenseTypeSearch: TfrmExpenseTypeSearch
     end
     inherited pnlSelect: TRzPanel
       Top = 312
+      ExplicitTop = 312
     end
     inherited pnlNew: TRzPanel
       Top = 312
       Visible = False
+      ExplicitTop = 312
     end
     inherited pnlCancel: TRzPanel
       Left = 567
       Top = 312
+      ExplicitLeft = 567
+      ExplicitTop = 312
     end
   end
 end

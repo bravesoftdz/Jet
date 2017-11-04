@@ -29,23 +29,23 @@ inherited frmExpenseList: TfrmExpenseList
     ExplicitWidth = 954
     ExplicitHeight = 464
     object lblTotal: TLabel
-      Left = 591
-      Top = 433
-      Width = 39
-      Height = 14
+      Left = 884
+      Top = 11
+      Width = 47
+      Height = 18
       Alignment = taRightJustify
-      Anchors = [akLeft, akBottom]
+      Anchors = [akTop, akBottom]
       Caption = 'Total: '
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
+      Font.Color = 5525550
+      Font.Height = -15
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label1: TLabel
       Left = 316
-      Top = 22
+      Top = 49
       Width = 46
       Height = 14
       Caption = 'Expense'
@@ -58,7 +58,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object Label2: TLabel
       Left = 632
-      Top = 22
+      Top = 49
       Width = 43
       Height = 14
       Caption = 'Supplier'
@@ -71,7 +71,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object Label3: TLabel
       Left = 22
-      Top = 22
+      Top = 49
       Width = 26
       Height = 14
       Caption = 'Date'
@@ -83,22 +83,24 @@ inherited frmExpenseList: TfrmExpenseList
       ParentFont = False
     end
     object lblProject: TLabel
-      Left = 22
-      Top = 433
-      Width = 48
-      Height = 14
+      Left = 23
+      Top = 8
+      Width = 607
+      Height = 29
       Anchors = [akLeft, akBottom]
-      Caption = 'Project:'
+      AutoSize = False
+      Caption = 'Name of Project Here'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
+      Font.Color = 5525550
+      Font.Height = -15
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      WordWrap = True
     end
     object pnlList: TRzPanel
       Left = 22
-      Top = 55
+      Top = 82
       Width = 608
       Height = 363
       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -146,7 +148,7 @@ inherited frmExpenseList: TfrmExpenseList
             Title.Font.Height = -12
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 85
+            Width = 80
             Visible = True
           end
           item
@@ -159,20 +161,20 @@ inherited frmExpenseList: TfrmExpenseList
             Title.Font.Height = -12
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 80
+            Width = 65
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'R_EXPENSE_NAME'
             Title.Alignment = taCenter
-            Title.Caption = 'Expense'
+            Title.Caption = 'Item'
             Title.Font.Charset = DEFAULT_CHARSET
             Title.Font.Color = clWindowText
             Title.Font.Height = -12
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 215
+            Width = 200
             Visible = True
           end
           item
@@ -198,7 +200,7 @@ inherited frmExpenseList: TfrmExpenseList
             Title.Font.Height = -12
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 100
+            Width = 75
             Visible = True
           end
           item
@@ -211,7 +213,7 @@ inherited frmExpenseList: TfrmExpenseList
             Title.Font.Height = -12
             Title.Font.Name = 'Tahoma'
             Title.Font.Style = [fsBold]
-            Width = 90
+            Width = 75
             Visible = True
           end
           item
@@ -244,7 +246,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object pnlDetail: TRzPanel
       Left = 650
-      Top = 55
+      Top = 82
       Width = 281
       Height = 363
       Anchors = [akTop, akRight, akBottom]
@@ -285,9 +287,9 @@ inherited frmExpenseList: TfrmExpenseList
       object Label6: TLabel
         Left = 13
         Top = 63
-        Width = 82
+        Width = 29
         Height = 14
-        Caption = 'Expense type'
+        Caption = 'Item'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -520,13 +522,11 @@ inherited frmExpenseList: TfrmExpenseList
         Top = 179
         Width = 94
         Height = 22
-        Ctl3D = True
         DataField = 'R_UNIT_ID'
         DataSource = dmProject.dscExpenses
         KeyField = 'UNIT_ID'
         ListField = 'UNIT_NAME'
         ListSource = dmApplication.dscUnits
-        ParentCtl3D = False
         TabOrder = 5
         FlatButtons = True
         FrameColor = 7038525
@@ -536,7 +536,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object bteExpenseFilter: TRzButtonEdit
       Left = 367
-      Top = 16
+      Top = 43
       Width = 249
       Height = 22
       Text = ''
@@ -559,7 +559,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object bteSupplierFilter: TRzButtonEdit
       Left = 682
-      Top = 16
+      Top = 43
       Width = 249
       Height = 22
       Text = ''
@@ -582,7 +582,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object dteFrom: TRzDateTimeEdit
       Left = 54
-      Top = 16
+      Top = 43
       Width = 121
       Height = 22
       EditType = etDate
@@ -594,7 +594,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object dteUntil: TRzDateTimeEdit
       Left = 181
-      Top = 16
+      Top = 43
       Width = 121
       Height = 22
       EditType = etDate

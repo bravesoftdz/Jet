@@ -8,3 +8,6 @@
 *.dcp
 *.lib
 *.dcu
+*.exe
+*.bpl
+*.FDB

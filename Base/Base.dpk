@@ -41,7 +41,14 @@ requires
   JvStdCtrls,
   FireDAC,
   FireDACCommonDriver,
-  FireDACCommon;
+  FireDACCommon,
+  frce,
+  bindengine,
+  FireDACIBDriver,
+  bindcomp,
+  bindcompvcl,
+  JvPageComps,
+  bdertl;
 
 contains
   BaseForm in 'BaseForm.pas' {frmBase},
@@ -50,6 +57,8 @@ contains
   BaseCalendar in 'BaseCalendar.pas' {frmBaseCalendar},
   BaseDocked in 'BaseDocked.pas' {frmBaseDocked},
   BaseGridDetail in 'BaseGridDetail.pas' {frmBaseGridDetail},
-  BaseSearch in 'BaseSearch.pas' {frmBaseSearch};
+  BaseSearch in 'BaseSearch.pas' {frmBaseSearch},
+  BasePrint in 'BasePrint.pas' {frmBasePrint},
+  BaseReport in 'BaseReport.pas' {frmBaseReport};
 
 end.
