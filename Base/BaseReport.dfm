@@ -7,19 +7,18 @@ inherited frmBaseReport: TfrmBaseReport
     563)
   PixelsPerInch = 96
   TextHeight = 14
-  inherited pnlTitle: TRzPanel
-    ExplicitWidth = 1127
-  end
   inherited pnlReport: TRzPanel
     Left = 264
     Width = 769
     Height = 493
     ExplicitLeft = 264
-    ExplicitWidth = 843
+    ExplicitWidth = 769
+    ExplicitHeight = 493
     inherited rlPreview: TRLPreview
       Width = 767
       Height = 467
-      ExplicitWidth = 841
+      ExplicitWidth = 767
+      ExplicitHeight = 467
       inherited rlReport: TRLReport
         Left = 3
         Top = 13
@@ -44,7 +43,7 @@ inherited frmBaseReport: TfrmBaseReport
             Align = faTopOnly
             Alignment = taCenter
             AutoSize = False
-            Caption = 'JET Construction'
+            Caption = 'JET CONSTRUCTION'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -12
@@ -70,7 +69,7 @@ inherited frmBaseReport: TfrmBaseReport
         end
         object bndFooter: TRLBand
           Left = 38
-          Top = 97
+          Top = 102
           Width = 718
           Height = 16
           BandType = btFooter
@@ -104,6 +103,11 @@ inherited frmBaseReport: TfrmBaseReport
     inherited pnlReportAction: TRzPanel
       Top = 468
       Width = 767
+      ExplicitTop = 468
+      ExplicitWidth = 767
+      DesignSize = (
+        767
+        24)
       object urlNext: TRzURLLabel
         Left = 726
         Top = 5
@@ -139,7 +143,7 @@ inherited frmBaseReport: TfrmBaseReport
       object lblCount: TRzLabel
         Left = 8
         Top = 6
-        Width = 76
+        Width = 80
         Height = 13
         Anchors = [akLeft, akBottom]
         Caption = '0 records found.'
@@ -153,7 +157,7 @@ inherited frmBaseReport: TfrmBaseReport
       object lblPage: TRzLabel
         Left = 227
         Top = 6
-        Width = 51
+        Width = 55
         Height = 13
         Anchors = [akLeft, akBottom]
         Caption = 'Page 0 of 0'
@@ -177,7 +181,6 @@ inherited frmBaseReport: TfrmBaseReport
     BorderWidth = 1
     ParentColor = True
     TabOrder = 2
-    ExplicitHeight = 489
     DesignSize = (
       231
       493)
@@ -232,7 +235,6 @@ inherited frmBaseReport: TfrmBaseReport
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 459
       object btnGenerate: TRzShapeButton
         Left = 0
         Top = 0
@@ -263,7 +265,6 @@ inherited frmBaseReport: TfrmBaseReport
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      ExplicitTop = 459
       object btnPrint: TRzShapeButton
         Left = 0
         Top = 0

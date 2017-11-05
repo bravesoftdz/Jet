@@ -61,6 +61,9 @@ contains
   ItemSearch in 'ItemSearch.pas' {frmItemSearch},
   SupplierSearch in 'SupplierSearch.pas' {frmSupplierSearch},
   UnitMain in 'UnitMain.pas' {frmUnitMain},
-  uUnit in 'uUnit.pas';
+  uUnit in 'uUnit.pas',
+  BasePopup in '..\Base\BasePopup.pas' {frmBasePopup},
+  BasePopupDetail in '..\Base\BasePopupDetail.pas' {frmBasePopupDetail},
+  ConnectionConfiguration in 'ConnectionConfiguration.pas' {frmConnectionConfiguration};
 
 end.

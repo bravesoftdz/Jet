@@ -21,6 +21,9 @@
         <Projects Include="Reports\Reports.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Security\Security.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Construction\Construction.dproj">
             <Dependencies/>
         </Projects>
@@ -86,6 +89,15 @@
     <Target Name="Reports:Make">
         <MSBuild Projects="Reports\Reports.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Security">
+        <MSBuild Projects="Security\Security.dproj"/>
+    </Target>
+    <Target Name="Security:Clean">
+        <MSBuild Projects="Security\Security.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Security:Make">
+        <MSBuild Projects="Security\Security.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Construction">
         <MSBuild Projects="Construction\Construction.dproj"/>
     </Target>
@@ -96,13 +108,13 @@
         <MSBuild Projects="Construction\Construction.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Admin;Base;Client;Common;Project;Reports;Construction"/>
+        <CallTarget Targets="Admin;Base;Client;Common;Project;Reports;Security;Construction"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Admin:Clean;Base:Clean;Client:Clean;Common:Clean;Project:Clean;Reports:Clean;Construction:Clean"/>
+        <CallTarget Targets="Admin:Clean;Base:Clean;Client:Clean;Common:Clean;Project:Clean;Reports:Clean;Security:Clean;Construction:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Admin:Make;Base:Make;Client:Make;Common:Make;Project:Make;Reports:Make;Construction:Make"/>
+        <CallTarget Targets="Admin:Make;Base:Make;Client:Make;Common:Make;Project:Make;Reports:Make;Security:Make;Construction:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

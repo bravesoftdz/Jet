@@ -6,12 +6,15 @@ inherited frmProjectReport: TfrmProjectReport
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 1060
+    ExplicitWidth = 1060
   end
   inherited pnlReport: TRzPanel
     Width = 776
     Color = 15794175
+    ExplicitWidth = 776
     inherited rlPreview: TRLPreview
       Width = 774
+      ExplicitWidth = 774
       inherited rlReport: TRLReport
         inherited RLBand2: TRLBand
           inherited lblReportTitle: TRLLabel
@@ -33,15 +36,8 @@ inherited frmProjectReport: TfrmProjectReport
           end
         end
         inherited bndFooter: TRLBand
-          Top = 145
-          ExplicitTop = 145
-          inherited siPageNumber: TRLSystemInfo
-            Left = 596
-            Height = 15
-            Align = faNone
-            ExplicitLeft = 596
-            ExplicitHeight = 15
-          end
+          Top = 134
+          ExplicitTop = 134
         end
         object RLBand1: TRLBand
           Left = 38
@@ -66,7 +62,6 @@ inherited frmProjectReport: TfrmProjectReport
             AutoSize = False
             DataField = 'R_QUANTITY'
             DataSource = dscReport
-            DisplayMask = '0.00'
             Text = ''
           end
           object RLDBText3: TRLDBText
@@ -146,12 +141,14 @@ inherited frmProjectReport: TfrmProjectReport
     end
     inherited pnlReportAction: TRzPanel
       Width = 774
-      ExplicitWidth = 841
+      ExplicitWidth = 774
       inherited urlNext: TRzURLLabel
         Left = 733
+        ExplicitLeft = 733
       end
       inherited urlPrevious: TRzURLLabel
         Left = 685
+        ExplicitLeft = 685
       end
     end
   end
@@ -210,6 +207,7 @@ inherited frmProjectReport: TfrmProjectReport
     object fdspReportR_QUANTITY: TCurrencyField
       FieldName = 'R_QUANTITY'
       Origin = 'R_QUANTITY'
+      DisplayFormat = '###,###,##0.00'
     end
     object fdspReportR_EXPENSE_AMOUNT: TBCDField
       FieldName = 'R_EXPENSE_AMOUNT'

@@ -137,6 +137,7 @@
         <DCCReference Include="..\Common\AppUtil.pas">
             <Form>$R *.res</Form>
         </DCCReference>
+        <DCCReference Include="..\Common\uSettings.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -76,8 +76,8 @@ begin
 
   // total
   if fdspReport.RecordCount > 0 then
-    lblTotal.Caption := FormatFloat('Total: ###,###,##0.00', fdspReport.Aggregates[0].Value)
-  else lblTotal.Caption := 'Total: 0.00';
+    lblTotal.Caption := FormatFloat('TOTAL: ###,###,##0.00', fdspReport.Aggregates[0].Value)
+  else lblTotal.Caption := 'TOTAL: 0.00';
 end;
 
 end.

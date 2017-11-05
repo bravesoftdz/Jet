@@ -17,3 +17,10 @@
 *.bpi
 *.dcp
 *.lib
+*.exe
+*.ini
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib

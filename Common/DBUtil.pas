@@ -11,6 +11,9 @@ procedure SetSupplierIdentity;
 procedure SetItemIdentity;
 procedure SetExpenseIdentity;
 
+const
+  CONFIG_FILE = 'jet.ini';
+
 implementation
 
 procedure SetClientIdentity;

@@ -218,7 +218,7 @@ object dmProject: TdmProject
       '      SUPPLIER_ID =  :NEW_R_SUPPLIER_ID,'
       '      REMARKS = :NEW_R_REMARKS,'
       '      CANCELLED =  :NEW_R_CANCELLED'
-      'WHERE EXPENSE_ENTRY_ID = :R_EXPENSE_ENTRY_ID')
+      'WHERE EXPENSE_ID = :R_EXPENSE_ID')
     Left = 72
     Top = 104
   end

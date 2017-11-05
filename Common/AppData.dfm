@@ -1,7 +1,8 @@
 object dmApplication: TdmApplication
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 305
-  Width = 503
+  Width = 678
   object fdcMain: TFDConnection
     Params.Strings = (
       'Database=C:\Projects\Jet\_db\JET.FDB'
@@ -9,6 +10,7 @@ object dmApplication: TdmApplication
       'Password=masterkey'
       'DriverID=FB')
     LoginPrompt = False
+    BeforeConnect = fdcMainBeforeConnect
     Left = 40
     Top = 32
   end
@@ -97,6 +99,7 @@ object dmApplication: TdmApplication
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Console'
+    ScreenCursor = gcrNone
     Left = 40
     Top = 248
   end

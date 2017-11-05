@@ -115,13 +115,13 @@ inherited frmBasePrint: TfrmBasePrint
   end
   object dscReport: TDataSource
     DataSet = fdspReport
-    Left = 714
-    Top = 147
+    Left = 922
+    Top = 459
   end
   object fdspReport: TFDStoredProc
     AfterGetRecords = fdspReportAfterGetRecords
     Connection = dmApplication.fdcMain
-    Left = 778
-    Top = 147
+    Left = 986
+    Top = 459
   end
 end

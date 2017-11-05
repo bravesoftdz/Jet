@@ -70,6 +70,7 @@ contains
   DBUtil in 'DBUtil.pas',
   SetIdentityIntf in 'SetIdentityIntf.pas',
   SetUnboundControlsIntf in 'SetUnboundControlsIntf.pas',
-  SearchUtil in 'SearchUtil.pas';
+  SearchUtil in 'SearchUtil.pas',
+  uSettings in 'uSettings.pas';
 
 end.

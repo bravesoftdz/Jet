@@ -43,8 +43,12 @@ type
     procedure fdtItemAfterClose(DataSet: TDataSet);
     procedure fdtClientsAfterClose(DataSet: TDataSet);
     procedure fdtProjectsAfterScroll(DataSet: TDataSet);
+    procedure fdcMainBeforeConnect(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure OpenConnection;
+    function ConfigureConnection: boolean;
   public
     { Public declarations }
   end;
@@ -59,7 +63,33 @@ implementation
 {$R *.dfm}
 
 uses
-  SetUnboundControlsIntf, Main;
+  SetUnboundControlsIntf, Main, uSettings, ConnectionConfiguration;
+
+function TdmApplication.ConfigureConnection: boolean;
+begin
+  with TfrmConnectionConfiguration.Create(Application) do
+  begin
+    ShowModal;
+    Result := ModalResult = mrOk;
+  end;
+end;
+
+procedure TdmApplication.DataModuleCreate(Sender: TObject);
+begin
+  OpenConnection;
+end;
+
+procedure TdmApplication.fdcMainBeforeConnect(Sender: TObject);
+begin
+  // set connection params
+  with fdcMain.Params as TFDPhysFBConnectionDefParams do
+  begin
+    Server := Settings.Database.Server;
+    Database := Settings.Database.DatabaseFile;
+    UserName := Settings.Database.User;
+    Password := Settings.Database.Password;
+  end;
+end;
 
 procedure TdmApplication.fdtClientsAfterClose(DataSet: TDataSet);
 begin
@@ -97,6 +127,19 @@ procedure TdmApplication.fdtSuppliersAfterClose(DataSet: TDataSet);
 begin
   // clear the index
   (DataSet as TFDTable).IndexFieldNames := '';
+end;
+
+procedure TdmApplication.OpenConnection;
+begin
+  try
+    fdcMain.Open;
+  except
+    on E: Exception do
+    begin
+      if ConfigureConnection then OpenConnection
+      else Application.Terminate;
+    end;
+  end;
 end;
 
 end.
