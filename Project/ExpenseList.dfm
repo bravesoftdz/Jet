@@ -166,7 +166,7 @@ inherited frmExpenseList: TfrmExpenseList
           end
           item
             Expanded = False
-            FieldName = 'R_EXPENSE_NAME'
+            FieldName = 'R_ITEM_NAME'
             Title.Alignment = taCenter
             Title.Caption = 'Item'
             Title.Font.Charset = DEFAULT_CHARSET
@@ -395,7 +395,7 @@ inherited frmExpenseList: TfrmExpenseList
         TabOnEnter = True
         TabOrder = 1
       end
-      object bteExpense: TRzButtonEdit
+      object bteItem: TRzButtonEdit
         Left = 13
         Top = 83
         Width = 251
@@ -415,8 +415,8 @@ inherited frmExpenseList: TfrmExpenseList
         ButtonWidth = 15
         FlatButtons = True
         HideButtonsOnReadOnly = False
-        OnAltBtnClick = bteExpenseAltBtnClick
-        OnButtonClick = bteExpenseButtonClick
+        OnAltBtnClick = bteItemAltBtnClick
+        OnButtonClick = bteItemButtonClick
       end
       object bteSupplier: TRzButtonEdit
         Left = 13
@@ -522,19 +522,22 @@ inherited frmExpenseList: TfrmExpenseList
         Top = 179
         Width = 94
         Height = 22
+        Color = 15794175
         DataField = 'R_UNIT_ID'
         DataSource = dmProject.dscExpenses
         KeyField = 'UNIT_ID'
         ListField = 'UNIT_NAME'
         ListSource = dmApplication.dscUnits
+        ReadOnly = True
         TabOrder = 5
         FlatButtons = True
         FrameColor = 7038525
         FrameVisible = True
         FramingPreference = fpCustomFraming
+        ReadOnlyColor = 15794175
       end
     end
-    object bteExpenseFilter: TRzButtonEdit
+    object bteItem2: TRzButtonEdit
       Left = 367
       Top = 43
       Width = 249
@@ -554,8 +557,8 @@ inherited frmExpenseList: TfrmExpenseList
       ButtonWidth = 15
       FlatButtons = True
       HideButtonsOnReadOnly = False
-      OnAltBtnClick = bteExpenseFilterAltBtnClick
-      OnButtonClick = bteExpenseFilterButtonClick
+      OnAltBtnClick = bteItem2AltBtnClick
+      OnButtonClick = bteItem2ButtonClick
     end
     object bteSupplierFilter: TRzButtonEdit
       Left = 682

@@ -32,9 +32,6 @@ type
     procedure SetIdentity; override;
   end;
 
-var
-  frmSupplierMain: TfrmSupplierMain;
-
 implementation
 
 {$R *.dfm}

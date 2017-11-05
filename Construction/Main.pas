@@ -49,8 +49,8 @@ type
     Loan1: TMenuItem;
     Selectclient1: TMenuItem;
     acSelectClient: TAction;
-    pnlExpenseTypes: TRzPanel;
-    imgExpenseTypes: TImage;
+    pnlItems: TRzPanel;
+    imgItems: TImage;
     Newpayment1: TMenuItem;
     acNewPayment: TAction;
     Payment1: TMenuItem;
@@ -77,7 +77,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure imgMigrateClick(Sender: TObject);
     procedure imgSuppliersClick(Sender: TObject);
-    procedure imgExpenseTypesClick(Sender: TObject);
+    procedure imgItemsClick(Sender: TObject);
     procedure imgProjectsClick(Sender: TObject);
     procedure imgClientsClick(Sender: TObject);
     procedure imgUnitClick(Sender: TObject);
@@ -101,7 +101,7 @@ implementation
 
 uses
   AppDialogs, SaveIntf, FormsUtil, NewIntf, ProjectMain, Migrate, SupplierMain,
-  ExpenseTypeMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain, TestReport;
+  ItemMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain, ProjectReport;
 
 procedure TfrmMain.pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -145,9 +145,9 @@ begin
       fmClientMain: frm := TfrmClientMain.Create(Application);
       fmProjectMain: frm := TfrmProjectMain.Create(Application);
       fmSupplierMain: frm := TfrmSupplierMain.Create(Application);
-      fmExpenseTypes: frm := TfrmExpenseTypeMain.Create(Application);
+      fmItemMain: frm := TfrmItemMain.Create(Application);
       fmUnitMain: frm := TfrmUnitMain.Create(Application);
-      fmTestReport: frm := TfrmTestReport.Create(Application);
+      fmTestReport: frm := TfrmProjectReport.Create(Application);
       fmMigrate: frm := TfrmMigrate.Create(Application);
       else
         frm := TForm.Create(Application);
@@ -255,9 +255,9 @@ begin
   Application.Terminate;
 end;
 
-procedure TfrmMain.imgExpenseTypesClick(Sender: TObject);
+procedure TfrmMain.imgItemsClick(Sender: TObject);
 begin
-  DockForm(fmExpenseTypes);
+  DockForm(fmItemMain);
 end;
 
 procedure TfrmMain.imgMigrateClick(Sender: TObject);

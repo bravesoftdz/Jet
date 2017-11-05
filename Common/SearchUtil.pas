@@ -4,16 +4,17 @@ interface
 
 uses
   System.SysUtils, System.Classes, System.UITypes, uClient, uSupplier,
-  uExpenseType;
+  uItem, uProject;
 
 function SearchClient(AOwner: TComponent; var AClient: TClient): boolean;
 function SearchSupplier(AOwner: TComponent; var ASupplier: TSupplier): boolean;
-function SearchExpenseType(AOwner: TComponent;var AExpenseType: TExpenseType): boolean;
+function SearchItem(AOwner: TComponent;var AItem: TItem): boolean;
+function SearchProject(AOwner: TComponent; var AProject: TProject): boolean;
 
 implementation
 
 uses
-  AppDialogs, ClientSearch, ExpenseTypeSearch, SupplierSearch;
+  AppDialogs, ClientSearch, ItemSearch, SupplierSearch, ProjectSearch;
 
 function SearchClient(AOwner: TComponent; var AClient: TClient): boolean;
 begin
@@ -51,11 +52,11 @@ begin
   end;
 end;
 
-function SearchExpenseType(AOwner: TComponent;var AExpenseType: TExpenseType): boolean;
+function SearchItem(AOwner: TComponent;var AItem: TItem): boolean;
 begin
   Result := false;
   try
-    with TfrmExpenseTypeSearch.Create(AOwner,AExpenseType) do
+    with TfrmItemSearch.Create(AOwner,AItem) do
     begin
       ShowModal;
       Result := ModalResult = mrOk;
@@ -63,7 +64,25 @@ begin
   except
     on E: Exception do
     begin
-      FreeAndNil(AExpenseType);
+      FreeAndNil(AItem);
+      ShowErrorBox(E.Message);
+    end;
+  end;
+end;
+
+function SearchProject(AOwner: TComponent; var AProject: TProject): boolean;
+begin
+  Result := false;
+  try
+    with TfrmProjectSearch.Create(AOwner,AProject) do
+    begin
+      ShowModal;
+      Result := ModalResult = mrOk;
+    end;
+  except
+    on E: Exception do
+    begin
+      FreeAndNil(AProject);
       ShowErrorBox(E.Message);
     end;
   end;

@@ -145,8 +145,8 @@
             <Form>frmBasePrint</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="TestReport.pas">
-            <Form>frmTestReport</Form>
+        <DCCReference Include="ProjectReport.pas">
+            <Form>frmProjectReport</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Base\BaseReport.pas">

@@ -58,6 +58,8 @@ contains
   BasePopup in '..\Base\BasePopup.pas' {frmBasePopup},
   ExpenseList in 'ExpenseList.pas' {frmExpenseList},
   ProjectData in 'ProjectData.pas' {dmProject: TDataModule},
-  uExpense in 'uExpense.pas';
+  uExpense in 'uExpense.pas',
+  BaseSearch in '..\Base\BaseSearch.pas' {frmBaseSearch},
+  ProjectSearch in 'ProjectSearch.pas' {frmProjectSearch};
 
 end.

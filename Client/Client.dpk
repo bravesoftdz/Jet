@@ -47,7 +47,8 @@ requires
   JvCore,
   JvStdCtrls,
   JvPageComps,
-  bdertl;
+  bdertl,
+  frce;
 
 contains
   BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},

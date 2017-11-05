@@ -789,7 +789,7 @@ object frmMain: TfrmMain
         OnMouseUp = imgProjectsMouseUp
       end
     end
-    object pnlExpenseTypes: TRzPanel
+    object pnlItems: TRzPanel
       Left = 146
       Top = 11
       Width = 40
@@ -799,7 +799,7 @@ object frmMain: TfrmMain
       BorderWidth = 1
       Color = 14276027
       TabOrder = 3
-      object imgExpenseTypes: TImage
+      object imgItems: TImage
         Left = 4
         Top = 4
         Width = 32
@@ -857,7 +857,7 @@ object frmMain: TfrmMain
           A27A7A74FE6F76077720E80FE6A316F048CBBF5D4C2A4BCA7522380000000049
           454E44AE426082}
         ShowHint = True
-        OnClick = imgExpenseTypesClick
+        OnClick = imgItemsClick
         OnMouseDown = imgProjectsMouseDown
         OnMouseUp = imgProjectsMouseUp
       end

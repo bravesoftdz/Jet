@@ -162,18 +162,18 @@
             <Form>frmSupplierMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ExpenseTypeMain.pas">
-            <Form>frmExpenseTypeMain</Form>
+        <DCCReference Include="ItemMain.pas">
+            <Form>frmItemMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uExpenseType.pas"/>
+        <DCCReference Include="uItem.pas"/>
         <DCCReference Include="uSupplier.pas"/>
         <DCCReference Include="..\Base\BaseSearch.pas">
             <Form>frmBaseSearch</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ExpenseTypeSearch.pas">
-            <Form>frmExpenseTypeSearch</Form>
+        <DCCReference Include="ItemSearch.pas">
+            <Form>frmItemSearch</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="SupplierSearch.pas">

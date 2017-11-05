@@ -8,7 +8,7 @@ uses
 procedure SetClientIdentity;
 procedure SetProjectIdentity;
 procedure SetSupplierIdentity;
-procedure SetExpenseTypeIdentity;
+procedure SetItemIdentity;
 procedure SetExpenseIdentity;
 
 implementation
@@ -91,7 +91,7 @@ begin
   end;
 end;
 
-procedure SetExpenseTypeIdentity;
+procedure SetItemIdentity;
 var
   sqlStr: string;
   id: integer;
@@ -99,7 +99,7 @@ begin
   with dmApplication.fdqApp do
   begin
     try
-      sqlStr := 'SELECT MAX(EXPENSE_ID) FROM T_EXPENSETYPE';
+      sqlStr := 'SELECT MAX(ITEM_ID) FROM ITEM';
       SQL.Text := sqlStr;
       Open;
 
@@ -108,7 +108,7 @@ begin
 
       // set the identity
       Close;
-      sqlStr := 'ALTER TABLE T_EXPENSETYPE ALTER EXPENSE_ID RESTART WITH ' + IntToStr(id);
+      sqlStr := 'ALTER TABLE ITEM ALTER ITEM_ID RESTART WITH ' + IntToStr(id);
       SQL.Text := sqlStr;
       ExecSQL;
     finally

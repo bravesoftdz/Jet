@@ -46,7 +46,8 @@ requires
   bindengine,
   bindcomp,
   bindcompvcl,
-  JvPageComps;
+  JvPageComps,
+  frce;
 
 contains
   AppData in 'AppData.pas' {dmApplication: TDataModule},

@@ -121,7 +121,7 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_DcpOutput>..\_dcp</DCC_DcpOutput>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
-        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Client;..\Project;..\Construction;..\Admin;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Client;..\Project;..\Construction;..\Admin;..\Reports;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -148,6 +148,7 @@
         <DCCReference Include="bindcomp.dcp"/>
         <DCCReference Include="bindcompvcl.dcp"/>
         <DCCReference Include="JvPageComps.dcp"/>
+        <DCCReference Include="frce.dcp"/>
         <DCCReference Include="AppData.pas">
             <Form>dmApplication</Form>
             <FormType>dfm</FormType>
@@ -241,6 +242,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="..\_bpl\Common.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Common.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\_bpl\Common.bpl" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Common.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

@@ -13,11 +13,8 @@ type
   TdmProject = class(TDataModule)
     fdspExpenses: TFDStoredProc;
     dscExpenses: TDataSource;
-    fdspExpensesR_EXPENSE_ENTRY_ID: TIntegerField;
     fdspExpensesR_EXPENSE_DATE: TSQLTimeStampField;
     fdspExpensesR_RECEIPT: TStringField;
-    fdspExpensesR_EXPENSE_ID: TIntegerField;
-    fdspExpensesR_EXPENSE_NAME: TStringField;
     fdspExpensesR_EXPENSE_AMOUNT: TBCDField;
     fdspExpensesR_SUPPLIER_ID: TIntegerField;
     fdspExpensesR_SUPPLIER_NAME: TStringField;
@@ -25,13 +22,16 @@ type
     fdspExpensesR_CANCELLED: TBooleanField;
     fduExpenses: TFDUpdateSQL;
     fdspExpensesR_PROJECT_ID: TIntegerField;
-    fdspExpenseTypes: TFDStoredProc;
-    dscExpenseTypes: TDataSource;
+    fdspItems: TFDStoredProc;
+    dscItems: TDataSource;
     fdspSuppliers: TFDStoredProc;
     dscSuppliers: TDataSource;
     fdspExpensesR_UNIT_ID: TIntegerField;
     fdspExpensesR_UNIT_NAME: TStringField;
     fdspExpensesR_QUANTITY: TCurrencyField;
+    fdspExpensesR_EXPENSE_ID: TIntegerField;
+    fdspExpensesR_ITEM_ID: TIntegerField;
+    fdspExpensesR_ITEM_NAME: TStringField;
     procedure fdspExpensesBeforeOpen(DataSet: TDataSet);
     procedure DataModuleDestroy(Sender: TObject);
     procedure fdspExpensesAfterOpen(DataSet: TDataSet);

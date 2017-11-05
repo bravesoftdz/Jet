@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Data.DB, Vcl.Grids, Vcl.DBGrids,
   RzDBGrid, uProject, RzEdit, Vcl.Mask, RzBtnEdt, FireDac.Comp.Client, RzDBEdit,
   Vcl.DBCtrls, SetUnboundControlsIntf, uExpense, RzButton, SaveIntf, NewIntf,
-  uExpenseType, uSupplier, RzDBCmbo;
+  uItem, uSupplier, RzDBCmbo;
 
 type
   TfrmExpenseList = class(TfrmBasePopup, ISetUnboundControls, ISave, INew)
@@ -17,7 +17,7 @@ type
     pnlDetail: TRzPanel;
     lblTotal: TLabel;
     Label1: TLabel;
-    bteExpenseFilter: TRzButtonEdit;
+    bteItem2: TRzButtonEdit;
     bteSupplierFilter: TRzButtonEdit;
     Label2: TLabel;
     Label3: TLabel;
@@ -28,7 +28,7 @@ type
     edReceipt: TRzDBEdit;
     Label5: TLabel;
     Label6: TLabel;
-    bteExpense: TRzButtonEdit;
+    bteItem: TRzButtonEdit;
     Label7: TLabel;
     bteSupplier: TRzButtonEdit;
     Label8: TLabel;
@@ -47,13 +47,13 @@ type
     procedure imgCloseClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
-    procedure bteExpenseAltBtnClick(Sender: TObject);
+    procedure bteItemAltBtnClick(Sender: TObject);
     procedure bteSupplierAltBtnClick(Sender: TObject);
-    procedure bteExpenseButtonClick(Sender: TObject);
+    procedure bteItemButtonClick(Sender: TObject);
     procedure bteSupplierButtonClick(Sender: TObject);
-    procedure bteExpenseFilterButtonClick(Sender: TObject);
+    procedure bteItem2ButtonClick(Sender: TObject);
     procedure bteSupplierFilterButtonClick(Sender: TObject);
-    procedure bteExpenseFilterAltBtnClick(Sender: TObject);
+    procedure bteItem2AltBtnClick(Sender: TObject);
     procedure bteSupplierFilterAltBtnClick(Sender: TObject);
     procedure dteFromChange(Sender: TObject);
     procedure dteUntilChange(Sender: TObject);
@@ -67,7 +67,7 @@ type
     procedure SetTotal;
     procedure FilterGrid;
 
-    function SearchExpenseType: TExpenseType;
+    function SearchItem: TItem;
     function SearchSupplier: TSupplier;
 
     function EntryIsValid: boolean;
@@ -83,9 +83,6 @@ type
     function Save: boolean;
   end;
 
-var
-  frmExpenseList: TfrmExpenseList;
-
 implementation
 
 {$R *.dfm}
@@ -100,7 +97,7 @@ end;
 
 procedure TfrmExpenseList.BindToObject;
 begin
-  Expense.Id := grList.DataSource.DataSet.FieldByName('R_EXPENSE_ENTRY_ID').AsInteger;
+  Expense.Id := grList.DataSource.DataSet.FieldByName('R_EXPENSE_ID').AsInteger;
   Expense.Date := dteDate.Date;
   Expense.Receipt := edReceipt.Text;
   Expense.Quantity := edQuantity.Value;
@@ -108,37 +105,37 @@ begin
   Expense.Remarks := mmRemarks.Text;
 end;
 
-procedure TfrmExpenseList.bteExpenseFilterAltBtnClick(Sender: TObject);
+procedure TfrmExpenseList.bteItem2AltBtnClick(Sender: TObject);
 begin
-  bteExpenseFilter.Clear;
+  bteItem2.Clear;
   FilterGrid;
 end;
 
-procedure TfrmExpenseList.bteExpenseFilterButtonClick(Sender: TObject);
+procedure TfrmExpenseList.bteItem2ButtonClick(Sender: TObject);
 var
-  LExpenseType: TExpenseType;
+  LExpenseType: TItem;
 begin
-  LExpenseType := SearchExpenseType;
-  if Assigned(LExpenseType) then bteExpenseFilter.Text := LExpenseType.Name;
+  LExpenseType := SearchItem;
+  if Assigned(LExpenseType) then bteItem2.Text := LExpenseType.Name;
   FilterGrid;
 end;
 
-procedure TfrmExpenseList.bteExpenseAltBtnClick(Sender: TObject);
+procedure TfrmExpenseList.bteItemAltBtnClick(Sender: TObject);
 begin
   inherited;
-  Expense.ClearExpenseType;
-  bteExpense.Clear;
+  Expense.ClearItem;
+  bteItem.Clear;
 end;
 
-procedure TfrmExpenseList.bteExpenseButtonClick(Sender: TObject);
+procedure TfrmExpenseList.bteItemButtonClick(Sender: TObject);
 var
-  LExpenseType: TExpenseType;
+  LExpenseType: TItem;
 begin
-  LExpenseType := SearchExpenseType;
+  LExpenseType := SearchItem;
   if Assigned(LExpenseType) then
   begin
-    Expense.ExpenseType := LExpenseType;
-    bteExpense.Text := LExpenseType.Name;
+    Expense.Item := LExpenseType;
+    bteItem.Text := LExpenseType.Name;
   end;
 end;
 
@@ -219,7 +216,7 @@ var
   error: string;
 begin
   if not Expense.HasReceipt then error := 'Please enter receipt number.'
-  else if not Expense.HasExpenseType then error := 'Please select an item.'
+  else if not Expense.HasItem then error := 'Please select an item.'
   else if not Expense.HasSupplier then error := 'Please select a supplier.'
   else if Expense.AmountIsInvalid then error := 'Please enter an amount.';
 
@@ -241,8 +238,8 @@ begin
       filters.Add('(R_EXPENSE_DATE >= ' + QuotedStr(DateToStr(dteFrom.Date)) +
                   ' ) AND (R_EXPENSE_DATE <= ' + QuotedStr(DateToStr(dteUntil.Date)) + ')');
 
-    // expense type
-    if bteExpenseFilter.Text <> '' then filters.Add('(R_EXPENSE_NAME = ' + QuotedStr(bteExpenseFilter.Text) + ')');
+    // item
+    if bteItem2.Text <> '' then filters.Add('(R_ITEM_NAME = ' + QuotedStr(bteItem2.Text) + ')');
 
     // supplier
     if bteSupplierFilter.Text <> '' then filters.Add('(R_SUPPLIER_NAME = ' + QuotedStr(bteSupplierFilter.Text) + ')');
@@ -353,8 +350,8 @@ begin
 
       SortGrid(grList,LIndexFieldNames);
 
-      (grList.DataSource.DataSet as TFDStoredProc).LocateEx('R_EXPENSE_DATE;R_EXPENSE_ID;R_SUPPLIER_ID;R_RECEIPT',
-          VarArrayOf([Expense.Date,ExpenseType.Id,Supplier.Id,Receipt]),[]);
+      (grList.DataSource.DataSet as TFDStoredProc).LocateEx('R_EXPENSE_DATE;R_ITEM_ID;R_SUPPLIER_ID;R_RECEIPT',
+          VarArrayOf([Expense.Date,Item.Id,Supplier.Id,Receipt]),[]);
 
       EnableControls;
     end;
@@ -375,12 +372,12 @@ begin
   else lblTotal.Caption := 'Total: 0.00';
 end;
 
-function TfrmExpenseList.SearchExpenseType: TExpenseType;
+function TfrmExpenseList.SearchItem: TItem;
 var
-  LExpenseType: TExpenseType;
+  LItem: TItem;
 begin
-  LExpenseType := TExpenseType.Create;
-  if SearchUtil.SearchExpenseType(self,LExpenseType) then Result := LExpenseType
+  LItem := TItem.Create;
+  if SearchUtil.SearchItem(self,LItem) then Result := LItem
   else Result := nil;
 end;
 
@@ -402,8 +399,8 @@ begin
     if Expense.HasProject then FieldByName('R_PROJECT_ID').AsInteger := Expense.Project.Id
     else FieldByName('R_PROJECT_ID').AsVariant := null;
 
-    if Expense.HasExpenseType then FieldByName('R_EXPENSE_ID').AsInteger := Expense.ExpenseType.Id
-    else FieldByName('R_EXPENSE_ID').AsVariant := null;
+    if Expense.HasItem then FieldByName('R_ITEM_ID').AsInteger := Expense.Item.Id
+    else FieldByName('R_ITEM_ID').AsVariant := null;
 
     if Expense.HasSupplier then FieldByName('R_SUPPLIER_ID').AsInteger := Expense.Supplier.Id
     else FieldByName('R_SUPPLIER_ID').AsVariant := null;
@@ -412,27 +409,27 @@ end;
 
 procedure TfrmExpenseList.SetUnboundControls;
 var
-  LExpenseType: TExpenseType;
+  LExpenseType: TItem;
   LSupplier: TSupplier;
 begin
   with grList.DataSource.DataSet do
   begin
     BindToObject;
 
-    if FieldByName('R_EXPENSE_ID').IsNull then
+    if FieldByName('R_ITEM_ID').IsNull then
     begin
-      Expense.ClearExpenseType;
-      bteExpense.Clear;
+      Expense.ClearItem;
+      bteItem.Clear;
     end
     else
     begin
-      LExpenseType := TExpenseType.Create;
-      LExpenseType.Id := FieldByName('R_EXPENSE_ID').AsInteger;
-      LExpenseType.Name := FieldByName('R_EXPENSE_NAME').AsString;
+      LExpenseType := TItem.Create;
+      LExpenseType.Id := FieldByName('R_ITEM_ID').AsInteger;
+      LExpenseType.Name := FieldByName('R_ITEM_NAME').AsString;
 
-      Expense.ExpenseType := LExpenseType;
+      Expense.Item := LExpenseType;
 
-      bteExpense.Text := LExpenseType.Name;
+      bteItem.Text := LExpenseType.Name;
     end;
 
     if FieldByName('R_SUPPLIER_ID').IsNull then

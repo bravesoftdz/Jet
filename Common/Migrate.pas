@@ -126,10 +126,10 @@ begin
         Application.ProcessMessages;
 
         Append;
-        // FieldByName('EXPENSE_ENTRY_ID').AsInteger := ATable.FieldByName('EntryNo').Asinteger;
+        FieldByName('EXPENSE_ID').AsInteger := ATable.FieldByName('EntryNo').Asinteger;
         FieldByName('EXPENSE_DATE').AsDateTime := ATable.FieldByName('Date').AsDateTime;
         FieldByName('RECEIPT').AsString := ATable.FieldByName('Receipt').AsString;
-        FieldByName('EXPENSE_ID').AsInteger := ATable.FieldByName('ExpNo').AsInteger;
+        FieldByName('ITEM_ID').AsInteger := ATable.FieldByName('ExpNo').AsInteger;
         FieldByName('QUANTITY').AsInteger := ATable.FieldByName('Quantity').Asinteger;
         FieldByName('EXPENSE_AMOUNT').AsFloat := ATable.FieldByName('Amount').AsFloat;
         FieldByName('PROJECT_ID').AsInteger := ATable.FieldByName('ProjId').Asinteger;
@@ -154,7 +154,7 @@ end;
 
 procedure TfrmMigrate.MigrateExpenseTypes(ATable: TTable);
 begin
-  with dmApplication.fdtExpenseTypes do
+  with dmApplication.fdtItem do
   begin
     try
       CachedUpdates := true;
@@ -174,8 +174,8 @@ begin
         Application.ProcessMessages;
 
         Append;
-        FieldByName('EXPENSE_ID').AsInteger := ATable.FieldByName('ExpNo').Asinteger;
-        FieldByName('EXPENSE_NAME').AsString := ATable.FieldByName('ExpType').AsString;
+        FieldByName('ITEM_ID').AsInteger := ATable.FieldByName('ExpNo').Asinteger;
+        FieldByName('ITEM_NAME').AsString := ATable.FieldByName('ExpType').AsString;
         Post;
 
         ATable.Next;

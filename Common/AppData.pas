@@ -18,8 +18,8 @@ type
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     fdtSuppliers: TFDTable;
     dscSuppliers: TDataSource;
-    fdtExpenseTypes: TFDTable;
-    dscExpenseTypes: TDataSource;
+    fdtItem: TFDTable;
+    dscItem: TDataSource;
     fdtExpenses: TFDTable;
     dscExpenses: TDataSource;
     fdtClients: TFDTable;
@@ -40,7 +40,7 @@ type
     dscUnits: TDataSource;
     procedure fdtProjectsAfterClose(DataSet: TDataSet);
     procedure fdtSuppliersAfterClose(DataSet: TDataSet);
-    procedure fdtExpenseTypesAfterClose(DataSet: TDataSet);
+    procedure fdtItemAfterClose(DataSet: TDataSet);
     procedure fdtClientsAfterClose(DataSet: TDataSet);
     procedure fdtProjectsAfterScroll(DataSet: TDataSet);
   private
@@ -67,7 +67,7 @@ begin
   (DataSet as TFDTable).IndexFieldNames := '';
 end;
 
-procedure TdmApplication.fdtExpenseTypesAfterClose(DataSet: TDataSet);
+procedure TdmApplication.fdtItemAfterClose(DataSet: TDataSet);
 begin
   // clear the index
   (DataSet as TFDTable).IndexFieldNames := '';

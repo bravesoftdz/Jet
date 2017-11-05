@@ -54,7 +54,7 @@ requires
 contains
   BaseForm in '..\Base\BaseForm.pas' {frmBase},
   BasePrint in '..\Base\BasePrint.pas' {frmBasePrint},
-  TestReport in 'TestReport.pas' {frmTestReport},
+  ProjectReport in 'ProjectReport.pas' {frmProjectReport},
   BaseReport in '..\Base\BaseReport.pas' {frmBaseReport};
 
 end.

@@ -25,9 +25,6 @@ type
     constructor Create(AOwner: TComponent; var ASupplier: TSupplier); reintroduce; overload;
   end;
 
-var
-  frmSupplierSearch: TfrmSupplierSearch;
-
 implementation
 
 {$R *.dfm}

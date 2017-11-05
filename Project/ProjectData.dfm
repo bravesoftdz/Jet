@@ -22,8 +22,8 @@ object dmProject: TdmProject
         ParamType = ptInput
       end
       item
-        Position = 2
-        Name = 'R_EXPENSE_ENTRY_ID'
+        Position = 5
+        Name = 'R_EXPENSE_ID'
         DataType = ftInteger
         ParamType = ptOutput
       end
@@ -42,13 +42,13 @@ object dmProject: TdmProject
       end
       item
         Position = 5
-        Name = 'R_EXPENSE_ID'
+        Name = 'R_ITEM_ID'
         DataType = ftInteger
         ParamType = ptOutput
       end
       item
         Position = 6
-        Name = 'R_EXPENSE_NAME'
+        Name = 'R_ITEM_NAME'
         DataType = ftString
         ParamType = ptOutput
         Size = 50
@@ -112,10 +112,6 @@ object dmProject: TdmProject
         DataType = ftInteger
         ParamType = ptOutput
       end>
-    object fdspExpensesR_EXPENSE_ENTRY_ID: TIntegerField
-      FieldName = 'R_EXPENSE_ENTRY_ID'
-      Origin = 'R_EXPENSE_ENTRY_ID'
-    end
     object fdspExpensesR_EXPENSE_DATE: TSQLTimeStampField
       FieldName = 'R_EXPENSE_DATE'
       Origin = 'R_EXPENSE_DATE'
@@ -125,15 +121,6 @@ object dmProject: TdmProject
       FieldName = 'R_RECEIPT'
       Origin = 'R_RECEIPT'
       Size = 12
-    end
-    object fdspExpensesR_EXPENSE_ID: TIntegerField
-      FieldName = 'R_EXPENSE_ID'
-      Origin = 'R_EXPENSE_ID'
-    end
-    object fdspExpensesR_EXPENSE_NAME: TStringField
-      FieldName = 'R_EXPENSE_NAME'
-      Origin = 'R_EXPENSE_NAME'
-      Size = 50
     end
     object fdspExpensesR_QUANTITY: TCurrencyField
       FieldName = 'R_QUANTITY'
@@ -178,6 +165,19 @@ object dmProject: TdmProject
       Origin = 'R_UNIT_NAME'
       Size = 50
     end
+    object fdspExpensesR_EXPENSE_ID: TIntegerField
+      FieldName = 'R_EXPENSE_ID'
+      Origin = 'R_EXPENSE_ID'
+    end
+    object fdspExpensesR_ITEM_ID: TIntegerField
+      FieldName = 'R_ITEM_ID'
+      Origin = 'R_ITEM_ID'
+    end
+    object fdspExpensesR_ITEM_NAME: TStringField
+      FieldName = 'R_ITEM_NAME'
+      Origin = 'R_ITEM_NAME'
+      Size = 50
+    end
   end
   object dscExpenses: TDataSource
     DataSet = fdspExpenses
@@ -191,9 +191,8 @@ object dmProject: TdmProject
       '    INTO EXPENSE'
       '             (EXPENSE_DATE,'
       '              RECEIPT,'
-      '              EXPENSE_ID,'
+      '              ITEM_ID,'
       '              QUANTITY,'
-      '              UNIT_ID,'
       '              EXPENSE_AMOUNT,'
       '              PROJECT_ID,'
       '              SUPPLIER_ID,'
@@ -201,9 +200,8 @@ object dmProject: TdmProject
       '             CANCELLED)'
       'VALUES (:NEW_R_EXPENSE_DATE,'
       '               :NEW_R_RECEIPT,'
-      '               :NEW_R_EXPENSE_ID,'
+      '               :NEW_R_ITEM_ID,'
       '               :NEW_R_QUANTITY,'
-      '               :NEW_R_UNIT_ID,'
       '               :NEW_R_EXPENSE_AMOUNT,'
       '               :NEW_R_PROJECT_ID,'
       '               :NEW_R_SUPPLIER_ID,'
@@ -213,9 +211,8 @@ object dmProject: TdmProject
       'UPDATE EXPENSE'
       'SET EXPENSE_DATE = :NEW_R_EXPENSE_DATE,'
       '      RECEIPT =  :NEW_R_RECEIPT,'
-      '      EXPENSE_ID = :NEW_R_EXPENSE_ID,'
+      '      ITEM_ID = :NEW_R_ITEM_ID,'
       '      QUANTITY =  :NEW_R_QUANTITY,'
-      '      UNIT_ID = :NEW_R_UNIT_ID,'
       '      EXPENSE_AMOUNT =   :NEW_R_EXPENSE_AMOUNT,'
       '      PROJECT_ID = :NEW_R_PROJECT_ID,'
       '      SUPPLIER_ID =  :NEW_R_SUPPLIER_ID,'
@@ -225,36 +222,36 @@ object dmProject: TdmProject
     Left = 72
     Top = 104
   end
-  object fdspExpenseTypes: TFDStoredProc
+  object fdspItems: TFDStoredProc
     Filtered = True
     Connection = dmApplication.fdcMain
-    StoredProcName = 'P_GET_EXPENSE_TYPES'
+    StoredProcName = 'P_GET_ITEMS'
     Left = 280
     Top = 32
     ParamData = <
       item
         Position = 1
-        Name = 'R_EXPENSE_ID'
+        Name = 'R_ITEM_ID'
         DataType = ftInteger
         ParamType = ptOutput
       end
       item
         Position = 2
-        Name = 'R_EXPENSE_NAME'
+        Name = 'R_ITEM_NAME'
         DataType = ftString
         ParamType = ptOutput
         Size = 50
       end
       item
         Position = 3
-        Name = 'R_EXPENSE_DESCRIPTION'
+        Name = 'R_ITEM_DESCRIPTION'
         DataType = ftString
         ParamType = ptOutput
         Size = 100
       end>
   end
-  object dscExpenseTypes: TDataSource
-    DataSet = fdspExpenseTypes
+  object dscItems: TDataSource
+    DataSet = fdspItems
     Left = 368
     Top = 32
   end

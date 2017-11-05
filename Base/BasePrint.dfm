@@ -34,7 +34,7 @@ inherited frmBasePrint: TfrmBasePrint
       Left = 1
       Top = 1
       Width = 1015
-      Height = 487
+      Height = 463
       HorzScrollBar.Tracking = True
       VertScrollBar.Smooth = True
       VertScrollBar.Style = ssFlat
@@ -49,6 +49,7 @@ inherited frmBasePrint: TfrmBasePrint
       Padding.Bottom = 10
       ParentColor = False
       TabOrder = 0
+      ExplicitHeight = 487
       object rlReport: TRLReport
         AlignWithMargins = True
         Left = 122
@@ -70,33 +71,46 @@ inherited frmBasePrint: TfrmBasePrint
         Visible = False
       end
     end
-  end
-  object pnlStatus: TRzPanel
-    Left = 448
-    Top = 32
-    Width = 265
-    Height = 83
-    BorderOuter = fsNone
-    TabOrder = 2
-    Visible = False
-    object Shape1: TShape
-      Left = 0
-      Top = 0
+    object pnlReportAction: TRzPanel
+      Left = 1
+      Top = 464
+      Width = 1015
+      Height = 24
+      Align = alBottom
+      BorderOuter = fsNone
+      BorderSides = [sdTop]
+      BorderColor = 7038525
+      BorderWidth = 1
+      Color = 14276027
+      TabOrder = 1
+    end
+    object pnlStatus: TRzPanel
+      Left = 448
+      Top = -100
       Width = 265
       Height = 83
-      Align = alClient
-      Brush.Color = 14276027
-      ExplicitLeft = 80
-      ExplicitTop = 32
-      ExplicitWidth = 65
-      ExplicitHeight = 65
-    end
-    object Label1: TLabel
-      Left = 43
-      Top = 35
-      Width = 179
-      Height = 14
-      Caption = 'Generating report. Please wait...'
+      BorderOuter = fsNone
+      TabOrder = 2
+      Visible = False
+      object Shape1: TShape
+        Left = 0
+        Top = 0
+        Width = 265
+        Height = 83
+        Align = alClient
+        Brush.Color = 14276027
+        ExplicitLeft = 80
+        ExplicitTop = 32
+        ExplicitWidth = 65
+        ExplicitHeight = 65
+      end
+      object Label1: TLabel
+        Left = 43
+        Top = 35
+        Width = 179
+        Height = 14
+        Caption = 'Generating report. Please wait...'
+      end
     end
   end
   object dscReport: TDataSource
@@ -105,6 +119,7 @@ inherited frmBasePrint: TfrmBasePrint
     Top = 147
   end
   object fdspReport: TFDStoredProc
+    AfterGetRecords = fdspReportAfterGetRecords
     Connection = dmApplication.fdcMain
     Left = 778
     Top = 147

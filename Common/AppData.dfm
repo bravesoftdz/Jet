@@ -118,28 +118,28 @@ object dmApplication: TdmApplication
     Left = 112
     Top = 104
   end
-  object fdtExpenseTypes: TFDTable
-    AfterClose = fdtExpenseTypesAfterClose
+  object fdtItem: TFDTable
+    AfterClose = fdtItemAfterClose
     Filtered = True
-    IndexFieldNames = 'EXPENSE_ID'
+    IndexFieldNames = 'ITEM_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
     FormatOptions.StrsTrim = False
     FormatOptions.SortLocale = 0
     FormatOptions.SortOptions = [soNoSymbols]
-    UpdateOptions.UpdateTableName = 'T_EXPENSETYPE'
+    UpdateOptions.UpdateTableName = 'ITEM'
     UpdateOptions.AutoIncFields = 'EXPENSE_ID'
-    TableName = 'T_EXPENSETYPE'
+    TableName = 'ITEM'
     Left = 384
     Top = 32
   end
-  object dscExpenseTypes: TDataSource
-    DataSet = fdtExpenseTypes
+  object dscItem: TDataSource
+    DataSet = fdtItem
     Left = 304
     Top = 32
   end
   object fdtExpenses: TFDTable
-    IndexFieldNames = 'EXPENSE_ENTRY_ID'
+    IndexFieldNames = 'EXPENSE_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
     FormatOptions.StrsTrim = False

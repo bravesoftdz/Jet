@@ -27,9 +27,6 @@ type
     { Public declarations }
   end;
 
-var
-  frmUnitMain: TfrmUnitMain;
-
 implementation
 
 {$R *.dfm}
