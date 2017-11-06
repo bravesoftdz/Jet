@@ -3,7 +3,7 @@
         <ProjectGuid>{33F77928-C234-4668-B16D-46C730E692A6}</ProjectGuid>
         <MainSource>Security.dpk</MainSource>
         <ProjectVersion>18.2</ProjectVersion>
-        <FrameworkType>None</FrameworkType>
+        <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -64,7 +64,7 @@
         <DCC_K>false</DCC_K>
         <GenDll>true</GenDll>
         <GenPackage>true</GenPackage>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <SanitizedProjectName>Security</SanitizedProjectName>
         <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
@@ -117,10 +117,21 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="vcl.dcp"/>
+        <DCCReference Include="RaizeComponentsVcl.dcp"/>
         <DCCReference Include="SecurityData.pas">
             <Form>dmSecurity</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uUser.pas"/>
+        <DCCReference Include="..\Base\BaseDocked.pas">
+            <Form>frmBaseDocked</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="SecurityMain.pas">
+            <Form>frmSecurityMain</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

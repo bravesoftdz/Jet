@@ -88,7 +88,7 @@
         <AppEnableHighDPI>true</AppEnableHighDPI>
         <DCC_ExeOutput>..\_bin</DCC_ExeOutput>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
-        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Project;..\Admin;..\Client;..\Reports;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Base;..\Common;..\Project;..\Admin;..\Client;..\Reports;..\Security;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
         <DCC_DcpOutput>..\_dcp</DCC_DcpOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>

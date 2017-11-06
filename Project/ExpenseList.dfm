@@ -503,7 +503,7 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 9
         object sbtnNew: TRzShapeButton
           Left = 0
           Top = 0
@@ -535,6 +535,20 @@ inherited frmExpenseList: TfrmExpenseList
         FrameVisible = True
         FramingPreference = fpCustomFraming
         ReadOnlyColor = 15794175
+      end
+      object cbxCancelled: TRzDBCheckBox
+        Left = 13
+        Top = 291
+        Width = 70
+        Height = 16
+        DataField = 'R_CANCELLED'
+        DataSource = dmProject.dscExpenses
+        NullAsUnchecked = False
+        ValueChecked = 'true'
+        ValueUnchecked = 'false'
+        Caption = 'Cancelled'
+        FrameColor = 7038525
+        TabOrder = 8
       end
     end
     object bteItem2: TRzButtonEdit

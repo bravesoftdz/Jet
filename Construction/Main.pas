@@ -82,6 +82,7 @@ type
     procedure imgClientsClick(Sender: TObject);
     procedure imgUnitClick(Sender: TObject);
     procedure imgReportsClick(Sender: TObject);
+    procedure imgSecurityClick(Sender: TObject);
   private
     { Private declarations }
     DOCKED_FORM: TForms;
@@ -101,7 +102,8 @@ implementation
 
 uses
   AppDialogs, SaveIntf, FormsUtil, NewIntf, ProjectMain, Migrate, SupplierMain,
-  ItemMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain, ProjectReport;
+  ItemMain, ClientMain, SetIdentityIntf, AppGlobal, UnitMain, ProjectReport,
+  uUser, SecurityMain;
 
 procedure TfrmMain.pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -147,7 +149,8 @@ begin
       fmSupplierMain: frm := TfrmSupplierMain.Create(Application);
       fmItemMain: frm := TfrmItemMain.Create(Application);
       fmUnitMain: frm := TfrmUnitMain.Create(Application);
-      fmTestReport: frm := TfrmProjectReport.Create(Application);
+      fmSecurityMain: frm := TfrmSecurityMain.Create(Application);
+      fmProjectReport: frm := TfrmProjectReport.Create(Application);
       fmMigrate: frm := TfrmMigrate.Create(Application);
       else
         frm := TForm.Create(Application);
@@ -206,7 +209,7 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
 //  lblCaption.Caption := ifn.AppName + ' - ' + ifn.AppDescription;
-//  lblWelcome.Caption := 'Welcome back ' + ifn.User.Name + '.';
+  lblWelcome.Caption := 'Welcome back ' + User.Name + '.';
   lblDate.Caption := 'Today is ' + FormatDateTime('mmmm dd, yyyy.',app.AppDate);
 //  lblLocation.Caption := 'Location: ' + ifn.GetLocationNameByCode(ifn.LocationCode);
   lblVersion.Caption :=  'Version ' + app.Version;
@@ -231,7 +234,7 @@ end;
 
 procedure TfrmMain.imgReportsClick(Sender: TObject);
 begin
-  DockForm(fmTestReport);
+  DockForm(fmProjectReport);
 end;
 
 procedure TfrmMain.imgCancelClick(Sender: TObject);
@@ -268,6 +271,11 @@ end;
 procedure TfrmMain.imgSaveClick(Sender: TObject);
 begin
   Save;
+end;
+
+procedure TfrmMain.imgSecurityClick(Sender: TObject);
+begin
+  DockForm(fmSecurityMain);
 end;
 
 procedure TfrmMain.imgSuppliersClick(Sender: TObject);

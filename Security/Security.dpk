@@ -29,9 +29,14 @@ package Security;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl,
+  RaizeComponentsVcl;
 
 contains
-  SecurityData in 'SecurityData.pas' {dmSecurity: TDataModule};
+  SecurityData in 'SecurityData.pas' {dmSecurity: TDataModule},
+  uUser in 'uUser.pas',
+  BaseDocked in '..\Base\BaseDocked.pas' {frmBaseDocked},
+  SecurityMain in 'SecurityMain.pas' {frmSecurityMain};
 
 end.

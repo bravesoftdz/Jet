@@ -243,13 +243,13 @@ inherited frmLogin: TfrmLogin
       Font.Style = []
       ParentFont = False
     end
-    object lbErrorMessage: TLabel
+    object lblErrorMessage: TLabel
       Left = 14
       Top = 203
-      Width = 69
+      Width = 138
       Height = 13
       Anchors = [akLeft, akBottom]
-      Caption = 'Error Message'
+      Caption = 'Unable to authenticate user.'
       Font.Charset = ANSI_CHARSET
       Font.Color = clRed
       Font.Height = -11

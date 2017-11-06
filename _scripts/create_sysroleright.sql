@@ -1,0 +1,6 @@
+CREATE TABLE SYSROLERIGHT
+(
+    ROLE_CODE CHAR(3),
+    RIGHT_CODE VARCHAR(15),
+    constraint PK_01 primary key (ROLE_CODE, RIGHT_CODE)
+);

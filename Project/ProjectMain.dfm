@@ -266,5 +266,19 @@ inherited frmProjectMain: TfrmProjectMain
       IntegersOnly = False
       DisplayFormat = '###,###,##0.00'
     end
+    object cbxActive: TRzDBCheckBox
+      Left = 141
+      Top = 361
+      Width = 53
+      Height = 16
+      DataField = 'STATUS_ID'
+      DataSource = dmApplication.dscProjects
+      NullAsUnchecked = False
+      ValueChecked = 'O'
+      ValueUnchecked = 'C'
+      Caption = 'Active'
+      FrameColor = 7038525
+      TabOrder = 9
+    end
   end
 end

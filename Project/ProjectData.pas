@@ -88,7 +88,7 @@ begin
       Name := 'Total';
       Expression := 'SUM(R_EXPENSE_AMOUNT)';
       Active := True;
-    end;
+    end
   end;
   fdspExpenses.AggregatesActive := true;
 end;
@@ -111,7 +111,7 @@ procedure TdmProject.fdspExpensesNewRecord(DataSet: TDataSet);
 begin
   DataSet.FieldByName('R_EXPENSE_DATE').AsDateTime := app.AppDate;
   DataSet.FieldByName('R_PROJECT_ID').AsInteger := Project.Id;
-  DataSet.FieldByName('R_CANCELLED').AsBoolean := true;
+  DataSet.FieldByName('R_CANCELLED').AsBoolean := false;
 
   DataSet.FieldByName('R_RECEIPT').FocusControl;
 end;

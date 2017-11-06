@@ -2,8 +2,8 @@ unit AppConstants;
 
 interface
 
-type TForms = (fmProjectMain, fmSupplierMain, fmItemMain, fmSecurity,
-                fmReports,fmMigrate,fmClientMain,fmUnitMain,fmTestReport);
+type TForms = (fmProjectMain, fmSupplierMain, fmItemMain, fmReports, fmMigrate,
+                fmClientMain, fmUnitMain, fmSecurityMain, fmProjectReport);
 
 implementation
 

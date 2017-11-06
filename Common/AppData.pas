@@ -45,6 +45,7 @@ type
     procedure fdtProjectsAfterScroll(DataSet: TDataSet);
     procedure fdcMainBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
+    procedure fdtProjectsNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     procedure OpenConnection;
@@ -123,6 +124,11 @@ begin
   end;
 end;
 
+procedure TdmApplication.fdtProjectsNewRecord(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('STATUS_ID').AsString := 'O';
+end;
+
 procedure TdmApplication.fdtSuppliersAfterClose(DataSet: TDataSet);
 begin
   // clear the index
@@ -133,6 +139,7 @@ procedure TdmApplication.OpenConnection;
 begin
   try
     fdcMain.Open;
+    Settings.Database.Connected := true;
   except
     on E: Exception do
     begin

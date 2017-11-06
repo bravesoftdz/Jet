@@ -126,7 +126,7 @@ begin
         Application.ProcessMessages;
 
         Append;
-        FieldByName('EXPENSE_ID').AsInteger := ATable.FieldByName('EntryNo').Asinteger;
+        // FieldByName('EXPENSE_ID').AsInteger := ATable.FieldByName('EntryNo').Asinteger;
         FieldByName('EXPENSE_DATE').AsDateTime := ATable.FieldByName('Date').AsDateTime;
         FieldByName('RECEIPT').AsString := ATable.FieldByName('Receipt').AsString;
         FieldByName('ITEM_ID').AsInteger := ATable.FieldByName('ExpNo').AsInteger;

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, BasePopup, BaseForm, Vcl.StdCtrls, RzLabel, System.UITypes,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Vcl.Mask, RzEdit, RzPrgres,
-  RzButton;
+  RzButton, FireDAC.Comp.Client;
 
 type
   TfrmLogin = class(TfrmBasePopup)
@@ -16,7 +16,7 @@ type
     Label2: TLabel;
     edUsername: TRzEdit;
     edPassword: TRzEdit;
-    lbErrorMessage: TLabel;
+    lblErrorMessage: TLabel;
     imgLogo: TImage;
     prbStatus: TRzProgressBar;
     lblStatus: TLabel;
@@ -40,7 +40,6 @@ type
     procedure SettingAccessRights;
     procedure PauseWindow(timer: integer);
     function UserExists: boolean;
-    function PasswordIsValid: boolean;
   public
     { Public declarations }
     class function LoggedIn: boolean;
@@ -59,7 +58,7 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, AppUtil, AppGlobal;
+  AppData, AppDialogs, AppUtil, AppGlobal, uUser;
 
 class function TfrmLogin.LoggedIn: boolean;
 begin
@@ -74,20 +73,53 @@ end;
 function TfrmLogin.UserExists: boolean;
 var
   username: string;
+var
+  userQuery: TFDQuery;
 begin
-//  with dmApplication.dstUser do
-//  begin
-//    username := Trim(edUsername.Text);
-//
-//    Close;
-//    Parameters.ParamByName('@username').Value := username;
-//    Open;
-//
-//    Result := RecordCount > 0;
-//
-//    if not Result then lbErrorMessage.Caption := 'Invalid username or password.';
-//  end;
-  Result := true;
+  userQuery := TFDQuery.Create(nil);
+  with dmApplication do
+  begin
+    try
+      try
+        userQuery.Connection := fdcMain;
+
+        userQuery.SQL.Text := 'SELECT U.*, ' +
+                                      'RR.RIGHT_CODE, ' +
+                                      'U.USERNAME ' +
+                                'FROM SYSUSER U ' +
+                                'JOIN SYSROLERIGHT RR ' +
+                                  'ON RR.ROLE_CODE = U.ROLE_CODE ' +
+                               'WHERE USERNAME = ' + QuotedStr(edUsername.Text) +
+                                 'AND PASSKEY = ' + QuotedStr(edPassword.Text);
+
+        userQuery.Connection.Open;
+        userQuery.Open;
+
+        if userQuery.RecordCount > 0 then
+        begin
+          Result := true;
+
+          // set user object
+          User := TUser.Create;
+
+          User.Name := Trim(edUsername.Text);
+          User.Passkey := Trim(edPassword.Text);
+
+          // rights
+          while not userQuery.Eof  do
+          begin
+            User.AddRight(userQuery.FieldByName('RIGHT_CODE').AsString);
+            userQuery.Next;
+          end;
+        end;
+      except
+        on E: Exception do lblErrorMessage.Caption := 'Unable to authenticate user.';
+      end;
+    finally
+      userQuery.Close;
+      userQuery.Free;
+    end;
+  end;
 end;
 
 procedure TfrmLogin.edPasswordKeyPress(Sender: TObject; var Key: Char);
@@ -99,7 +131,7 @@ end;
 procedure TfrmLogin.edUsernameChange(Sender: TObject);
 begin
   inherited;
-  lbErrorMessage.Visible := false;
+  lblErrorMessage.Visible := false;
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
@@ -142,7 +174,7 @@ end;
 
 procedure TfrmLogin.btnLoginClick(Sender: TObject);
 begin
-if (UserExists) and (PasswordIsValid) then
+  if UserExists then
   begin
     try
       try
@@ -155,7 +187,7 @@ if (UserExists) and (PasswordIsValid) then
 
         lblStatus.Visible := true;
         prbStatus.Visible := true;
-        lbErrorMessage.Visible := false;
+        lblErrorMessage.Visible := false;
 
         self.Update;
 
@@ -181,7 +213,7 @@ if (UserExists) and (PasswordIsValid) then
   end
   else
   begin
-    lbErrorMessage.Visible := true;
+    lblErrorMessage.Visible := true;
     edUsername.SetFocus;
   end;
 end;
@@ -304,22 +336,6 @@ begin
 //      Next;
 //    end;
 //  end;
-end;
-
-function TfrmLogin.PasswordIsValid: boolean;
-var
-  password: string;
-begin
-//  with dmApplication.dstUser do
-//  begin
-//    password := FieldByName('password').AsString;
-//
-//    Result := SameText(password, Trim(edPassword.Text));
-//
-//    if not Result then
-//      lbErrorMessage.Caption := 'Invalid username or password.';
-//  end;
-  Result := true;
 end;
 
 end.

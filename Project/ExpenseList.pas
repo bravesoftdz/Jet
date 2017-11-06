@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Data.DB, Vcl.Grids, Vcl.DBGrids,
   RzDBGrid, uProject, RzEdit, Vcl.Mask, RzBtnEdt, FireDac.Comp.Client, RzDBEdit,
   Vcl.DBCtrls, SetUnboundControlsIntf, uExpense, RzButton, SaveIntf, NewIntf,
-  uItem, uSupplier, RzDBCmbo;
+  uItem, uSupplier, RzDBCmbo, RzRadChk, RzDBChk;
 
 type
   TfrmExpenseList = class(TfrmBasePopup, ISetUnboundControls, ISave, INew)
@@ -42,6 +42,7 @@ type
     Label11: TLabel;
     dbluUnit: TRzDBLookupComboBox;
     lblProject: TLabel;
+    cbxCancelled: TRzDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grListTitleClick(Column: TColumn);
     procedure imgCloseClick(Sender: TObject);
@@ -315,6 +316,10 @@ end;
 
 procedure TfrmExpenseList.New;
 begin
+  if Expense.Project.IsClosed then
+    if ShowWarningBox('Project is already CLOSED. Do you still want to continue?') = mrNo then
+      Exit;
+
   grList.DataSource.DataSet.Append;
 end;
 
@@ -333,7 +338,6 @@ begin
         grList.DataSource.DataSet.Post;
         grList.Enabled := true;
         Result := true;
-        SetTotal;
       end;
 
     if Result then
@@ -347,6 +351,8 @@ begin
 
       Close;
       Open;
+
+      SetTotal;
 
       SortGrid(grList,LIndexFieldNames);
 

@@ -609,6 +609,7 @@ object frmMain: TfrmMain
           81E3D9415467BC7F0163D088EEE34DD18A0000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgSecurityClick
         OnMouseDown = imgProjectsMouseDown
         OnMouseUp = imgProjectsMouseUp
       end

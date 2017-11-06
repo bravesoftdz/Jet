@@ -1,8 +1,12 @@
 inherited frmWarningBox: TfrmWarningBox
   Caption = 'frmWarningBox'
+  Color = 11071741
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlTitle: TRzPanel
+    BorderColor = 376028
+    GradientColorStart = 443878
+    GradientColorStop = 775673
     inherited lblCaption: TRzLabel
       Width = 47
       Caption = 'Warning'
@@ -10,6 +14,8 @@ inherited frmWarningBox: TfrmWarningBox
     end
   end
   inherited pnlMain: TRzPanel
+    BorderColor = 376028
+    Color = 11071741
     inherited Image1: TImage
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
@@ -64,6 +70,14 @@ inherited frmWarningBox: TfrmWarningBox
         646174653A6D6F6469667900323031312D30382D32315431343A31303A32312D
         30363A3030E4A17B480000001974455874536F6674776172650041646F626520
         496D616765526561647971C9653C0000000049454E44AE426082}
+    end
+    inherited pnlNo: TRzPanel
+      BorderColor = 376028
+      Color = 3792635
+    end
+    inherited pnlYes: TRzPanel
+      BorderColor = 376028
+      Color = 3792635
     end
   end
 end

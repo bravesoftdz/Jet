@@ -9,6 +9,7 @@ object dmApplication: TdmApplication
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     BeforeConnect = fdcMainBeforeConnect
     Left = 40
@@ -17,6 +18,7 @@ object dmApplication: TdmApplication
   object fdtProjects: TFDTable
     AfterClose = fdtProjectsAfterClose
     AfterScroll = fdtProjectsAfterScroll
+    OnNewRecord = fdtProjectsNewRecord
     Filtered = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'PROJECT_ID'
@@ -105,6 +107,7 @@ object dmApplication: TdmApplication
   end
   object fdtSuppliers: TFDTable
     AfterClose = fdtSuppliersAfterClose
+    Filtered = True
     IndexFieldNames = 'SUPPLIER_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]
@@ -112,6 +115,7 @@ object dmApplication: TdmApplication
     FormatOptions.SortLocale = 0
     FormatOptions.SortOptions = [soNoSymbols]
     UpdateOptions.UpdateTableName = 'SUPPLIER'
+    UpdateOptions.AutoIncFields = 'SUPPLIER_ID'
     TableName = 'SUPPLIER'
     Left = 200
     Top = 104
@@ -131,7 +135,7 @@ object dmApplication: TdmApplication
     FormatOptions.SortLocale = 0
     FormatOptions.SortOptions = [soNoSymbols]
     UpdateOptions.UpdateTableName = 'ITEM'
-    UpdateOptions.AutoIncFields = 'EXPENSE_ID'
+    UpdateOptions.AutoIncFields = 'ITEM_ID'
     TableName = 'ITEM'
     Left = 384
     Top = 32
@@ -149,7 +153,7 @@ object dmApplication: TdmApplication
     FormatOptions.SortLocale = 0
     FormatOptions.SortOptions = [soNoSymbols]
     UpdateOptions.UpdateTableName = 'EXPENSE'
-    UpdateOptions.AutoIncFields = 'EXPENSE_ENTRY_ID'
+    UpdateOptions.AutoIncFields = 'EXPENSE_ID'
     TableName = 'EXPENSE'
     Left = 384
     Top = 104
@@ -185,6 +189,7 @@ object dmApplication: TdmApplication
     Top = 104
   end
   object fdtUnits: TFDTable
+    Filtered = True
     IndexFieldNames = 'UNIT_ID'
     Connection = fdcMain
     FormatOptions.AssignedValues = [fvStrsTrim, fvSortLocale, fvSortOptions]

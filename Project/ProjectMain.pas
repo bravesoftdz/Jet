@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseGridDetail, Data.DB, RzButton,
   Vcl.StdCtrls, Vcl.Mask, RzEdit, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
   Vcl.ExtCtrls, RzPanel, Bde.DBTables, RzDBEdit, Vcl.DBCtrls, RzBtnEdt,
-  uProject, uClient, ClientSearch, SetUnboundControlsIntf, FireDac.Comp.Client;
+  uProject, uClient, ClientSearch, SetUnboundControlsIntf, FireDac.Comp.Client,
+  RzRadChk, RzDBChk;
 
 type
   TfrmProjectMain = class(TfrmBaseGridDetail, ISetUnboundControls)
@@ -25,6 +26,7 @@ type
     mmAddress: TRzDBMemo;
     Label8: TLabel;
     edBudget: TRzDBNumericEdit;
+    cbxActive: TRzDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure bteClientButtonClick(Sender: TObject);
