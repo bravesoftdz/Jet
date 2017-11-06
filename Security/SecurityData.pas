@@ -3,10 +3,20 @@ unit SecurityData;
 interface
 
 uses
-  System.SysUtils, System.Classes;
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TdmSecurity = class(TDataModule)
+    fdtUser: TFDTable;
+    dscUser: TDataSource;
+    fdtRole: TFDTable;
+    dscRole: TDataSource;
+    fdtRight: TFDTable;
+    dscRight: TDataSource;
+    fdspRights: TFDStoredProc;
   private
     { Private declarations }
   public
@@ -21,5 +31,8 @@ implementation
 {%CLASSGROUP 'System.Classes.TPersistent'}
 
 {$R *.dfm}
+
+uses
+  AppData;
 
 end.

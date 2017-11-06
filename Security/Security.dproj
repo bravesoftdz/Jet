@@ -99,7 +99,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-        <DCC_UnitSearchPath>..\_dcu;..\Common;..\Base;..\Client;..\Admin;..\Construction;..\Project;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\_dcu;..\Common;..\Base;..\Client;..\Admin;..\Construction;..\Project;..\Reports;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_BplOutput>..\_bpl</DCC_BplOutput>
         <DCC_DcpOutput>..\_dcp</DCC_DcpOutput>
         <DCC_DcuOutput>..\_dcu</DCC_DcuOutput>
@@ -119,18 +119,60 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="RaizeComponentsVcl.dcp"/>
+        <DCCReference Include="vclimg.dcp"/>
+        <DCCReference Include="dbrtl.dcp"/>
+        <DCCReference Include="FireDAC.dcp"/>
+        <DCCReference Include="FireDACCommonDriver.dcp"/>
+        <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="vcldb.dcp"/>
+        <DCCReference Include="bindengine.dcp"/>
+        <DCCReference Include="FireDACIBDriver.dcp"/>
+        <DCCReference Include="bindcomp.dcp"/>
+        <DCCReference Include="bindcompvcl.dcp"/>
+        <DCCReference Include="RaizeComponentsVclDb.dcp"/>
+        <DCCReference Include="Jcl.dcp"/>
+        <DCCReference Include="JvCore.dcp"/>
+        <DCCReference Include="JvStdCtrls.dcp"/>
+        <DCCReference Include="JvPageComps.dcp"/>
+        <DCCReference Include="bdertl.dcp"/>
+        <DCCReference Include="frce.dcp"/>
         <DCCReference Include="SecurityData.pas">
             <Form>dmSecurity</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="uUser.pas"/>
+        <DCCReference Include="SecurityMain.pas">
+            <Form>frmSecurityMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Base\BaseGridDetail.pas">
+            <Form>frmBaseGridDetail</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="..\Base\BaseDocked.pas">
             <Form>frmBaseDocked</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="SecurityMain.pas">
-            <Form>frmSecurityMain</Form>
+        <DCCReference Include="ChangePassword.pas">
+            <Form>frmChangePassword</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Users.pas">
+            <Form>frmUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Roles.pas">
+            <Form>frmRoles</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uRole.pas"/>
+        <DCCReference Include="..\Base\BasePopupDetail.pas">
+            <Form>frmBasePopupDetail</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AssignRights.pas">
+            <Form>frmAssignRights</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

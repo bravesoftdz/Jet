@@ -31,12 +31,36 @@ package Security;
 requires
   rtl,
   vcl,
-  RaizeComponentsVcl;
+  RaizeComponentsVcl,
+  vclimg,
+  dbrtl,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  vcldb,
+  bindengine,
+  FireDACIBDriver,
+  bindcomp,
+  bindcompvcl,
+  RaizeComponentsVclDb,
+  Jcl,
+  JvCore,
+  JvStdCtrls,
+  JvPageComps,
+  bdertl,
+  frce;
 
 contains
   SecurityData in 'SecurityData.pas' {dmSecurity: TDataModule},
   uUser in 'uUser.pas',
+  SecurityMain in 'SecurityMain.pas' {frmSecurityMain},
+  BaseGridDetail in '..\Base\BaseGridDetail.pas' {frmBaseGridDetail},
   BaseDocked in '..\Base\BaseDocked.pas' {frmBaseDocked},
-  SecurityMain in 'SecurityMain.pas' {frmSecurityMain};
+  ChangePassword in 'ChangePassword.pas' {frmChangePassword},
+  Users in 'Users.pas' {frmUsers},
+  Roles in 'Roles.pas' {frmRoles},
+  uRole in 'uRole.pas',
+  BasePopupDetail in '..\Base\BasePopupDetail.pas' {frmBasePopupDetail},
+  AssignRights in 'AssignRights.pas' {frmAssignRights};
 
 end.

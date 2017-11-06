@@ -87,7 +87,7 @@ begin
                                       'RR.RIGHT_CODE, ' +
                                       'U.USERNAME ' +
                                 'FROM SYSUSER U ' +
-                                'JOIN SYSROLERIGHT RR ' +
+                           'LEFT JOIN SYSROLERIGHT RR ' +
                                   'ON RR.ROLE_CODE = U.ROLE_CODE ' +
                                'WHERE USERNAME = ' + QuotedStr(edUsername.Text) +
                                  'AND PASSKEY = ' + QuotedStr(edPassword.Text);

@@ -9,7 +9,6 @@ object dmApplication: TdmApplication
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     BeforeConnect = fdcMainBeforeConnect
     Left = 40
