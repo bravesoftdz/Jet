@@ -55,9 +55,9 @@
     <Transaction>2017/11/02 07:16:50.000.373,=C:\Projects\Jet\Common\Unit1.pas</Transaction>
     <Transaction>2017/11/02 07:25:20.000.462,C:\Projects\Jet\Common\SearchUtil.pas=C:\Projects\Jet\Common\Unit1.pas</Transaction>
     <Transaction>2017/11/05 16:18:13.000.524,=frce.dcp</Transaction>
-    <Transaction>2017/11/06 08:56:09.708,=C:\Projects\Jet\Common\ConnUtil.pas</Transaction>
-    <Transaction>2017/11/06 08:56:51.601,C:\Projects\Jet\Common\ConnUtil.pas=</Transaction>
-    <Transaction>2017/11/06 09:04:22.193,=C:\Projects\Jet\Common\Unit1.pas</Transaction>
-    <Transaction>2017/11/06 09:12:31.219,C:\Projects\Jet\Common\uSettings.pas=C:\Projects\Jet\Common\Unit1.pas</Transaction>
+    <Transaction>2017/11/06 08:56:09.000.708,=C:\Projects\Jet\Common\ConnUtil.pas</Transaction>
+    <Transaction>2017/11/06 08:56:51.000.601,C:\Projects\Jet\Common\ConnUtil.pas=</Transaction>
+    <Transaction>2017/11/06 09:04:22.000.193,=C:\Projects\Jet\Common\Unit1.pas</Transaction>
+    <Transaction>2017/11/06 09:12:31.000.219,C:\Projects\Jet\Common\uSettings.pas=C:\Projects\Jet\Common\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

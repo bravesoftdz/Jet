@@ -12,6 +12,7 @@ inherited frmRoles: TfrmRoles
   inherited pnlList: TRzPanel
     inherited grList: TRzDBGrid
       DataSource = dmSecurity.dscRole
+      OnDblClick = grListDblClick
       Columns = <
         item
           Expanded = False

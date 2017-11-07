@@ -9,20 +9,14 @@ uses
   RzChkLst, uRole;
 
 type
-  TRight = class
-  strict private
-    FName: string;
-    FCode: string;
-  public
-    property Code: string read FCode write FCode;
-    property Name: string read FName write FName;
-  end;
-
   TfrmAssignRights = class(TfrmBasePopupDetail)
     chlRights: TRzCheckList;
+    procedure chlRightsChange(Sender: TObject; Index: Integer;
+      NewState: TCheckBoxState);
   private
     { Private declarations }
     Role: TRole;
+    Rights: array of TRight;
     procedure PopulateRightsList;
   protected
     procedure Save; override;
@@ -50,36 +44,68 @@ end;
 
 procedure TfrmAssignRights.Cancel;
 begin
-  inherited;
 
+end;
+
+procedure TfrmAssignRights.chlRightsChange(Sender: TObject; Index: Integer;
+  NewState: TCheckBoxState);
+begin
+  (chlRights.Items.Objects[Index] as TRight).AssignedNewValue := NewState = cbChecked;
 end;
 
 constructor TfrmAssignRights.Create(AOwner: TComponent; var ARole: TRole);
 begin
   Create(AOwner);
+
   Role := ARole;
+
+  // caption
+  lblCaption.Caption := 'Assigned rights to ' + ARole.Name;
+
+  PopulateRightsList;
 end;
 
 procedure TfrmAssignRights.PopulateRightsList;
 var
   LRight: TRight;
 begin
-  with chlRights do
+  with dmSecurity.fdspRights, chlRights do
   begin
-     LRight := TRight.Create;
+    try
+      // open the datasource
+      Params.ParamByName('P_ROLE_CODE').AsString := Role.Code;
+      Open;
 
+      while not Eof do
+      begin
+        LRight := TRight.Create;
+        LRight.Code := FieldByName('R_RIGHT_CODE').AsString;
+        LRight.Name := FieldByName('R_RIGHT_NAME').AsString;
+        LRight.AssignedOldValue := FieldByName('R_ASSIGNED').AsBoolean;
+        LRight.AssignedNewValue := FieldByName('R_ASSIGNED').AsBoolean;
+
+        AddItem(LRight.Name,LRight);
+        ItemChecked[Items.Count-1] := LRight.AssignedOldValue;
+
+        Next;
+      end;
+    finally
+      Close;
+    end;
   end;
 end;
 
 procedure TfrmAssignRights.Save;
+var
+  i, cnt: integer;
 begin
-  inherited;
-
+  cnt := chlRights.Count - 1;
+  for i := 0 to cnt  do Role.Rights[i] := chlRights.Items.Objects[i] as TRight;
 end;
 
 function TfrmAssignRights.ValidEntry: boolean;
 begin
-
+  Result := true;
 end;
 
 end.

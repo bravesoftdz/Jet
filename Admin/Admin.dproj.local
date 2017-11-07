@@ -51,10 +51,10 @@
     <Transaction>2017/11/05 22:15:28.000.985,C:\Projects\Jet\Admin\ExpenseTypeSearch.pas=C:\Projects\Jet\Admin\ItemSearch.pas</Transaction>
     <Transaction>2017/11/05 22:15:28.000.985,C:\Projects\Jet\Admin\ExpenseTypeSearch.dfm=C:\Projects\Jet\Admin\ItemSearch.dfm</Transaction>
     <Transaction>2017/11/05 22:15:40.000.527,C:\Projects\Jet\Admin\uExpenseType.pas=C:\Projects\Jet\Admin\uItem.pas</Transaction>
-    <Transaction>2017/11/06 09:38:49.516,=C:\Projects\Jet\Base\BasePopup.pas</Transaction>
-    <Transaction>2017/11/06 09:39:14.719,=C:\Projects\Jet\Base\BasePopupDetail.pas</Transaction>
-    <Transaction>2017/11/06 09:39:35.684,=C:\Projects\Jet\Admin\Unit1.pas</Transaction>
-    <Transaction>2017/11/06 09:41:10.178,C:\Projects\Jet\Admin\ConnectionConfiguration.pas=C:\Projects\Jet\Admin\Unit1.pas</Transaction>
-    <Transaction>2017/11/06 09:41:10.178,C:\Projects\Jet\Admin\ConnectionConfiguration.dfm=C:\Projects\Jet\Admin\Unit1.dfm</Transaction>
+    <Transaction>2017/11/06 09:38:49.000.516,=C:\Projects\Jet\Base\BasePopup.pas</Transaction>
+    <Transaction>2017/11/06 09:39:14.000.719,=C:\Projects\Jet\Base\BasePopupDetail.pas</Transaction>
+    <Transaction>2017/11/06 09:39:35.000.684,=C:\Projects\Jet\Admin\Unit1.pas</Transaction>
+    <Transaction>2017/11/06 09:41:10.000.178,C:\Projects\Jet\Admin\ConnectionConfiguration.pas=C:\Projects\Jet\Admin\Unit1.pas</Transaction>
+    <Transaction>2017/11/06 09:41:10.000.178,C:\Projects\Jet\Admin\ConnectionConfiguration.dfm=C:\Projects\Jet\Admin\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>

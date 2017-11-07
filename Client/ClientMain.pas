@@ -24,7 +24,10 @@ type
   protected
     procedure SearchList; override;
     procedure BindToObject; override;
+
     function EntryIsValid: boolean; override;
+    function NewIsAllowed: boolean; override;
+    function EditIsAllowed: boolean; override;
   public
     { Public declarations }
     procedure SetIdentity; override;
@@ -36,7 +39,7 @@ var
 implementation
 
 uses
-  AppData, AppDialogs, DBUtil;
+  AppData, AppDialogs, DBUtil, uUser;
 
 {$R *.dfm}
 
@@ -46,6 +49,11 @@ procedure TfrmClientMain.BindToObject;
 begin
   Client.Name := edName.Text;
   Client.Description := mmDescription.Text;
+end;
+
+function TfrmClientMain.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_CLIENT,false);
 end;
 
 function TfrmClientMain.EntryIsValid: boolean;
@@ -69,6 +77,11 @@ procedure TfrmClientMain.FormCreate(Sender: TObject);
 begin
   Client := TClient.Create;
   inherited;
+end;
+
+function TfrmClientMain.NewIsAllowed: boolean;
+begin
+  Result := User.HasRight(ADD_CLIENT);
 end;
 
 procedure TfrmClientMain.SearchList;

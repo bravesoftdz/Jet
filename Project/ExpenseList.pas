@@ -41,7 +41,6 @@ type
     sbtnNew: TRzShapeButton;
     Label11: TLabel;
     dbluUnit: TRzDBLookupComboBox;
-    lblProject: TLabel;
     cbxCancelled: TRzDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grListTitleClick(Column: TColumn);
@@ -294,7 +293,7 @@ begin
   dteUntil.OnChange := dteFromChange;
 
   // set project name
-  lblProject.Caption := Expense.Project.Name;
+  lblCaption.Caption := 'Expense list for project ' + Expense.Project.Name;
 
   FilterGrid;
   SetUnboundControls;

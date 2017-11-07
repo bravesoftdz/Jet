@@ -38,7 +38,7 @@ implementation
 {$R *.dfm}
 
 uses
-  ChangePassword, AppDialogs, Users, SecurityData, Roles;
+  ChangePassword, AppDialogs, Users, SecurityData, Roles, uUser;
 
 { TfrmSecurityMain }
 
@@ -106,6 +106,10 @@ procedure TfrmSecurityMain.FormCreate(Sender: TObject);
 begin
   inherited;
   dmSecurity := TdmSecurity.Create(self);
+
+  // hide or show links
+  urlUsers.Visible := User.HasRight(VIEW_USER,false);
+  urlRoles.Visible := User.HasRight(VIEW_ROLE,false);
 end;
 
 procedure TfrmSecurityMain.GetActiveForm(var frm: TForm);

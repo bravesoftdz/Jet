@@ -3,9 +3,28 @@ unit uUser;
 interface
 
 uses
-  StrUtils, SysUtils;
+  StrUtils, SysUtils, System.Rtti;
 
 type
+  TRights = (ADD_USER,
+              VIEW_USER,
+              MODIFY_USER,
+              ADD_ROLE,
+              VIEW_ROLE,
+              MODIFY_ROLE,
+              ADD_ITEM,
+              MODIFY_ITEM,
+              ADD_PROJECT,
+              MODIFY_PROJECT,
+              ADD_SUPPLIER,
+              MODIFY_SUPPLIER,
+              ADD_UNITS,
+              MODIFY_UNITS,
+              ADD_EXPENSE,
+              MODIFY_EXPENSE,
+              ADD_CLIENT,
+              MODIFY_CLIENT
+              );
 
   TUser = class
   private
@@ -14,7 +33,6 @@ type
     FRoleCode: string;
     FRights: array of string;
 
-    function HasRight(const code: string): boolean;
     function GetHasName: boolean;
     function GetHasPasskey: boolean;
     function GetHasRole: boolean;
@@ -29,6 +47,7 @@ type
 
     procedure AddRight(const code: string);
 
+    function HasRight(const right: TRights; const showWarning: boolean = true): boolean;
     function ChangePassword(ANewPasskey: string): Boolean;
 
     constructor Create; overload;
@@ -43,7 +62,7 @@ implementation
 { TUser }
 
 uses
-  AppData;
+  AppData, AppDialogs;
 
 procedure TUser.AddRight(const code: string);
 begin
@@ -96,18 +115,16 @@ begin
   else inherited Create;
 end;
 
-function TUser.HasRight(const code: string): boolean;
+function TUser.HasRight(const right: TRights; const showWarning: boolean = true): boolean;
 var
-  rt: string;
+  rightCode: string;
 begin
-  Result := false;
+  rightCode := TRttiEnumerationType.GetName<TRights>(right);
 
-  for rt in FRights do
-    if rt = code then
-    begin
-      Result := true;
-      Exit;
-    end;
+  Result := MatchStr(rightCode,FRights);
+
+  if not Result then
+    if showWarning then ShowErrorBox('Access is denied.');
 end;
 
 end.

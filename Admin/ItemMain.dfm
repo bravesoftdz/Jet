@@ -116,6 +116,7 @@ inherited frmItemMain: TfrmItemMain
       TabOnEnter = True
     end
     object cbxActive: TRzDBCheckBox
+      Tag = 1
       Left = 16
       Top = 215
       Width = 53
@@ -130,6 +131,7 @@ inherited frmItemMain: TfrmItemMain
       TabOrder = 5
     end
     object dbluUnit: TRzDBLookupComboBox
+      Tag = 1
       Left = 13
       Top = 182
       Width = 249

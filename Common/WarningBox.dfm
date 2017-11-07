@@ -5,8 +5,9 @@ inherited frmWarningBox: TfrmWarningBox
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     BorderColor = 376028
+    Color = 443878
     GradientColorStart = 443878
-    GradientColorStop = 775673
+    GradientColorStop = 446450
     inherited lblCaption: TRzLabel
       Width = 47
       Caption = 'Warning'

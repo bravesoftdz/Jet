@@ -26,7 +26,10 @@ type
   protected
     procedure SearchList; override;
     procedure BindToObject; override;
+
     function EntryIsValid: boolean; override;
+    function NewIsAllowed: boolean; override;
+    function EditIsAllowed: boolean; override;
   public
     { Public declarations }
     procedure SetIdentity; override;
@@ -37,7 +40,7 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, DBUtil;
+  AppData, AppDialogs, DBUtil, uUser;
 
 { TfrmItemName }
 
@@ -46,6 +49,11 @@ begin
   inherited;
   Item.Name := edName.Text;
   Item.Description := mmDescription.Text;
+end;
+
+function TfrmItemMain.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_ITEM,false);
 end;
 
 function TfrmItemMain.EntryIsValid: boolean;
@@ -70,6 +78,11 @@ procedure TfrmItemMain.FormCreate(Sender: TObject);
 begin
   Item := TItem.Create;
   inherited;
+end;
+
+function TfrmItemMain.NewIsAllowed: boolean;
+begin
+  Result := User.HasRight(ADD_ITEM);
 end;
 
 procedure TfrmItemMain.SearchList;

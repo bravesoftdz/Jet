@@ -41,9 +41,11 @@ type
     procedure BindToObject; override;
     procedure SearchClient;
     procedure SetFieldsFromUnboundControls; override;
-    procedure OpenProjectRecord;
+    procedure ShowExpenses;
 
     function EntryIsValid: boolean; override;
+    function NewIsAllowed: boolean; override;
+    function EditIsAllowed: boolean; override;
   public
     { Public declarations }
     procedure SetIdentity; override;
@@ -60,7 +62,7 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, DBUtil, FormsUtil, ExpenseList, SearchUtil;
+  AppData, AppDialogs, DBUtil, FormsUtil, ExpenseList, SearchUtil, uUser;
 
 { TfrmProjectMain }
 
@@ -94,6 +96,11 @@ begin
   SetUnboundControls;
 end;
 
+function TfrmProjectMain.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_PROJECT,false);
+end;
+
 function TfrmProjectMain.EntryIsValid: boolean;
 var
   error: string;
@@ -102,7 +109,11 @@ begin
 
   if not Project.HasClient then
   begin
-    if ShowDecisionBox('No client selected. Do you want to proceed?') = mrNo then Exit;
+    if ShowWarningBox('No client selected. Do you want to proceed?') <> mrYes then
+    begin
+      grList.DataSource.DataSet.Cancel;
+      Exit;
+    end;
   end
   else if not Project.HasName then error := 'Please enter project name.';
 
@@ -132,16 +143,22 @@ end;
 procedure TfrmProjectMain.grListDblClick(Sender: TObject);
 begin
   BindToObject;
-  OpenProjectRecord;
+  ShowExpenses;
 end;
 
-procedure TfrmProjectMain.OpenProjectRecord;
+function TfrmProjectMain.NewIsAllowed: boolean;
 begin
-  with TfrmExpenseList.Create(self,Project) do
+  Result := User.HasRight(ADD_PROJECT);
+end;
+
+procedure TfrmProjectMain.ShowExpenses;
+begin
+  with TfrmExpenseList.Create(self.Parent,Project) do
   begin
     try
-      WinApi.Windows.SetParent(Handle,self.Parent.Handle);
-      Show;
+      // WinApi.Windows.SetParent(Handle,self.Parent.Handle);
+      ShowModal;
+      Free;
     finally
 
     end;

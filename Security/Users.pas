@@ -24,7 +24,10 @@ type
   protected
     procedure SearchList; override;
     procedure BindToObject; override;
+
     function EntryIsValid: boolean; override;
+    function NewIsAllowed: boolean; override;
+    function EditIsAllowed: boolean; override;
   public
     { Public declarations }
   end;
@@ -46,6 +49,11 @@ begin
 
   if dbluRole.Text <> '' then LUser.RoleCode := dbluRole.KeyValue
   else LUser.RoleCode := '';
+end;
+
+function TfrmUsers.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_USER,false);
 end;
 
 function TfrmUsers.EntryIsValid: boolean;
@@ -71,6 +79,11 @@ procedure TfrmUsers.FormCreate(Sender: TObject);
 begin
   LUser := TUser.Create;
   inherited;
+end;
+
+function TfrmUsers.NewIsAllowed: boolean;
+begin
+  Result := User.HasRight(ADD_USER);
 end;
 
 procedure TfrmUsers.SearchList;

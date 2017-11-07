@@ -3,7 +3,7 @@ UPDATE ITEM SET ACTIVE = TRUE;
 UPDATE EXPENSE SET CANCELLED = FALSE;
 
 INSERT INTO SYSRIGHT VALUES ('ADD_USER','Add system users',null,true);
-INSERT INTO SYSRIGHT VALUES ('VIEW_USER','View system user',null,true);
+INSERT INTO SYSRIGHT VALUES ('VIEW_USER','View system users',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_USER','Modify system user credentials',null,true);
 INSERT INTO SYSRIGHT VALUES ('ADD_ROLE','Add system roles',null,true);
 INSERT INTO SYSRIGHT VALUES ('VIEW_ROLE','View system roles',null,true);
@@ -18,6 +18,8 @@ INSERT INTO SYSRIGHT VALUES ('ADD_UNITS','Add units',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_UNITS','Modify unit details',null,true);
 INSERT INTO SYSRIGHT VALUES ('ADD_EXPENSE','Add project expenses',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_EXPENSE','Modify project expense details including cancellation',null,true);
+INSERT INTO SYSRIGHT VALUES ('ADD_CLIENT','Add clients',null,true);
+INSERT INTO SYSRIGHT VALUES ('MODIFY_CLIENT','Modify client details',null,true);
 
 INSERT INTO SYSROLE VALUES ('ADM','Administrator',null);
 

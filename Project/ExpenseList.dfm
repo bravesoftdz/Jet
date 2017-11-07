@@ -1,13 +1,13 @@
 inherited frmExpenseList: TfrmExpenseList
   Caption = 'frmExpenseList'
-  ClientHeight = 485
+  ClientHeight = 450
   ClientWidth = 954
   Position = poOwnerFormCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 954
-  ExplicitHeight = 485
+  ExplicitHeight = 450
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlTitle: TRzPanel
@@ -25,7 +25,7 @@ inherited frmExpenseList: TfrmExpenseList
   end
   inherited pnlMain: TRzPanel
     Width = 954
-    Height = 464
+    Height = 429
     ExplicitWidth = 954
     ExplicitHeight = 464
     object lblTotal: TLabel
@@ -34,7 +34,7 @@ inherited frmExpenseList: TfrmExpenseList
       Width = 47
       Height = 18
       Alignment = taRightJustify
-      Anchors = [akTop, akBottom]
+      Anchors = [akTop, akRight]
       Caption = 'Total: '
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 5525550
@@ -82,38 +82,23 @@ inherited frmExpenseList: TfrmExpenseList
       Font.Style = []
       ParentFont = False
     end
-    object lblProject: TLabel
-      Left = 23
-      Top = 8
-      Width = 607
-      Height = 29
-      Anchors = [akLeft, akBottom]
-      AutoSize = False
-      Caption = 'Name of Project Here'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5525550
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      WordWrap = True
-    end
     object pnlList: TRzPanel
       Left = 22
       Top = 82
       Width = 608
-      Height = 363
+      Height = 328
       Anchors = [akLeft, akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
       BorderWidth = 1
       ParentColor = True
       TabOrder = 0
+      ExplicitHeight = 363
       object grList: TRzDBGrid
         Left = 1
         Top = 1
         Width = 606
-        Height = 361
+        Height = 326
         Align = alClient
         BorderStyle = bsNone
         Color = 15794175
@@ -248,16 +233,17 @@ inherited frmExpenseList: TfrmExpenseList
       Left = 650
       Top = 82
       Width = 281
-      Height = 363
+      Height = 328
       Anchors = [akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
       BorderWidth = 1
       ParentColor = True
       TabOrder = 1
+      ExplicitHeight = 363
       DesignSize = (
         281
-        363)
+        328)
       object Label4: TLabel
         Left = 13
         Top = 12
@@ -476,7 +462,7 @@ inherited frmExpenseList: TfrmExpenseList
         Left = 13
         Top = 227
         Width = 251
-        Height = 55
+        Height = 38
         DataField = 'R_REMARKS'
         DataSource = dmProject.dscExpenses
         TabOrder = 7
@@ -489,7 +475,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object pnlAdd: TRzPanel
         Left = 8
-        Top = 333
+        Top = 298
         Width = 50
         Height = 22
         Anchors = [akLeft, akBottom]
@@ -504,6 +490,7 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Style = []
         ParentFont = False
         TabOrder = 9
+        ExplicitTop = 333
         object sbtnNew: TRzShapeButton
           Left = 0
           Top = 0
@@ -538,7 +525,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object cbxCancelled: TRzDBCheckBox
         Left = 13
-        Top = 291
+        Top = 273
         Width = 70
         Height = 16
         DataField = 'R_CANCELLED'

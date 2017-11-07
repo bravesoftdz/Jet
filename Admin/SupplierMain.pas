@@ -26,7 +26,10 @@ type
   protected
     procedure SearchList; override;
     procedure BindToObject; override;
+
     function EntryIsValid: boolean; override;
+    function NewIsAllowed: boolean; override;
+    function EditIsAllowed: boolean; override;
   public
     { Public declarations }
     procedure SetIdentity; override;
@@ -37,7 +40,7 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, DBUtil;
+  AppData, AppDialogs, DBUtil, uUser;
 
 { TfrmSupplierMain }
 
@@ -47,6 +50,11 @@ begin
   Supplier.ContactPerson := edContact.Text;
   Supplier.Phone := edPhone.Text;
   Supplier.Address := mmAddress.Text;
+end;
+
+function TfrmSupplierMain.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_SUPPLIER,false);
 end;
 
 function TfrmSupplierMain.EntryIsValid: boolean;
@@ -70,6 +78,11 @@ procedure TfrmSupplierMain.FormCreate(Sender: TObject);
 begin
   Supplier := TSupplier.Create;
   inherited;
+end;
+
+function TfrmSupplierMain.NewIsAllowed: boolean;
+begin
+  Result := User.HasRight(ADD_SUPPLIER);
 end;
 
 procedure TfrmSupplierMain.SearchList;

@@ -183,6 +183,7 @@ inherited frmProjectMain: TfrmProjectMain
       TabOnEnter = True
     end
     object bteClient: TRzButtonEdit
+      Tag = 1
       Left = 13
       Top = 51
       Width = 249
@@ -206,6 +207,7 @@ inherited frmProjectMain: TfrmProjectMain
       OnButtonClick = bteClientButtonClick
     end
     object dteStart: TRzDBDateTimeEdit
+      Tag = 1
       Left = 13
       Top = 307
       Width = 121
@@ -221,6 +223,7 @@ inherited frmProjectMain: TfrmProjectMain
       Format = 'mm/dd/yyyy'
     end
     object dteEnd: TRzDBDateTimeEdit
+      Tag = 1
       Left = 141
       Top = 307
       Width = 121
@@ -252,6 +255,7 @@ inherited frmProjectMain: TfrmProjectMain
       TabOnEnter = True
     end
     object edBudget: TRzDBNumericEdit
+      Tag = 1
       Left = 13
       Top = 355
       Width = 121
@@ -262,11 +266,13 @@ inherited frmProjectMain: TfrmProjectMain
       FrameColor = 7038525
       FrameVisible = True
       FramingPreference = fpCustomFraming
+      ReadOnlyColor = 15794175
       TabOrder = 8
       IntegersOnly = False
       DisplayFormat = '###,###,##0.00'
     end
     object cbxActive: TRzDBCheckBox
+      Tag = 1
       Left = 141
       Top = 361
       Width = 53

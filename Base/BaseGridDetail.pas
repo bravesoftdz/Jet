@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDocked, Data.DB, Vcl.StdCtrls,
   Vcl.Mask, RzEdit, RzTabs, Vcl.Grids, Vcl.DBGrids, RzDBGrid, RzLabel,
   Vcl.ExtCtrls, RzPanel, RzButton, System.ImageList, Vcl.ImgList,
-  SaveIntf, NewIntf, RzDBEdit, SetIdentityIntf;
+  SaveIntf, NewIntf, RzDBEdit, SetIdentityIntf, RzDBCmbo, RzDBChk, RzBtnEdt;
 
 type
   TfrmBaseGridDetail = class(TfrmBaseDocked,ISave,INew,ISetIdentity)
@@ -35,6 +35,8 @@ type
     procedure BindToObject; virtual; abstract;
     procedure SetFieldsFromUnboundControls; virtual;
     function EntryIsValid: boolean; virtual; abstract;
+    function NewIsAllowed: boolean; virtual; abstract;
+    function EditIsAllowed: boolean; virtual; abstract;
   public
     { Public declarations }
     function Save: boolean; virtual;
@@ -69,13 +71,29 @@ begin
   for i := 0 to cnt do
   begin
     winCtrl := pnlDetail.Controls[i];
-    readOnly := (grList.DataSource.DataSet.RecordCount = 0) and (grList.DataSource.DataSet.State = dsBrowse);
+
+    with grList.DataSource.DataSet do
+    begin
+      if State = dsInsert then readOnly := false
+      else if State = dsBrowse then readOnly := (RecordCount = 0) or (not EditIsAllowed);
+    end;
+
     if winCtrl.Tag = 1 then
     begin
       if  winCtrl is TRzDBEdit then
         (winCtrl as TRzDBEdit).ReadOnly := readOnly
       else if  winCtrl is TRzDBMemo then
-        (winCtrl as TRzDBMemo).ReadOnly := readOnly;
+        (winCtrl as TRzDBMemo).ReadOnly := readOnly
+      else if  winCtrl is TRzDBLookupComboBox then
+        (winCtrl as TRzDBLookupComboBox).ReadOnly := readOnly
+      else if  winCtrl is TRzDBDateTimeEdit then
+        (winCtrl as TRzDBDateTimeEdit).ReadOnly := readOnly
+      else if  winCtrl is TRzDBCheckBox then
+        (winCtrl as TRzDBCheckBox).ReadOnly := readOnly
+      else if  winCtrl is TRzDBNumericEdit then
+        (winCtrl as TRzDBNumericEdit).ReadOnly := readOnly
+      else if  winCtrl is TRzButtonEdit then
+        (winCtrl as TRzButtonEdit).HideButtonsOnReadOnly := readOnly;
     end;
   end;
 end;
@@ -150,15 +168,18 @@ end;
 
 procedure TfrmBaseGridDetail.New;
 begin
-  grList.DataSource.DataSet.Append;
+  if NewIsAllowed then
+  begin
+    grList.DataSource.DataSet.Append;
 
-  EnableControls;
+    EnableControls;
 
-  // disable the grid
-  grList.Enabled := false;
+    // disable the grid
+    grList.Enabled := false;
 
-  // focus the first control
-  grList.DataSource.DataSet.FieldByName(grList.Columns[0].FieldName).FocusControl;
+    // focus the first control
+    grList.DataSource.DataSet.FieldByName(grList.Columns[0].FieldName).FocusControl;
+  end;
 end;
 
 end.

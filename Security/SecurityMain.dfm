@@ -9,6 +9,7 @@ inherited frmSecurityMain: TfrmSecurityMain
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 1053
+    ExplicitWidth = 1053
     inherited lblTitle: TRzLabel
       Width = 86
       Caption = 'User and roles'
