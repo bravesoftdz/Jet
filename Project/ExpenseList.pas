@@ -42,6 +42,10 @@ type
     Label11: TLabel;
     dbluUnit: TRzDBLookupComboBox;
     cbxCancelled: TRzDBCheckBox;
+    pnlSave: TRzPanel;
+    sbtnSave: TRzShapeButton;
+    pnlCancel: TRzPanel;
+    sbtnCancel: TRzShapeButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grListTitleClick(Column: TColumn);
     procedure imgCloseClick(Sender: TObject);
@@ -59,6 +63,8 @@ type
     procedure dteUntilChange(Sender: TObject);
     procedure sbtnNewClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure sbtnSaveClick(Sender: TObject);
+    procedure sbtnCancelClick(Sender: TObject);
   private
     { Private declarations }
     Expense: TExpense;
@@ -66,11 +72,14 @@ type
     procedure SetFieldsFromUnboundControls;
     procedure SetTotal;
     procedure FilterGrid;
+    procedure EnableControls;
 
     function SearchItem: TItem;
     function SearchSupplier: TSupplier;
 
     function EntryIsValid: boolean;
+    function NewIsAllowed: boolean;
+    function EditIsAllowed: boolean;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); overload; override;
@@ -88,7 +97,7 @@ implementation
 {$R *.dfm}
 
 uses
-  ProjectData, FormsUtil, AppGlobal, AppDialogs, SearchUtil, AppData;
+  ProjectData, FormsUtil, AppGlobal, AppDialogs, SearchUtil, AppData, uUser;
 
 constructor TfrmExpenseList.Create(AOwner: TComponent);
 begin
@@ -211,6 +220,48 @@ begin
   end;
 end;
 
+function TfrmExpenseList.EditIsAllowed: boolean;
+begin
+  Result := User.HasRight(MODIFY_EXPENSE,false);
+end;
+
+procedure TfrmExpenseList.EnableControls;
+var
+  i, cnt: integer;
+  winCtrl: TControl;
+  readOnly: boolean;
+begin
+  cnt := pnlDetail.ControlCount - 1;
+  for i := 0 to cnt do
+  begin
+    winCtrl := pnlDetail.Controls[i];
+
+    with grList.DataSource.DataSet do
+    begin
+      if State = dsInsert then readOnly := false
+      else if State = dsBrowse then readOnly := (RecordCount = 0) or (not EditIsAllowed);
+    end;
+
+    if winCtrl.Tag = 1 then
+    begin
+      if  winCtrl is TRzDBEdit then
+        (winCtrl as TRzDBEdit).ReadOnly := readOnly
+      else if  winCtrl is TRzDBMemo then
+        (winCtrl as TRzDBMemo).ReadOnly := readOnly
+      else if  winCtrl is TRzDBLookupComboBox then
+        (winCtrl as TRzDBLookupComboBox).ReadOnly := readOnly
+      else if  winCtrl is TRzDBDateTimeEdit then
+        (winCtrl as TRzDBDateTimeEdit).ReadOnly := readOnly
+      else if  winCtrl is TRzDBCheckBox then
+        (winCtrl as TRzDBCheckBox).ReadOnly := readOnly
+      else if  winCtrl is TRzDBNumericEdit then
+        (winCtrl as TRzDBNumericEdit).ReadOnly := readOnly
+      else if  winCtrl is TRzButtonEdit then
+        (winCtrl as TRzButtonEdit).HideButtonsOnReadOnly := readOnly;
+    end;
+  end;
+end;
+
 function TfrmExpenseList.EntryIsValid: boolean;
 var
   error: string;
@@ -284,7 +335,6 @@ end;
 procedure TfrmExpenseList.FormShow(Sender: TObject);
 begin
   inherited;
-  SetUnboundControls;
 
   // bind the date events
   // don't bind at design time
@@ -297,6 +347,7 @@ begin
 
   FilterGrid;
   SetUnboundControls;
+  EnableControls;
 
   SetTotal;
 end;
@@ -315,11 +366,27 @@ end;
 
 procedure TfrmExpenseList.New;
 begin
-  if Expense.Project.IsClosed then
-    if ShowWarningBox('Project is already CLOSED. Do you still want to continue?') = mrNo then
-      Exit;
+  if NewIsAllowed then
+  begin
+    if Expense.Project.IsClosed then
+      if ShowWarningBox('Project is already CLOSED. Do you still want to continue?') = mrNo then
+        Exit;
 
-  grList.DataSource.DataSet.Append;
+    grList.DataSource.DataSet.Append;
+
+    EnableControls;
+
+    // disable the grid
+    grList.Enabled := false;
+
+    // focus the first control
+    grList.DataSource.DataSet.FieldByName(grList.Columns[0].FieldName).FocusControl;
+  end;
+end;
+
+function TfrmExpenseList.NewIsAllowed: boolean;
+begin
+  Result := User.HasRight(ADD_EXPENSE);
 end;
 
 function TfrmExpenseList.Save: boolean;
@@ -363,10 +430,22 @@ begin
   end;
 end;
 
+procedure TfrmExpenseList.sbtnCancelClick(Sender: TObject);
+begin
+  inherited;
+  Cancel;
+end;
+
 procedure TfrmExpenseList.sbtnNewClick(Sender: TObject);
 begin
   inherited;
   New;
+end;
+
+procedure TfrmExpenseList.sbtnSaveClick(Sender: TObject);
+begin
+  inherited;
+  Save;
 end;
 
 procedure TfrmExpenseList.SetTotal;

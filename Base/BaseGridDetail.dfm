@@ -119,7 +119,7 @@ inherited frmBaseGridDetail: TfrmBaseGridDetail
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
       object sbtnNew: TRzShapeButton
         Left = 0
         Top = 0
@@ -147,7 +147,7 @@ inherited frmBaseGridDetail: TfrmBaseGridDetail
       GradientColorStyle = gcsCustom
       GradientColorStart = 7038525
       GradientColorStop = 7827778
-      TabOrder = 1
+      TabOrder = 0
       VisualStyle = vsGradient
       object lblDetailHeadCaption: TRzLabel
         Left = 7
@@ -162,6 +162,66 @@ inherited frmBaseGridDetail: TfrmBaseGridDetail
         Font.Style = [fsBold]
         ParentFont = False
         Transparent = True
+      end
+    end
+    object pnlSave: TRzPanel
+      Left = 64
+      Top = 401
+      Width = 50
+      Height = 22
+      Anchors = [akLeft, akBottom]
+      BorderOuter = fsNone
+      BorderColor = 6577975
+      BorderWidth = 1
+      Color = 9077581
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      object sbtnSave: TRzShapeButton
+        Left = 0
+        Top = 0
+        Width = 50
+        Height = 22
+        Hint = 'Save'
+        BorderStyle = bsNone
+        Caption = 'Save'
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = sbtnSaveClick
+      end
+    end
+    object pnlCancel: TRzPanel
+      Left = 219
+      Top = 401
+      Width = 50
+      Height = 22
+      Anchors = [akRight, akBottom]
+      BorderOuter = fsNone
+      BorderColor = 6577975
+      BorderWidth = 1
+      Color = 9077581
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      object sbtnCancel: TRzShapeButton
+        Left = 0
+        Top = 0
+        Width = 50
+        Height = 22
+        Hint = 'Cancel'
+        BorderStyle = bsNone
+        Caption = 'Cancel'
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = sbtnCancelClick
       end
     end
   end

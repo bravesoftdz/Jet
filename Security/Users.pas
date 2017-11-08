@@ -9,6 +9,25 @@ uses
   Vcl.ExtCtrls, RzPanel, RzDBEdit, Vcl.DBCtrls, RzDBCmbo, uUser;
 
 type
+  TLocalUser = class
+  private
+    FName: string;
+    FPasskey: string;
+    FRoleCode: string;
+
+    function GetHasName: boolean;
+    function GetHasPasskey: boolean;
+    function GetHasRole: boolean;
+
+  public
+    property Name: string read FName write FName;
+    property Passkey: string read FPasskey write FPasskey;
+    property RoleCode: string read FRoleCode write FRoleCode;
+    property HasName: boolean read GetHasName;
+    property HasPasskey: boolean read GetHasPasskey;
+    property HasRole: boolean read GetHasRole;
+  end;
+
   TfrmUsers = class(TfrmBaseGridDetail)
     Label2: TLabel;
     edUsername: TRzDBEdit;
@@ -20,7 +39,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
-    LUser: TUser;
+    LUser: TLocalUser;
   protected
     procedure SearchList; override;
     procedure BindToObject; override;
@@ -77,7 +96,7 @@ end;
 
 procedure TfrmUsers.FormCreate(Sender: TObject);
 begin
-  LUser := TUser.Create;
+  LUser := TLocalUser.Create;
   inherited;
 end;
 
@@ -92,6 +111,23 @@ var
 begin
   filterStr := 'USERNAME LIKE ' + QuotedStr('%' + UpperCase(edSearchKey.Text) + '%');
   grList.DataSource.DataSet.Filter := filterStr;
+end;
+
+{ TLocalUser }
+
+function TLocalUser.GetHasName: boolean;
+begin
+  Result := FName <> '';
+end;
+
+function TLocalUser.GetHasPasskey: boolean;
+begin
+  Result := FPasskey <> '';
+end;
+
+function TLocalUser.GetHasRole: boolean;
+begin
+  Result := FRoleCode <> '';
 end;
 
 end.

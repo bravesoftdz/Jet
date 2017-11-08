@@ -109,6 +109,12 @@ inherited frmRoles: TfrmRoles
       ParentFont = False
       OnClick = urlRolesClick
     end
+    inherited pnlSave: TRzPanel
+      TabOrder = 5
+    end
+    inherited pnlCancel: TRzPanel
+      TabOrder = 6
+    end
     object edCode: TRzDBEdit
       Tag = 1
       Left = 13

@@ -21,12 +21,18 @@ type
     pnlDetailHead: TRzPanel;
     lblDetailHeadCaption: TRzLabel;
     sbtnNew: TRzShapeButton;
+    pnlSave: TRzPanel;
+    sbtnSave: TRzShapeButton;
+    pnlCancel: TRzPanel;
+    sbtnCancel: TRzShapeButton;
     procedure FormCreate(Sender: TObject);
     procedure edSearchKeyChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure sbtnNewClick(Sender: TObject);
     procedure grListTitleClick(Column: TColumn);
+    procedure sbtnSaveClick(Sender: TObject);
+    procedure sbtnCancelClick(Sender: TObject);
   private
     { Private declarations }
     procedure EnableControls;
@@ -67,16 +73,16 @@ var
   winCtrl: TControl;
   readOnly: boolean;
 begin
+  with grList.DataSource.DataSet do
+  begin
+    if State = dsInsert then readOnly := false
+    else if State = dsBrowse then readOnly := (RecordCount = 0) or (not EditIsAllowed);
+  end;
+
   cnt := pnlDetail.ControlCount - 1;
   for i := 0 to cnt do
   begin
     winCtrl := pnlDetail.Controls[i];
-
-    with grList.DataSource.DataSet do
-    begin
-      if State = dsInsert then readOnly := false
-      else if State = dsBrowse then readOnly := (RecordCount = 0) or (not EditIsAllowed);
-    end;
 
     if winCtrl.Tag = 1 then
     begin
@@ -145,9 +151,21 @@ begin
   end;
 end;
 
+procedure TfrmBaseGridDetail.sbtnCancelClick(Sender: TObject);
+begin
+  inherited;
+  Cancel;
+end;
+
 procedure TfrmBaseGridDetail.sbtnNewClick(Sender: TObject);
 begin
   New;
+end;
+
+procedure TfrmBaseGridDetail.sbtnSaveClick(Sender: TObject);
+begin
+  inherited;
+  Save;
 end;
 
 procedure TfrmBaseGridDetail.SetFieldsFromUnboundControls;

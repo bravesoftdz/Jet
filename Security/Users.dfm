@@ -81,6 +81,12 @@ inherited frmUsers: TfrmUsers
       Font.Style = [fsBold]
       ParentFont = False
     end
+    inherited pnlSave: TRzPanel
+      TabOrder = 5
+    end
+    inherited pnlCancel: TRzPanel
+      TabOrder = 6
+    end
     object edUsername: TRzDBEdit
       Tag = 1
       Left = 13

@@ -27,25 +27,24 @@ inherited frmExpenseList: TfrmExpenseList
     Width = 954
     Height = 429
     ExplicitWidth = 954
-    ExplicitHeight = 464
+    ExplicitHeight = 429
     object lblTotal: TLabel
-      Left = 884
-      Top = 11
-      Width = 47
-      Height = 18
-      Alignment = taRightJustify
-      Anchors = [akTop, akRight]
+      Left = 22
+      Top = 403
+      Width = 39
+      Height = 14
+      Anchors = [akLeft, akBottom]
       Caption = 'Total: '
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 5525550
-      Font.Height = -15
+      Font.Color = clBlack
+      Font.Height = -12
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label1: TLabel
       Left = 316
-      Top = 49
+      Top = 17
       Width = 46
       Height = 14
       Caption = 'Expense'
@@ -58,7 +57,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object Label2: TLabel
       Left = 632
-      Top = 49
+      Top = 17
       Width = 43
       Height = 14
       Caption = 'Supplier'
@@ -71,7 +70,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object Label3: TLabel
       Left = 22
-      Top = 49
+      Top = 17
       Width = 26
       Height = 14
       Caption = 'Date'
@@ -84,21 +83,20 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object pnlList: TRzPanel
       Left = 22
-      Top = 82
+      Top = 44
       Width = 608
-      Height = 328
+      Height = 347
       Anchors = [akLeft, akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
       BorderWidth = 1
       ParentColor = True
       TabOrder = 0
-      ExplicitHeight = 363
       object grList: TRzDBGrid
         Left = 1
         Top = 1
         Width = 606
-        Height = 326
+        Height = 345
         Align = alClient
         BorderStyle = bsNone
         Color = 15794175
@@ -231,19 +229,18 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object pnlDetail: TRzPanel
       Left = 650
-      Top = 82
+      Top = 44
       Width = 281
-      Height = 328
+      Height = 347
       Anchors = [akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
       BorderWidth = 1
       ParentColor = True
       TabOrder = 1
-      ExplicitHeight = 363
       DesignSize = (
         281
-        328)
+        347)
       object Label4: TLabel
         Left = 13
         Top = 12
@@ -349,6 +346,7 @@ inherited frmExpenseList: TfrmExpenseList
         ParentFont = False
       end
       object dteDate: TRzDBDateTimeEdit
+        Tag = 1
         Left = 13
         Top = 32
         Width = 121
@@ -382,6 +380,7 @@ inherited frmExpenseList: TfrmExpenseList
         TabOrder = 1
       end
       object bteItem: TRzButtonEdit
+        Tag = 1
         Left = 13
         Top = 83
         Width = 251
@@ -405,6 +404,7 @@ inherited frmExpenseList: TfrmExpenseList
         OnButtonClick = bteItemButtonClick
       end
       object bteSupplier: TRzButtonEdit
+        Tag = 1
         Left = 13
         Top = 131
         Width = 251
@@ -428,6 +428,7 @@ inherited frmExpenseList: TfrmExpenseList
         OnButtonClick = bteSupplierButtonClick
       end
       object edQuantity: TRzDBNumericEdit
+        Tag = 1
         Left = 13
         Top = 179
         Width = 54
@@ -438,11 +439,13 @@ inherited frmExpenseList: TfrmExpenseList
         FrameColor = 7038525
         FrameVisible = True
         FramingPreference = fpCustomFraming
+        ReadOnlyColor = 15794175
         TabOrder = 4
         IntegersOnly = False
         DisplayFormat = '0.00'
       end
       object edAmount: TRzDBNumericEdit
+        Tag = 1
         Left = 176
         Top = 179
         Width = 88
@@ -453,6 +456,7 @@ inherited frmExpenseList: TfrmExpenseList
         FrameColor = 7038525
         FrameVisible = True
         FramingPreference = fpCustomFraming
+        ReadOnlyColor = 15794175
         TabOrder = 6
         IntegersOnly = False
         DisplayFormat = '###,###,##0.00'
@@ -475,7 +479,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object pnlAdd: TRzPanel
         Left = 8
-        Top = 298
+        Top = 317
         Width = 50
         Height = 22
         Anchors = [akLeft, akBottom]
@@ -490,7 +494,7 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Style = []
         ParentFont = False
         TabOrder = 9
-        ExplicitTop = 333
+        ExplicitTop = 298
         object sbtnNew: TRzShapeButton
           Left = 0
           Top = 0
@@ -524,6 +528,7 @@ inherited frmExpenseList: TfrmExpenseList
         ReadOnlyColor = 15794175
       end
       object cbxCancelled: TRzDBCheckBox
+        Tag = 1
         Left = 13
         Top = 273
         Width = 70
@@ -537,10 +542,72 @@ inherited frmExpenseList: TfrmExpenseList
         FrameColor = 7038525
         TabOrder = 8
       end
+      object pnlSave: TRzPanel
+        Left = 64
+        Top = 317
+        Width = 50
+        Height = 22
+        Anchors = [akLeft, akBottom]
+        BorderOuter = fsNone
+        BorderColor = 6577975
+        BorderWidth = 1
+        Color = 9077581
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 10
+        ExplicitTop = 298
+        object sbtnSave: TRzShapeButton
+          Left = 0
+          Top = 0
+          Width = 50
+          Height = 22
+          Hint = 'Save'
+          BorderStyle = bsNone
+          Caption = 'Save'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = sbtnSaveClick
+        end
+      end
+      object pnlCancel: TRzPanel
+        Left = 222
+        Top = 317
+        Width = 50
+        Height = 22
+        Anchors = [akRight, akBottom]
+        BorderOuter = fsNone
+        BorderColor = 6577975
+        BorderWidth = 1
+        Color = 9077581
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 11
+        ExplicitTop = 298
+        object sbtnCancel: TRzShapeButton
+          Left = 0
+          Top = 0
+          Width = 50
+          Height = 22
+          Hint = 'Cancel'
+          BorderStyle = bsNone
+          Caption = 'Cancel'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = sbtnCancelClick
+        end
+      end
     end
     object bteItem2: TRzButtonEdit
       Left = 367
-      Top = 43
+      Top = 11
       Width = 249
       Height = 22
       Text = ''
@@ -563,7 +630,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object bteSupplierFilter: TRzButtonEdit
       Left = 682
-      Top = 43
+      Top = 11
       Width = 249
       Height = 22
       Text = ''
@@ -586,7 +653,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object dteFrom: TRzDateTimeEdit
       Left = 54
-      Top = 43
+      Top = 11
       Width = 121
       Height = 22
       EditType = etDate
@@ -598,7 +665,7 @@ inherited frmExpenseList: TfrmExpenseList
     end
     object dteUntil: TRzDateTimeEdit
       Left = 181
-      Top = 43
+      Top = 11
       Width = 121
       Height = 22
       EditType = etDate

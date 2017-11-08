@@ -37,9 +37,6 @@ type
     { Public declarations }
   end;
 
-var
-  frmRoles: TfrmRoles;
-
 implementation
 
 {$R *.dfm}
