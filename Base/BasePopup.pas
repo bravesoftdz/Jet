@@ -15,6 +15,7 @@ type
     lblCaption: TRzLabel;
     procedure imgCloseClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -27,6 +28,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmBasePopup.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  Action := caFree;
+end;
 
 procedure TfrmBasePopup.FormKeyPress(Sender: TObject; var Key: Char);
 begin

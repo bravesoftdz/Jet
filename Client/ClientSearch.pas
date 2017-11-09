@@ -25,9 +25,6 @@ type
     constructor Create(AOwner: TComponent; var AClient: TClient); reintroduce; overload;
   end;
 
-var
-  frmClientSearch: TfrmClientSearch;
-
 implementation
 
 {$R *.dfm}

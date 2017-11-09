@@ -59,7 +59,7 @@ implementation
 {$R *.dfm}
 
 uses
-  FormsUtil;
+  FormsUtil, AppDialogs;
 
 procedure TfrmBaseGridDetail.edSearchKeyChange(Sender: TObject);
 begin
@@ -165,7 +165,7 @@ end;
 procedure TfrmBaseGridDetail.sbtnSaveClick(Sender: TObject);
 begin
   inherited;
-  Save;
+  if Save then ShowConfirmationBox;
 end;
 
 procedure TfrmBaseGridDetail.SetFieldsFromUnboundControls;

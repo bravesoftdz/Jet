@@ -8,8 +8,10 @@ inherited frmClientSearch: TfrmClientSearch
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 467
+    ExplicitWidth = 467
     inherited imgClose: TImage
       Left = 446
+      ExplicitLeft = 446
     end
     inherited lblCaption: TRzLabel
       Width = 73
@@ -20,12 +22,17 @@ inherited frmClientSearch: TfrmClientSearch
   inherited pnlMain: TRzPanel
     Width = 467
     Height = 344
+    ExplicitWidth = 467
+    ExplicitHeight = 344
     inherited edSearchKey: TRzEdit
       Width = 410
+      ExplicitWidth = 410
     end
     inherited pnlSearch: TRzPanel
       Width = 449
       Height = 268
+      ExplicitWidth = 449
+      ExplicitHeight = 268
       inherited grSearch: TRzDBGrid
         Width = 447
         Height = 266
@@ -48,14 +55,18 @@ inherited frmClientSearch: TfrmClientSearch
     end
     inherited pnlSelect: TRzPanel
       Top = 312
+      ExplicitTop = 312
     end
     inherited pnlNew: TRzPanel
       Top = 312
       Visible = False
+      ExplicitTop = 312
     end
     inherited pnlCancel: TRzPanel
       Left = 407
       Top = 312
+      ExplicitLeft = 407
+      ExplicitTop = 312
     end
   end
 end

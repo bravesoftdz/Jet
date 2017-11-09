@@ -5,6 +5,7 @@ inherited frmBasePopup: TfrmBasePopup
   ClientWidth = 543
   KeyPreview = True
   Position = poMainFormCenter
+  OnClose = FormClose
   OnKeyPress = FormKeyPress
   ExplicitWidth = 543
   ExplicitHeight = 281

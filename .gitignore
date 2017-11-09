@@ -62,3 +62,10 @@
 *.exe
 *.FDB
 *.identcache
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.identcache
