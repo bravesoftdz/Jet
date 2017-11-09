@@ -406,7 +406,7 @@ inherited frmLogin: TfrmLogin
     Top = 45
     object miSuperUser: TMenuItem
       AutoCheck = True
-      Caption = 'Login as superuser'
+      Caption = 'Login as SUPERUSER'
       OnClick = miSuperUserClick
     end
   end

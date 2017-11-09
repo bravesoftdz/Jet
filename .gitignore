@@ -57,3 +57,5 @@
 *.local
 *.res
 *.stat
+*.exe
+*.FDB
