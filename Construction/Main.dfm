@@ -107,13 +107,13 @@ object frmMain: TfrmMain
       1093
       599)
     object lblWelcome: TRzLabel
-      Left = 916
+      Left = 874
       Top = 7
-      Width = 156
+      Width = 198
       Height = 19
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
-      Caption = 'Welcome back, Bryan.'
+      Caption = 'Welcome back SUPERUSER.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 5525550
       Font.Height = -16

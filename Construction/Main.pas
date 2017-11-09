@@ -209,7 +209,7 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
 //  lblCaption.Caption := ifn.AppName + ' - ' + ifn.AppDescription;
-  lblWelcome.Caption := 'Welcome back ' + User.Name + '.';
+  if not User.IsSuperUser then lblWelcome.Caption := 'Welcome back ' + User.Name + '.';
   lblDate.Caption := 'Today is ' + FormatDateTime('mmmm dd, yyyy.',app.AppDate);
 //  lblLocation.Caption := 'Location: ' + ifn.GetLocationNameByCode(ifn.LocationCode);
   lblVersion.Caption :=  'Version ' + app.Version;

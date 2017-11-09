@@ -27,6 +27,9 @@
         <Projects Include="Construction\Construction.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Tools\KeyGenerator.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -107,14 +110,23 @@
     <Target Name="Construction:Make">
         <MSBuild Projects="Construction\Construction.dproj" Targets="Make"/>
     </Target>
+    <Target Name="KeyGenerator">
+        <MSBuild Projects="Tools\KeyGenerator.dproj"/>
+    </Target>
+    <Target Name="KeyGenerator:Clean">
+        <MSBuild Projects="Tools\KeyGenerator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyGenerator:Make">
+        <MSBuild Projects="Tools\KeyGenerator.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Admin;Base;Client;Common;Project;Reports;Security;Construction"/>
+        <CallTarget Targets="Admin;Base;Client;Common;Project;Reports;Security;Construction;KeyGenerator"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Admin:Clean;Base:Clean;Client:Clean;Common:Clean;Project:Clean;Reports:Clean;Security:Clean;Construction:Clean"/>
+        <CallTarget Targets="Admin:Clean;Base:Clean;Client:Clean;Common:Clean;Project:Clean;Reports:Clean;Security:Clean;Construction:Clean;KeyGenerator:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Admin:Make;Base:Make;Client:Make;Common:Make;Project:Make;Reports:Make;Security:Make;Construction:Make"/>
+        <CallTarget Targets="Admin:Make;Base:Make;Client:Make;Common:Make;Project:Make;Reports:Make;Security:Make;Construction:Make;KeyGenerator:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

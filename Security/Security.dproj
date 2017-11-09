@@ -136,6 +136,7 @@
         <DCCReference Include="JvPageComps.dcp"/>
         <DCCReference Include="bdertl.dcp"/>
         <DCCReference Include="frce.dcp"/>
+        <DCCReference Include="LockBoxDR.dcp"/>
         <DCCReference Include="SecurityData.pas">
             <Form>dmSecurity</Form>
             <FormType>dfm</FormType>
@@ -175,6 +176,7 @@
             <Form>frmAssignRights</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="SecurityUtil.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

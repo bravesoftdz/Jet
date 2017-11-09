@@ -51,3 +51,9 @@
 *.identcache
 *.stat
 *.res
+*.exe
+*.FDB
+*.identcache
+*.local
+*.res
+*.stat

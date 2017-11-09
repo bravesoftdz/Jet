@@ -48,7 +48,8 @@ requires
   JvStdCtrls,
   JvPageComps,
   bdertl,
-  frce;
+  frce,
+  LockBoxDR;
 
 contains
   SecurityData in 'SecurityData.pas' {dmSecurity: TDataModule},
@@ -61,6 +62,7 @@ contains
   Roles in 'Roles.pas' {frmRoles},
   uRole in 'uRole.pas',
   BasePopupDetail in '..\Base\BasePopupDetail.pas' {frmBasePopupDetail},
-  AssignRights in 'AssignRights.pas' {frmAssignRights};
+  AssignRights in 'AssignRights.pas' {frmAssignRights},
+  SecurityUtil in 'SecurityUtil.pas';
 
 end.

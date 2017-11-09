@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, BasePopup, BaseForm, Vcl.StdCtrls, RzLabel, System.UITypes,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Vcl.Mask, RzEdit, RzPrgres,
-  RzButton, FireDAC.Comp.Client;
+  RzButton, FireDAC.Comp.Client, Vcl.Menus;
 
 type
   TfrmLogin = class(TfrmBasePopup)
@@ -25,6 +25,8 @@ type
     pnlLogin: TRzPanel;
     btnLogin: TRzShapeButton;
     lblVersion: TLabel;
+    ppLogin: TPopupMenu;
+    miSuperUser: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure edUsernameChange(Sender: TObject);
@@ -33,12 +35,14 @@ type
     procedure btnLoginClick(Sender: TObject);
     procedure pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure miSuperUserClick(Sender: TObject);
   private
     { Private declarations }
     procedure LoadModules;
     procedure LoadSettings;
     procedure SettingAccessRights;
     procedure PauseWindow(timer: integer);
+    procedure SetSuperUserCredentials;
     function UserExists: boolean;
   public
     { Public declarations }
@@ -58,7 +62,7 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData, AppDialogs, AppUtil, AppGlobal, uUser;
+  AppData, AppDialogs, AppUtil, AppGlobal, uUser, SecurityUtil;
 
 class function TfrmLogin.LoggedIn: boolean;
 begin
@@ -70,54 +74,67 @@ begin
   end;
 end;
 
+procedure TfrmLogin.miSuperUserClick(Sender: TObject);
+begin
+  inherited;
+  SetSuperUserCredentials;
+end;
+
 function TfrmLogin.UserExists: boolean;
 var
   username: string;
 var
   userQuery: TFDQuery;
 begin
-  userQuery := TFDQuery.Create(nil);
-  with dmApplication do
+  if User.IsSuperUser then
   begin
-    try
+    Result := (User.SuperUser.Name = edUsername.Text) and
+        (User.SuperUser.PassKey = UpperCase(edPassword.Text));
+  end
+  else
+  begin  // regular user
+    userQuery := TFDQuery.Create(nil);
+
+    with dmApplication do
+    begin
       try
-        userQuery.Connection := fdcMain;
+        try
+          userQuery.Connection := fdcMain;
 
-        userQuery.SQL.Text := 'SELECT U.*, ' +
-                                      'RR.RIGHT_CODE, ' +
-                                      'U.USERNAME ' +
-                                'FROM SYSUSER U ' +
-                           'LEFT JOIN SYSROLERIGHT RR ' +
-                                  'ON RR.ROLE_CODE = U.ROLE_CODE ' +
-                               'WHERE USERNAME = ' + QuotedStr(edUsername.Text) +
-                                 'AND PASSKEY = ' + QuotedStr(edPassword.Text);
+          userQuery.SQL.Text := 'SELECT U.*, ' +
+                                        'RR.RIGHT_CODE, ' +
+                                        'U.USERNAME ' +
+                                  'FROM SYSUSER U ' +
+                             'LEFT JOIN SYSROLERIGHT RR ' +
+                                    'ON RR.ROLE_CODE = U.ROLE_CODE ' +
+                                 'WHERE USERNAME = ' + QuotedStr(edUsername.Text) +
+                                   'AND PASSKEY = ' + QuotedStr(edPassword.Text);
 
-        userQuery.Connection.Open;
-        userQuery.Open;
+          userQuery.Connection.Open;
+          userQuery.Open;
 
-        if userQuery.RecordCount > 0 then
-        begin
-          Result := true;
-
-          // set user object
-          User := TUser.Create;
-
-          User.Name := Trim(edUsername.Text);
-          User.Passkey := Trim(edPassword.Text);
-
-          // rights
-          while not userQuery.Eof  do
+          if userQuery.RecordCount > 0 then
           begin
-            User.AddRight(userQuery.FieldByName('RIGHT_CODE').AsString);
-            userQuery.Next;
+            Result := true;
+
+            // set user object
+            User.Name := Trim(edUsername.Text);
+            User.Passkey := Trim(edPassword.Text);
+
+            // rights
+            while not userQuery.Eof  do
+            begin
+              User.AddRight(userQuery.FieldByName('RIGHT_CODE').AsString);
+              userQuery.Next;
+            end;
           end;
+        except
+          on E: Exception do lblErrorMessage.Caption := 'Unable to authenticate user.';
         end;
-      except
-        on E: Exception do lblErrorMessage.Caption := 'Unable to authenticate user.';
+      finally
+        userQuery.Close;
+        userQuery.Free;
       end;
-    finally
-      userQuery.Close;
-      userQuery.Free;
     end;
   end;
 end;
@@ -138,6 +155,8 @@ procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   inherited;
   dmApplication := TdmApplication.Create(Application);
+
+  User := TUser.Create;
 
   lblVersion.Caption := 'Version ' + GetAppVersionStr(ParamStr(0));;
 end;
@@ -299,6 +318,34 @@ begin
     self.Update;
 
     Inc(i);
+  end;
+end;
+
+procedure TfrmLogin.SetSuperUserCredentials;
+var
+  username, key: string;
+  LSuperUser: TSuperUser;
+begin
+  if miSuperUser.Checked then
+  begin
+    if GetSuperUserCredentials(username,key) then
+    begin
+      LSuperUser := TSuperUser.Create;
+      LSuperUser.Name := username;
+      LSuperUser.Passkey := key;
+
+      User.SuperUser := LSuperUser;
+
+      edUsername.Text := username;
+      edUsername.Color := $00C0BA8D;
+    end;
+  end
+  else
+  begin
+    User.ClearSuperUser;
+    edUsername.Clear;
+    edPassword.Clear;
+    edUsername.Color := clWhite;
   end;
 end;
 

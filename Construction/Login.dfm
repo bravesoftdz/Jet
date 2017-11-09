@@ -322,10 +322,12 @@ inherited frmLogin: TfrmLogin
       Height = 22
       Text = ''
       CharCase = ecUpperCase
+      Color = clWhite
       DisabledColor = 12630669
       FrameColor = 7827778
       FrameVisible = True
       FramingPreference = fpCustomFraming
+      PopupMenu = ppLogin
       TabOnEnter = True
       TabOrder = 0
       OnChange = edUsernameChange
@@ -397,6 +399,15 @@ inherited frmLogin: TfrmLogin
         ParentFont = False
         OnClick = btnLoginClick
       end
+    end
+  end
+  object ppLogin: TPopupMenu
+    Left = 32
+    Top = 45
+    object miSuperUser: TMenuItem
+      AutoCheck = True
+      Caption = 'Login as superuser'
+      OnClick = miSuperUserClick
     end
   end
 end

@@ -26,16 +26,27 @@ type
               MODIFY_CLIENT
               );
 
+  TSuperUser = class
+  strict private
+    FName: string;
+    FPasskey: string;
+  public
+    property Name: string read FName write FName;
+    property Passkey: string read FPasskey write FPasskey;
+  end;
+
   TUser = class
   private
     FName: string;
     FPasskey: string;
     FRoleCode: string;
     FRights: array of string;
+    FSuperUser: TSuperUser;
 
     function GetHasName: boolean;
     function GetHasPasskey: boolean;
     function GetHasRole: boolean;
+    function GetIsSuperUser: boolean;
 
   public
     property Name: string read FName write FName;
@@ -44,8 +55,11 @@ type
     property HasName: boolean read GetHasName;
     property HasPasskey: boolean read GetHasPasskey;
     property HasRole: boolean read GetHasRole;
+    property SuperUser: TSuperUser read FSuperUser write FSuperUser;
+    property IsSuperUser: boolean read GetIsSuperUser;
 
     procedure AddRight(const code: string);
+    procedure ClearSuperUser;
 
     function HasRight(const right: TRights; const showWarning: boolean = true): boolean;
     function ChangePassword(ANewPasskey: string): Boolean;
@@ -89,6 +103,11 @@ begin
   end;
 end;
 
+procedure TUser.ClearSuperUser;
+begin
+  FreeAndNil(FSuperUser);
+end;
+
 constructor TUser.Create(const AName: string);
 begin
   FName := AName;
@@ -109,6 +128,11 @@ begin
   Result := RoleCode <> '';
 end;
 
+function TUser.GetIsSuperUser: boolean;
+begin
+  Result := Assigned(FSuperUser);
+end;
+
 constructor TUser.Create;
 begin
   if User <> nil then User := self
@@ -119,9 +143,14 @@ function TUser.HasRight(const right: TRights; const showWarning: boolean = true)
 var
   rightCode: string;
 begin
-  rightCode := TRttiEnumerationType.GetName<TRights>(right);
+  Result := Assigned(FSuperUser);
 
-  Result := MatchStr(rightCode,FRights);
+  if not Result then
+  begin
+    rightCode := TRttiEnumerationType.GetName<TRights>(right);
+
+    Result := MatchStr(rightCode,FRights);
+  end;
 
   if not Result then
     if showWarning then ShowErrorBox('Access is denied.');
