@@ -13,6 +13,7 @@ type
     edPhrase: TEdit;
     edKey: TEdit;
     btnGenerate: TButton;
+    cbxSimple: TCheckBox;
     procedure btnGenerateClick(Sender: TObject);
   private
     { Private declarations }
@@ -41,7 +42,10 @@ var
   phrase, key: string;
 begin
   phrase := edPhrase.Text;
-  key := GetKey(phrase,true);
+
+  if cbxSimple.Checked then key := Decrypt(phrase)
+  else key := GetKey(phrase,true);
+
   edKey.Text := key;
 end;
 

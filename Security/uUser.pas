@@ -62,7 +62,7 @@ type
     procedure ClearSuperUser;
 
     function HasRight(const right: TRights; const showWarning: boolean = true): boolean;
-    function ChangePassword(ANewPasskey: string): Boolean;
+    function ChangePassword(ANewPasskey: AnsiString): Boolean;
 
     constructor Create; overload;
     constructor Create(const AName: string); overload;
@@ -84,7 +84,7 @@ begin
   FRights[Length(FRights) - 1] := code;
 end;
 
-function TUser.ChangePassword(ANewPasskey: string): Boolean;
+function TUser.ChangePassword(ANewPasskey: AnsiString): Boolean;
 var
   sqlStr: string;
 begin

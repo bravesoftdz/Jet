@@ -35,7 +35,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uUser, AppDialogs;
+  uUser, AppDialogs, SecurityUtil;
 
 procedure TfrmChangePassword.btnSaveClick(Sender: TObject);
 begin
@@ -83,15 +83,15 @@ end;
 
 function TfrmChangePassword.Save: boolean;
 var
-  newPassKey: string;
+  newPassKey: AnsiString;
 begin
   Result := false;
   if PasskeyIsValid then
   begin
-    newPassKey := Trim(edNewPassword.Text);
+    newPassKey := Encrypt(Trim(edNewPassword.Text));
     if User.ChangePassword(newPassKey) then
     begin
-      // ShowConfirmationBox('Password changed successfully.');
+      ShowConfirmationBox('Password changed successfully.');
       ClearPasswords;
       Result := true;
     end;

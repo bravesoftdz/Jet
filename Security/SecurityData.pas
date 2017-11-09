@@ -17,6 +17,7 @@ type
     fdtRight: TFDTable;
     dscRight: TDataSource;
     fdspRights: TFDStoredProc;
+    procedure fdtUserBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -33,6 +34,11 @@ implementation
 {$R *.dfm}
 
 uses
-  AppData;
+  AppData, SecurityUtil;
+
+procedure TdmSecurity.fdtUserBeforePost(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('PASSKEY').AsString := Encrypt(DataSet.FieldByName('PASSKEY').AsString);
+end;
 
 end.

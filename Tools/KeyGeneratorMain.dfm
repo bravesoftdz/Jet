@@ -4,7 +4,7 @@ object frmKeyGenerator: TfrmKeyGenerator
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Key Generator'
-  ClientHeight = 213
+  ClientHeight = 246
   ClientWidth = 347
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object frmKeyGenerator: TfrmKeyGenerator
   Position = poDesktopCenter
   DesignSize = (
     347
-    213)
+    246)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -49,12 +49,20 @@ object frmKeyGenerator: TfrmKeyGenerator
   end
   object btnGenerate: TButton
     Left = 40
-    Top = 160
+    Top = 201
     Width = 265
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'Generate key'
     TabOrder = 2
     OnClick = btnGenerateClick
+  end
+  object cbxSimple: TCheckBox
+    Left = 40
+    Top = 152
+    Width = 97
+    Height = 17
+    Caption = 'Simple'
+    TabOrder = 3
   end
 end

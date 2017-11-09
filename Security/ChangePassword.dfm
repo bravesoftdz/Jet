@@ -2,7 +2,6 @@ inherited frmChangePassword: TfrmChangePassword
   Caption = 'frmChangePassword'
   ClientHeight = 356
   OnCreate = FormCreate
-  ExplicitWidth = 320
   ExplicitHeight = 395
   PixelsPerInch = 96
   TextHeight = 14

@@ -83,7 +83,7 @@ end;
 function TfrmLogin.UserExists: boolean;
 var
   username: string;
-var
+  password: AnsiString;
   userQuery: TFDQuery;
 begin
   if User.IsSuperUser then
@@ -101,6 +101,8 @@ begin
         try
           userQuery.Connection := fdcMain;
 
+          password := Encrypt(edPassword.Text);
+
           userQuery.SQL.Text := 'SELECT U.*, ' +
                                         'RR.RIGHT_CODE, ' +
                                         'U.USERNAME ' +
@@ -108,7 +110,7 @@ begin
                              'LEFT JOIN SYSROLERIGHT RR ' +
                                     'ON RR.ROLE_CODE = U.ROLE_CODE ' +
                                  'WHERE USERNAME = ' + QuotedStr(edUsername.Text) +
-                                   'AND PASSKEY = ' + QuotedStr(edPassword.Text);
+                                   'AND PASSKEY = ' + QuotedStr(password);
 
           userQuery.Connection.Open;
           userQuery.Open;
@@ -119,7 +121,7 @@ begin
 
             // set user object
             User.Name := Trim(edUsername.Text);
-            User.Passkey := Trim(edPassword.Text);
+            User.Passkey := edPassword.Text;
 
             // rights
             while not userQuery.Eof  do

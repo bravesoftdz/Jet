@@ -8,6 +8,8 @@ uses
 
 function GetSuperUserCredentials(var AName, AKey: string): boolean;
 function GetKey(const phrase: string; const toUpper: boolean = false): string;
+function Encrypt(const str: string): AnsiString;
+function Decrypt(const str: AnsiString): AnsiString;
 
 implementation
 
@@ -48,6 +50,30 @@ begin
     encrypted := encryptor.EncryptString(phrase + FormatDateTime('ssmmhhmmddyyyy',Date) + APPKEY);
     Result := Copy(encrypted,0,KEYLENGTH);
     if toUpper then Result := UpperCase(Result);
+  finally
+    encryptor.Free;
+  end;
+end;
+
+function Encrypt(const str: string): AnsiString;
+var
+  encryptor: TLbRijndael;
+begin
+  encryptor := TLbRijndael.Create(nil);
+  try
+    Result := encryptor.EncryptString(str);
+  finally
+    encryptor.Free;
+  end;
+end;
+
+function Decrypt(const str: AnsiString): AnsiString;
+var
+  encryptor: TLbRijndael;
+begin
+  encryptor := TLbRijndael.Create(nil);
+  try
+    Result := encryptor.DecryptString(str);
   finally
     encryptor.Free;
   end;

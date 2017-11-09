@@ -3,6 +3,7 @@ object dmSecurity: TdmSecurity
   Height = 276
   Width = 524
   object fdtUser: TFDTable
+    BeforePost = fdtUserBeforePost
     Filtered = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'USERNAME'
