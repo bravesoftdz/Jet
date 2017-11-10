@@ -69,3 +69,9 @@
 *.dcp
 *.lib
 *.identcache
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib

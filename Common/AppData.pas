@@ -64,7 +64,7 @@ implementation
 {$R *.dfm}
 
 uses
-  SetUnboundControlsIntf, Main, uSettings, ConnectionConfiguration;
+  SetUnboundControlsIntf, Main, uSettings, ConnectionConfiguration, SecurityUtil;
 
 function TdmApplication.ConfigureConnection: boolean;
 begin
@@ -72,6 +72,7 @@ begin
   begin
     ShowModal;
     Result := ModalResult = mrOk;
+    if Result then Settings.Load;
   end;
 end;
 
@@ -87,8 +88,8 @@ begin
   begin
     Server := Settings.Database.Server;
     Database := Settings.Database.DatabaseFile;
-    UserName := Settings.Database.User;
-    Password := Settings.Database.Password;
+    UserName := Decrypt(Settings.Database.User);
+    Password := Decrypt(Settings.Database.Password);
   end;
 end;
 

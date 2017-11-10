@@ -9,8 +9,10 @@ inherited frmConnectionConfiguration: TfrmConnectionConfiguration
   TextHeight = 14
   inherited pnlTitle: TRzPanel
     Width = 510
+    ExplicitWidth = 510
     inherited imgClose: TImage
       Left = 489
+      ExplicitLeft = 489
     end
     inherited lblCaption: TRzLabel
       Width = 141
@@ -21,12 +23,18 @@ inherited frmConnectionConfiguration: TfrmConnectionConfiguration
   inherited pnlMain: TRzPanel
     Width = 510
     Height = 260
+    ExplicitWidth = 510
+    ExplicitHeight = 260
     inherited pnlDetail: TRzPanel
       Width = 493
       Height = 211
+      ExplicitWidth = 493
+      ExplicitHeight = 211
       inherited pcDetail: TRzPageControl
         Width = 491
         Height = 209
+        ExplicitWidth = 491
+        ExplicitHeight = 209
         FixedDimension = 20
         inherited tsDetail: TRzTabSheet
           object Label5: TLabel
@@ -127,6 +135,7 @@ inherited frmConnectionConfiguration: TfrmConnectionConfiguration
             FrameColor = 7827778
             FrameVisible = True
             FramingPreference = fpCustomFraming
+            PasswordChar = '*'
             TabOrder = 2
           end
           object edPassword: TRzEdit
@@ -138,6 +147,7 @@ inherited frmConnectionConfiguration: TfrmConnectionConfiguration
             FrameColor = 7827778
             FrameVisible = True
             FramingPreference = fpCustomFraming
+            PasswordChar = '*'
             TabOrder = 3
           end
         end
@@ -146,10 +156,14 @@ inherited frmConnectionConfiguration: TfrmConnectionConfiguration
     inherited pnlCancel: TRzPanel
       Left = 451
       Top = 228
+      ExplicitLeft = 451
+      ExplicitTop = 228
     end
     inherited pnlSave: TRzPanel
       Left = 395
       Top = 228
+      ExplicitLeft = 395
+      ExplicitTop = 228
     end
   end
 end

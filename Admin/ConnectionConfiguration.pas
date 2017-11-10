@@ -67,8 +67,10 @@ begin
   begin
     edServer.Text := Server;
     edDatabaseFile.Text := DatabaseFile;
-    edUsername.Text := User;
-    edPassword.Text := Password;
+
+    // Note: Removed.. force user to enter credentials again
+    // edUsername.Text := User;
+    // edPassword.Text := Password;
   end;
 end;
 

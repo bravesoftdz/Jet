@@ -35,6 +35,7 @@ type
     constructor Create;
 
     procedure Save;
+    procedure Load;
   end;
 
 var
@@ -42,24 +43,16 @@ var
 
 implementation
 
+uses
+  SecurityUtil;
+
 constructor TSettings.Create;
-var
-  iniFile: TIniFile;
+
 begin
   if Settings = nil then
   begin
     inherited Create;
-
-    // read inifile
-    iniFile := GetIniFile;
-
-    // db settings
-    FDataBase := TDatabase.Create;
-
-    FDataBase.DatabaseFile := iniFile.ReadString('DATABASE','File','');
-    FDataBase.User := iniFile.ReadString('DATABASE','User','sysdba');
-    FDataBase.Password := iniFile.ReadString('DATABASE','Password','masterkey');
-    FDataBase.Server := iniFile.ReadString('DATABASE','Server','localhost');
+    Load;
   end
   else Settings := self;
 end;
@@ -72,6 +65,22 @@ begin
   Result := TIniFile.Create(dir + '\' + CONFIG_FILE);
 end;
 
+procedure TSettings.Load;
+var
+  iniFile: TIniFile;
+begin
+  // read inifile
+  iniFile := GetIniFile;
+
+  // db settings
+  FDataBase := TDatabase.Create;
+
+  FDataBase.DatabaseFile := iniFile.ReadString('DATABASE','File','');
+  FDataBase.User := iniFile.ReadString('DATABASE','User','sysdba');
+  FDataBase.Password := iniFile.ReadString('DATABASE','Password','masterkey');
+  FDataBase.Server := iniFile.ReadString('DATABASE','Server','localhost');
+end;
+
 procedure TSettings.Save;
 var
   iniFile: TIniFile;
@@ -80,8 +89,8 @@ begin
 
   // db settings
   iniFile.WriteString('DATABASE','File',FDataBase.DatabaseFile);
-  iniFile.WriteString('DATABASE','User',FDataBase.User);
-  iniFile.WriteString('DATABASE','Password',FDataBase.Password);
+  iniFile.WriteString('DATABASE','User',Encrypt(FDataBase.User));
+  iniFile.WriteString('DATABASE','Password',Encrypt(FDataBase.Password));
   iniFile.WriteString('DATABASE','Server',FDataBase.Server);
 end;
 
