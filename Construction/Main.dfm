@@ -701,6 +701,7 @@ object frmMain: TfrmMain
       BorderWidth = 1
       Color = 14276027
       TabOrder = 9
+      Visible = False
       object imgMigrate: TImage
         Left = 4
         Top = 4

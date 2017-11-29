@@ -122,10 +122,10 @@ end;
 
 procedure TfrmExpenseList.bteItem2ButtonClick(Sender: TObject);
 var
-  LExpenseType: TItem;
+  LItem: TItem;
 begin
-  LExpenseType := SearchItem;
-  if Assigned(LExpenseType) then bteItem2.Text := LExpenseType.Name;
+  LItem := SearchItem;
+  if Assigned(LItem) then bteItem2.Text := LItem.Name;
   FilterGrid;
 end;
 
@@ -185,6 +185,7 @@ end;
 procedure TfrmExpenseList.Cancel;
 begin
   grList.DataSource.DataSet.Cancel;
+  grList.Enabled := true;
   SetUnboundControls;
 end;
 

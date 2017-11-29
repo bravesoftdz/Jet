@@ -206,4 +206,37 @@ object dmApplication: TdmApplication
     Left = 296
     Top = 184
   end
+  object fdspItems: TFDStoredProc
+    Filtered = True
+    Connection = fdcMain
+    StoredProcName = 'P_GET_ITEMS'
+    Left = 488
+    Top = 32
+    ParamData = <
+      item
+        Position = 1
+        Name = 'R_ITEM_ID'
+        DataType = ftInteger
+        ParamType = ptOutput
+      end
+      item
+        Position = 2
+        Name = 'R_ITEM_NAME'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        Position = 3
+        Name = 'R_ITEM_DESCRIPTION'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 100
+      end>
+  end
+  object dscItems: TDataSource
+    DataSet = fdspItems
+    Left = 576
+    Top = 32
+  end
 end

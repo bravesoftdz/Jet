@@ -3,7 +3,6 @@ inherited frmExpenseList: TfrmExpenseList
   ClientHeight = 450
   ClientWidth = 954
   Position = poOwnerFormCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 954
@@ -45,9 +44,9 @@ inherited frmExpenseList: TfrmExpenseList
     object Label1: TLabel
       Left = 316
       Top = 17
-      Width = 46
+      Width = 26
       Height = 14
-      Caption = 'Expense'
+      Caption = 'Item'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -494,7 +493,6 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Style = []
         ParentFont = False
         TabOrder = 9
-        ExplicitTop = 298
         object sbtnNew: TRzShapeButton
           Left = 0
           Top = 0
@@ -559,7 +557,6 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Style = []
         ParentFont = False
         TabOrder = 10
-        ExplicitTop = 298
         object sbtnSave: TRzShapeButton
           Left = 0
           Top = 0
@@ -590,7 +587,6 @@ inherited frmExpenseList: TfrmExpenseList
         Font.Style = []
         ParentFont = False
         TabOrder = 11
-        ExplicitTop = 298
         object sbtnCancel: TRzShapeButton
           Left = 0
           Top = 0
@@ -606,9 +602,9 @@ inherited frmExpenseList: TfrmExpenseList
       end
     end
     object bteItem2: TRzButtonEdit
-      Left = 367
+      Left = 348
       Top = 11
-      Width = 249
+      Width = 268
       Height = 22
       Text = ''
       Color = clWhite

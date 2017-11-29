@@ -38,6 +38,8 @@ type
     fdtProjectsCLIENT_NAME: TStringField;
     fdtUnits: TFDTable;
     dscUnits: TDataSource;
+    fdspItems: TFDStoredProc;
+    dscItems: TDataSource;
     procedure fdtProjectsAfterClose(DataSet: TDataSet);
     procedure fdtSuppliersAfterClose(DataSet: TDataSet);
     procedure fdtItemAfterClose(DataSet: TDataSet);

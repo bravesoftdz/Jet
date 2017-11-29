@@ -39,6 +39,7 @@ type
     procedure ShowStatusPanel;
     procedure Print;
     procedure SetUnboundControls; virtual;
+    procedure FilterReport; virtual;
   public
     { Public declarations }
   end;
@@ -60,6 +61,11 @@ begin
   // however, getting TOTAL values is an issue
   // not all records are added
   SetUnboundControls;
+end;
+
+procedure TfrmBasePrint.FilterReport;
+begin
+
 end;
 
 procedure TfrmBasePrint.FormShow(Sender: TObject);
@@ -84,6 +90,7 @@ begin
 
       fdspReport.Close;
       fdspReport.Open;
+      FilterReport;
 
       rlReport.Prepare;
       rlReport.Preview(rlPreview);

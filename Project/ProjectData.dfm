@@ -222,45 +222,12 @@ object dmProject: TdmProject
     Left = 72
     Top = 104
   end
-  object fdspItems: TFDStoredProc
-    Filtered = True
-    Connection = dmApplication.fdcMain
-    StoredProcName = 'P_GET_ITEMS'
-    Left = 280
-    Top = 32
-    ParamData = <
-      item
-        Position = 1
-        Name = 'R_ITEM_ID'
-        DataType = ftInteger
-        ParamType = ptOutput
-      end
-      item
-        Position = 2
-        Name = 'R_ITEM_NAME'
-        DataType = ftString
-        ParamType = ptOutput
-        Size = 50
-      end
-      item
-        Position = 3
-        Name = 'R_ITEM_DESCRIPTION'
-        DataType = ftString
-        ParamType = ptOutput
-        Size = 100
-      end>
-  end
-  object dscItems: TDataSource
-    DataSet = fdspItems
-    Left = 368
-    Top = 32
-  end
   object fdspSuppliers: TFDStoredProc
     Filtered = True
     Connection = dmApplication.fdcMain
     StoredProcName = 'P_GET_SUPPLIERS'
-    Left = 280
-    Top = 104
+    Left = 288
+    Top = 32
     ParamData = <
       item
         Position = 1
@@ -285,7 +252,7 @@ object dmProject: TdmProject
   end
   object dscSuppliers: TDataSource
     DataSet = fdspSuppliers
-    Left = 368
-    Top = 104
+    Left = 376
+    Top = 32
   end
 end

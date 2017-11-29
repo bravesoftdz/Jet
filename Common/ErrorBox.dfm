@@ -107,6 +107,12 @@ inherited frmErrorBox: TfrmErrorBox
         Height = 22
         BorderStyle = bsNone
         Caption = 'Close'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         OnClick = btnCloseClick
       end
     end

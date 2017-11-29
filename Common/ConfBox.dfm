@@ -22,6 +22,7 @@ inherited frmConfBox: TfrmConfBox
   inherited pnlMain: TRzPanel
     Width = 357
     Height = 108
+    BorderColor = 6577975
     ExplicitWidth = 357
     ExplicitHeight = 108
     object lblMessage: TJvLabel
@@ -84,9 +85,9 @@ inherited frmConfBox: TfrmConfBox
       Height = 22
       Anchors = [akLeft, akBottom]
       BorderOuter = fsNone
-      BorderColor = 7827778
+      BorderColor = 6577975
       BorderWidth = 1
-      Color = 12630669
+      Color = 9077581
       TabOrder = 0
       object btnClose: TRzShapeButton
         Left = 0
@@ -95,6 +96,12 @@ inherited frmConfBox: TfrmConfBox
         Height = 22
         BorderStyle = bsNone
         Caption = 'Close'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         OnClick = btnCloseClick
       end
     end

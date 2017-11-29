@@ -49,7 +49,6 @@ inherited frmBasePrint: TfrmBasePrint
       Padding.Bottom = 10
       ParentColor = False
       TabOrder = 0
-      ExplicitHeight = 487
       object rlReport: TRLReport
         AlignWithMargins = True
         Left = 122

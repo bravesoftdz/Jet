@@ -36,8 +36,8 @@ inherited frmProjectReport: TfrmProjectReport
           end
         end
         inherited bndFooter: TRLBand
-          Top = 134
-          ExplicitTop = 134
+          Top = 129
+          ExplicitTop = 129
         end
         object RLBand1: TRLBand
           Left = 38
@@ -54,7 +54,7 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText2: TRLDBText
-            Left = 312
+            Left = 392
             Top = 1
             Width = 39
             Height = 15
@@ -65,7 +65,7 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText3: TRLDBText
-            Left = 493
+            Left = 573
             Top = 1
             Width = 99
             Height = 15
@@ -77,13 +77,22 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText4: TRLDBText
-            Left = 358
+            Left = 438
             Top = 1
             Width = 87
             Height = 15
             DataField = 'R_UNIT_NAME'
             DataSource = dscReport
             DisplayMask = '0.00'
+            Text = ''
+          end
+          object RLDBText5: TRLDBText
+            Left = 320
+            Top = 1
+            Width = 66
+            Height = 15
+            DataField = 'R_EXPENSE_DATE'
+            DataSource = dscReport
             Text = ''
           end
         end
@@ -113,7 +122,7 @@ inherited frmProjectReport: TfrmProjectReport
             Caption = 'Item'
           end
           object RLLabel3: TRLLabel
-            Left = 329
+            Left = 409
             Top = 1
             Width = 22
             Height = 15
@@ -121,7 +130,7 @@ inherited frmProjectReport: TfrmProjectReport
             Caption = 'Qty'
           end
           object RLLabel4: TRLLabel
-            Left = 545
+            Left = 625
             Top = 0
             Width = 47
             Height = 15
@@ -129,12 +138,19 @@ inherited frmProjectReport: TfrmProjectReport
             Caption = 'Amount'
           end
           object RLLabel1: TRLLabel
-            Left = 358
+            Left = 438
             Top = 1
             Width = 25
             Height = 15
             Alignment = taRightJustify
             Caption = 'Unit'
+          end
+          object RLLabel5: TRLLabel
+            Left = 320
+            Top = -1
+            Width = 29
+            Height = 15
+            Caption = 'Date'
           end
         end
       end
@@ -153,14 +169,93 @@ inherited frmProjectReport: TfrmProjectReport
     end
   end
   inherited pnlDetail: TRzPanel
+    object Label2: TLabel [1]
+      Left = 13
+      Top = 70
+      Width = 29
+      Height = 14
+      Caption = 'Item'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel [2]
+      Left = 14
+      Top = 127
+      Width = 29
+      Height = 14
+      Caption = 'Date'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    inherited pnlGenerate: TRzPanel
+      TabOrder = 4
+    end
     inherited pnlPrint: TRzPanel
       Left = 79
+      TabOrder = 5
       ExplicitLeft = 79
+    end
+    object bteItem: TRzButtonEdit
+      Left = 13
+      Top = 90
+      Width = 204
+      Height = 22
+      Text = ''
+      Color = 15794175
+      FocusColor = clWhite
+      FrameColor = 7038525
+      FrameVisible = True
+      FramingPreference = fpCustomFraming
+      ReadOnly = True
+      ReadOnlyColor = 15794175
+      TabOrder = 1
+      AltBtnKind = bkReject
+      ButtonKind = bkFind
+      AltBtnVisible = True
+      AltBtnWidth = 15
+      ButtonWidth = 15
+      FlatButtons = True
+      HideButtonsOnReadOnly = False
+      OnAltBtnClick = bteItemAltBtnClick
+      OnButtonClick = bteItemButtonClick
+    end
+    object dteFrom: TRzDateTimeEdit
+      Left = 13
+      Top = 147
+      Width = 100
+      Height = 22
+      EditType = etDate
+      Format = 'mm/dd/yyyy'
+      FrameColor = 7038525
+      FrameVisible = True
+      FramingPreference = fpCustomFraming
+      TabOrder = 2
+    end
+    object dteUntil: TRzDateTimeEdit
+      Left = 117
+      Top = 147
+      Width = 100
+      Height = 22
+      EditType = etDate
+      Format = 'mm/dd/yyyy'
+      FrameColor = 7038525
+      FrameVisible = True
+      FramingPreference = fpCustomFraming
+      TabOrder = 3
     end
   end
   inherited fdspReport: TFDStoredProc
     BeforeOpen = fdspReportBeforeOpen
     AfterOpen = fdspReportAfterOpen
+    Filtered = True
     StoredProcName = 'P_RPT_PROJECT'
     ParamData = <
       item
@@ -198,6 +293,12 @@ inherited frmProjectReport: TfrmProjectReport
         DataType = ftString
         ParamType = ptOutput
         Size = 50
+      end
+      item
+        Position = 6
+        Name = 'R_EXPENSE_DATE'
+        DataType = ftTimeStamp
+        ParamType = ptOutput
       end>
     object fdspReportR_ITEM_NAME: TStringField
       FieldName = 'R_ITEM_NAME'
@@ -220,6 +321,11 @@ inherited frmProjectReport: TfrmProjectReport
       FieldName = 'R_UNIT_NAME'
       Origin = 'R_UNIT_NAME'
       Size = 50
+    end
+    object fdspReportR_EXPENSE_DATE: TSQLTimeStampField
+      FieldName = 'R_EXPENSE_DATE'
+      Origin = 'R_EXPENSE_DATE'
+      DisplayFormat = 'mm/dd/yyyy'
     end
   end
 end

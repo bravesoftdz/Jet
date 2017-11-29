@@ -25,6 +25,7 @@ inherited frmDecisionBox: TfrmDecisionBox
   inherited pnlMain: TRzPanel
     Width = 357
     Height = 108
+    BorderColor = 6577975
     ExplicitWidth = 357
     ExplicitHeight = 108
     DesignSize = (
@@ -139,9 +140,9 @@ inherited frmDecisionBox: TfrmDecisionBox
       Height = 22
       Anchors = [akLeft, akBottom]
       BorderOuter = fsNone
-      BorderColor = 7827778
+      BorderColor = 6577975
       BorderWidth = 1
-      Color = 12630669
+      Color = 9077581
       TabOrder = 0
       object btnNo: TRzShapeButton
         Left = 0
@@ -150,6 +151,12 @@ inherited frmDecisionBox: TfrmDecisionBox
         Height = 22
         BorderStyle = bsNone
         Caption = 'No'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         OnClick = btnNoClick
       end
     end
@@ -160,9 +167,15 @@ inherited frmDecisionBox: TfrmDecisionBox
       Height = 22
       Anchors = [akLeft, akBottom]
       BorderOuter = fsNone
-      BorderColor = 7827778
+      BorderColor = 6577975
       BorderWidth = 1
-      Color = 12630669
+      Color = 9077581
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       object btnYes: TRzShapeButton
         Left = 0

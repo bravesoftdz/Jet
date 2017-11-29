@@ -75,3 +75,10 @@
 *.bpi
 *.dcp
 *.lib
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.identcache

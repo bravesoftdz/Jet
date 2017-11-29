@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, uProject, uSupplier, uExpenseType,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, uProject, uSupplier, uItem,
   SetUnBoundControlsIntf, Forms;
 
 type
@@ -22,8 +22,6 @@ type
     fdspExpensesR_CANCELLED: TBooleanField;
     fduExpenses: TFDUpdateSQL;
     fdspExpensesR_PROJECT_ID: TIntegerField;
-    fdspItems: TFDStoredProc;
-    dscItems: TDataSource;
     fdspSuppliers: TFDStoredProc;
     dscSuppliers: TDataSource;
     fdspExpensesR_UNIT_ID: TIntegerField;

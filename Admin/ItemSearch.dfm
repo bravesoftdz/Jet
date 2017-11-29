@@ -36,7 +36,7 @@ inherited frmItemSearch: TfrmItemSearch
       inherited grSearch: TRzDBGrid
         Width = 607
         Height = 266
-        DataSource = dmProject.dscItems
+        DataSource = dmApplication.dscItems
         Columns = <
           item
             Expanded = False
