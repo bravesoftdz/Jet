@@ -16,6 +16,7 @@ type
               MODIFY_ITEM,
               ADD_PROJECT,
               MODIFY_PROJECT,
+              DELETE_PROJECT,
               ADD_SUPPLIER,
               MODIFY_SUPPLIER,
               ADD_UNITS,

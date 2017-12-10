@@ -12,6 +12,7 @@ INSERT INTO SYSRIGHT VALUES ('ADD_ITEM','Add items',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_ITEM','Modify item details including setting its active field',null,true);
 INSERT INTO SYSRIGHT VALUES ('ADD_PROJECT','Add projects',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_PROJECT','Modify project details including setting its active field',null,true);
+INSERT INTO SYSRIGHT VALUES ('DELETE_PROJECT','Delete project record',null,true);
 INSERT INTO SYSRIGHT VALUES ('ADD_SUPPLIER','Add suppliers',null,true);
 INSERT INTO SYSRIGHT VALUES ('MODIFY_SUPPLIER','Modify supplier details',null,true);
 INSERT INTO SYSRIGHT VALUES ('ADD_UNITS','Add units',null,true);
@@ -26,6 +27,11 @@ INSERT INTO SYSROLE VALUES ('ADM','Administrator',null);
 INSERT INTO SYSROLERIGHT VALUES ('ADM','ADD_USER');
 
 INSERT INTO SYSUSER (USERNAME, PASSKEY, ROLE_CODE) VALUES ('ADMIN','admin123','ADM');
+
+ALTER TABLE EXPENSE
+ADD FOREIGN KEY (PROJECT_ID) 
+REFERENCES PROJECT(PROJECT_ID)
+ON DELETE CASCADE;
 
 
 

@@ -132,7 +132,7 @@ begin
   if Assigned(Project) then lblProject.Caption := 'PROJECT NAME: ' + Project.Name;
 
   // total
-  if fdspReport.RecordCount > 0 then
+  if (Assigned(fdspReport.Aggregates.FindAggregate('Total'))) and (fdspReport.Aggregates.FindAggregate('Total').Value <> null) then
     lblTotal.Caption := FormatFloat('TOTAL: ###,###,##0.00', fdspReport.Aggregates[0].Value)
   else lblTotal.Caption := 'TOTAL: 0.00';
 end;

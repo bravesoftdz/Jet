@@ -1,12 +1,13 @@
 inherited frmExpenseList: TfrmExpenseList
   Caption = 'frmExpenseList'
-  ClientHeight = 450
+  ClientHeight = 470
   ClientWidth = 954
   Position = poOwnerFormCenter
   OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
   OnShow = FormShow
   ExplicitWidth = 954
-  ExplicitHeight = 450
+  ExplicitHeight = 470
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlTitle: TRzPanel
@@ -24,12 +25,12 @@ inherited frmExpenseList: TfrmExpenseList
   end
   inherited pnlMain: TRzPanel
     Width = 954
-    Height = 429
+    Height = 449
     ExplicitWidth = 954
-    ExplicitHeight = 429
+    ExplicitHeight = 449
     object lblTotal: TLabel
       Left = 22
-      Top = 403
+      Top = 423
       Width = 39
       Height = 14
       Anchors = [akLeft, akBottom]
@@ -40,6 +41,7 @@ inherited frmExpenseList: TfrmExpenseList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      ExplicitTop = 403
     end
     object Label1: TLabel
       Left = 316
@@ -84,7 +86,7 @@ inherited frmExpenseList: TfrmExpenseList
       Left = 22
       Top = 44
       Width = 608
-      Height = 347
+      Height = 367
       Anchors = [akLeft, akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
@@ -95,7 +97,7 @@ inherited frmExpenseList: TfrmExpenseList
         Left = 1
         Top = 1
         Width = 606
-        Height = 345
+        Height = 365
         Align = alClient
         BorderStyle = bsNone
         Color = 15794175
@@ -230,7 +232,7 @@ inherited frmExpenseList: TfrmExpenseList
       Left = 650
       Top = 44
       Width = 281
-      Height = 347
+      Height = 367
       Anchors = [akTop, akRight, akBottom]
       BorderOuter = fsNone
       BorderColor = 7038525
@@ -239,7 +241,7 @@ inherited frmExpenseList: TfrmExpenseList
       TabOrder = 1
       DesignSize = (
         281
-        347)
+        367)
       object Label4: TLabel
         Left = 13
         Top = 12
@@ -391,7 +393,9 @@ inherited frmExpenseList: TfrmExpenseList
         FramingPreference = fpCustomFraming
         ReadOnly = True
         ReadOnlyColor = 15794175
+        TabOnEnter = True
         TabOrder = 2
+        OnEnter = bteItemEnter
         AltBtnKind = bkReject
         ButtonKind = bkFind
         AltBtnVisible = True
@@ -415,7 +419,9 @@ inherited frmExpenseList: TfrmExpenseList
         FramingPreference = fpCustomFraming
         ReadOnly = True
         ReadOnlyColor = 15794175
+        TabOnEnter = True
         TabOrder = 3
+        OnEnter = bteSupplierEnter
         AltBtnKind = bkReject
         ButtonKind = bkFind
         AltBtnVisible = True
@@ -478,7 +484,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object pnlAdd: TRzPanel
         Left = 8
-        Top = 317
+        Top = 337
         Width = 50
         Height = 22
         Anchors = [akLeft, akBottom]
@@ -542,7 +548,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object pnlSave: TRzPanel
         Left = 64
-        Top = 317
+        Top = 337
         Width = 50
         Height = 22
         Anchors = [akLeft, akBottom]
@@ -572,7 +578,7 @@ inherited frmExpenseList: TfrmExpenseList
       end
       object pnlCancel: TRzPanel
         Left = 222
-        Top = 317
+        Top = 337
         Width = 50
         Height = 22
         Anchors = [akRight, akBottom]

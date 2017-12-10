@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Data.DB, Vcl.Grids, Vcl.DBGrids,
   RzDBGrid, uProject, RzEdit, Vcl.Mask, RzBtnEdt, FireDac.Comp.Client, RzDBEdit,
   Vcl.DBCtrls, SetUnboundControlsIntf, uExpense, RzButton, SaveIntf, NewIntf,
-  uItem, uSupplier, RzDBCmbo, RzRadChk, RzDBChk;
+  uItem, uSupplier, RzDBCmbo, RzRadChk, RzDBChk, Vcl.Menus;
 
 type
   TfrmExpenseList = class(TfrmBasePopup, ISetUnboundControls, ISave, INew)
@@ -65,6 +65,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure sbtnSaveClick(Sender: TObject);
     procedure sbtnCancelClick(Sender: TObject);
+    procedure bteItemEnter(Sender: TObject);
+    procedure bteSupplierEnter(Sender: TObject);
+    procedure Save1Click(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     Expense: TExpense;
@@ -148,6 +152,18 @@ begin
   end;
 end;
 
+procedure TfrmExpenseList.bteItemEnter(Sender: TObject);
+var
+  LExpenseType: TItem;
+begin
+  LExpenseType := SearchItem;
+  if Assigned(LExpenseType) then
+  begin
+    Expense.Item := LExpenseType;
+    bteItem.Text := LExpenseType.Name;
+  end;
+end;
+
 procedure TfrmExpenseList.bteSupplierAltBtnClick(Sender: TObject);
 begin
   inherited;
@@ -156,6 +172,18 @@ begin
 end;
 
 procedure TfrmExpenseList.bteSupplierButtonClick(Sender: TObject);
+var
+  LSupplier: TSupplier;
+begin
+  LSupplier := SearchSupplier;
+  if Assigned(LSupplier) then
+  begin
+    Expense.Supplier := LSupplier;
+    bteSupplier.Text := LSupplier.Name;
+  end;
+end;
+
+procedure TfrmExpenseList.bteSupplierEnter(Sender: TObject);
 var
   LSupplier: TSupplier;
 begin
@@ -324,6 +352,8 @@ end;
 
 procedure TfrmExpenseList.FormCreate(Sender: TObject);
 begin
+  // hide menu bar
+  Self.Menu := nil;
   OpenDropdownDataSources(pnlDetail);
 end;
 
@@ -331,6 +361,14 @@ procedure TfrmExpenseList.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
   if Key = #27 then Close;
+end;
+
+procedure TfrmExpenseList.FormKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+   if (Key = 78) and (Shift = [ssCtrl]) then New
+   else if (Key = 83) and (Shift = [ssCtrl]) then Save;
 end;
 
 procedure TfrmExpenseList.FormShow(Sender: TObject);
@@ -427,8 +465,16 @@ begin
           VarArrayOf([Expense.Date,Item.Id,Supplier.Id,Receipt]),[]);
 
       EnableControls;
+
+      ShowConfirmationBox;
     end;
   end;
+end;
+
+procedure TfrmExpenseList.Save1Click(Sender: TObject);
+begin
+  inherited;
+  Save;
 end;
 
 procedure TfrmExpenseList.sbtnCancelClick(Sender: TObject);

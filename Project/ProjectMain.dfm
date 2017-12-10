@@ -148,6 +148,14 @@ inherited frmProjectMain: TfrmProjectMain
       Font.Style = [fsBold]
       ParentFont = False
     end
+    inherited pnlSave: TRzPanel
+      TabOrder = 10
+    end
+    inherited pnlCancel: TRzPanel
+      Left = 163
+      TabOrder = 11
+      ExplicitLeft = 163
+    end
     object edName: TRzDBEdit
       Tag = 1
       Left = 13
@@ -285,6 +293,36 @@ inherited frmProjectMain: TfrmProjectMain
       Caption = 'Active'
       FrameColor = 7038525
       TabOrder = 9
+    end
+    object pnlDelete: TRzPanel
+      Left = 218
+      Top = 401
+      Width = 50
+      Height = 22
+      Anchors = [akRight, akBottom]
+      BorderOuter = fsNone
+      BorderColor = 6577975
+      BorderWidth = 1
+      Color = clRed
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+      object sbtnDelete: TRzShapeButton
+        Left = 0
+        Top = 0
+        Width = 50
+        Height = 22
+        Hint = 'Cancel'
+        BorderStyle = bsNone
+        Caption = 'Delete'
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = sbtnDeleteClick
+      end
     end
   end
 end

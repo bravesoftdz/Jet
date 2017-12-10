@@ -27,12 +27,15 @@ type
     Label8: TLabel;
     edBudget: TRzDBNumericEdit;
     cbxActive: TRzDBCheckBox;
+    pnlDelete: TRzPanel;
+    sbtnDelete: TRzShapeButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure bteClientButtonClick(Sender: TObject);
     procedure bteClientAltBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure grListDblClick(Sender: TObject);
+    procedure sbtnDeleteClick(Sender: TObject);
   private
     { Private declarations }
     Project: TProject;
@@ -46,6 +49,7 @@ type
     function EntryIsValid: boolean; override;
     function NewIsAllowed: boolean; override;
     function EditIsAllowed: boolean; override;
+    function DeleteIsAllowed: boolean;
   public
     { Public declarations }
     procedure SetIdentity; override;
@@ -53,9 +57,6 @@ type
     procedure Cancel; override;
     function Save: boolean; override;
   end;
-
-var
-  frmProjectMain: TfrmProjectMain;
 
 implementation
 
@@ -94,6 +95,11 @@ procedure TfrmProjectMain.Cancel;
 begin
   inherited;
   SetUnboundControls;
+end;
+
+function TfrmProjectMain.DeleteIsAllowed: boolean;
+begin
+  Result := User.HasRight(DELETE_PROJECT,true);
 end;
 
 function TfrmProjectMain.EditIsAllowed: boolean;
@@ -190,6 +196,22 @@ begin
 
       EnableControls;
     end;
+  end;
+end;
+
+procedure TfrmProjectMain.sbtnDeleteClick(Sender: TObject);
+var
+  project: string;
+begin
+  with grList.DataSource.DataSet do
+  begin
+    if DeleteIsAllowed then
+      if RecordCount > 0 then
+      begin
+        project := UpperCase(FieldByName('PROJECT_NAME').AsString);
+        if ShowDecisionBox('Are you sure you want to delete project ' + project + '?') = mrYes then
+          Delete;
+      end;
   end;
 end;
 

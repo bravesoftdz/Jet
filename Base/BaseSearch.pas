@@ -27,8 +27,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnSelectClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure grSearchTitleClick(Column: TColumn);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure edSearchKeyKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     procedure EnableControls;
@@ -66,6 +68,17 @@ end;
 procedure TfrmBaseSearch.edSearchKeyChange(Sender: TObject);
 begin
   SearchList;
+end;
+
+procedure TfrmBaseSearch.edSearchKeyKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  with grSearch.DataSource.DataSet do
+  begin
+    if Key = VK_DOWN then Next
+    else if Key = VK_UP then Prior;
+  end;
 end;
 
 procedure TfrmBaseSearch.FormClose(Sender: TObject; var Action: TCloseAction);

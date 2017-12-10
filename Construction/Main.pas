@@ -62,6 +62,7 @@ type
     imgUnit: TImage;
     Label1: TLabel;
     Label2: TLabel;
+    imgMinimise: TImage;
     procedure FormCreate(Sender: TObject);
     procedure pnlTitleMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -83,6 +84,7 @@ type
     procedure imgUnitClick(Sender: TObject);
     procedure imgReportsClick(Sender: TObject);
     procedure imgSecurityClick(Sender: TObject);
+    procedure imgMinimiseClick(Sender: TObject);
   private
     { Private declarations }
     DOCKED_FORM: TForms;
@@ -267,6 +269,11 @@ end;
 procedure TfrmMain.imgMigrateClick(Sender: TObject);
 begin
   DockForm(fmMigrate);
+end;
+
+procedure TfrmMain.imgMinimiseClick(Sender: TObject);
+begin
+  Application.Minimize;
 end;
 
 procedure TfrmMain.imgSaveClick(Sender: TObject);

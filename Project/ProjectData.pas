@@ -111,7 +111,7 @@ begin
   DataSet.FieldByName('R_PROJECT_ID').AsInteger := Project.Id;
   DataSet.FieldByName('R_CANCELLED').AsBoolean := false;
 
-  DataSet.FieldByName('R_RECEIPT').FocusControl;
+  DataSet.FieldByName('R_EXPENSE_DATE').FocusControl;
 end;
 
 end.

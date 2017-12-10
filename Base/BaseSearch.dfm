@@ -2,7 +2,6 @@ inherited frmBaseSearch: TfrmBaseSearch
   Caption = 'frmBaseSearch'
   ClientHeight = 342
   ClientWidth = 314
-  OnClose = FormClose
   OnCreate = FormCreate
   ExplicitWidth = 314
   ExplicitHeight = 342
@@ -46,6 +45,7 @@ inherited frmBaseSearch: TfrmBaseSearch
       FramingPreference = fpCustomFraming
       TabOrder = 0
       OnChange = edSearchKeyChange
+      OnKeyDown = edSearchKeyKeyDown
     end
     object pnlSearch: TRzPanel
       Left = 8
