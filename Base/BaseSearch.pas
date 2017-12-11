@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BasePopup, Data.DB, Vcl.StdCtrls,
   Vcl.Grids, Vcl.DBGrids, RzDBGrid, Vcl.Mask, RzEdit, RzLabel,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, RzButton;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, RzButton, System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmBaseSearch = class(TfrmBasePopup)
@@ -29,7 +30,7 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure grSearchTitleClick(Column: TColumn);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure edSearchKeyKeyDown(Sender: TObject; var Key: Word;
+    procedure edSearchKeyKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
     { Private declarations }
@@ -41,9 +42,6 @@ type
     procedure Add; virtual; abstract;
     procedure Cancel; virtual; abstract;
   end;
-
-var
-  frmBaseSearch: TfrmBaseSearch;
 
 implementation
 
@@ -70,15 +68,12 @@ begin
   SearchList;
 end;
 
-procedure TfrmBaseSearch.edSearchKeyKeyDown(Sender: TObject; var Key: Word;
+procedure TfrmBaseSearch.edSearchKeyKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   inherited;
-  with grSearch.DataSource.DataSet do
-  begin
-    if Key = VK_DOWN then Next
-    else if Key = VK_UP then Prior;
-  end;
+  if Key = VK_DOWN then grSearch.DataSource.DataSet.Next          // arrow down key
+  else if Key = VK_UP then grSearch.DataSource.DataSet.Prior;   // arrow up key
 end;
 
 procedure TfrmBaseSearch.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -106,7 +101,7 @@ begin
     begin
       grSearch.DataSource.DataSet.Open;
       EnableControls;
-      SortGrid(grSearch,grSearch.Columns[0]);
+      SortGrid(grSearch,grSearch.Columns[0],true);
     end;
 end;
 

@@ -1,6 +1,8 @@
 inherited frmProjectMain: TfrmProjectMain
   Caption = 'frmProjectMain'
+  ClientHeight = 513
   Position = poOwnerFormCenter
+  ExplicitHeight = 552
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlTitle: TRzPanel
@@ -11,7 +13,9 @@ inherited frmProjectMain: TfrmProjectMain
     end
   end
   inherited pnlList: TRzPanel
+    Height = 442
     inherited grList: TRzDBGrid
+      Height = 440
       DataSource = dmApplication.dscProjects
       OnDblClick = grListDblClick
       Columns = <
@@ -57,6 +61,7 @@ inherited frmProjectMain: TfrmProjectMain
     end
   end
   inherited pnlDetail: TRzPanel
+    Height = 470
     object Label2: TLabel [0]
       Left = 13
       Top = 31
@@ -148,11 +153,30 @@ inherited frmProjectMain: TfrmProjectMain
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object urlExpenseList: TRzURLLabel [7]
+      Left = 13
+      Top = 389
+      Width = 64
+      Height = 14
+      Caption = 'Expense list'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 7038525
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      OnClick = urlExpenseListClick
+    end
+    inherited pnlAdd: TRzPanel
+      Top = 440
+    end
     inherited pnlSave: TRzPanel
+      Top = 440
       TabOrder = 10
     end
     inherited pnlCancel: TRzPanel
       Left = 163
+      Top = 440
       TabOrder = 11
       ExplicitLeft = 163
     end
@@ -296,7 +320,7 @@ inherited frmProjectMain: TfrmProjectMain
     end
     object pnlDelete: TRzPanel
       Left = 218
-      Top = 401
+      Top = 440
       Width = 50
       Height = 22
       Anchors = [akRight, akBottom]
@@ -311,6 +335,7 @@ inherited frmProjectMain: TfrmProjectMain
       Font.Style = []
       ParentFont = False
       TabOrder = 12
+      ExplicitTop = 401
       object sbtnDelete: TRzShapeButton
         Left = 0
         Top = 0

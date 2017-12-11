@@ -8,7 +8,8 @@ uses
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, Data.DB, Vcl.Grids, Vcl.DBGrids,
   RzDBGrid, uProject, RzEdit, Vcl.Mask, RzBtnEdt, FireDac.Comp.Client, RzDBEdit,
   Vcl.DBCtrls, SetUnboundControlsIntf, uExpense, RzButton, SaveIntf, NewIntf,
-  uItem, uSupplier, RzDBCmbo, RzRadChk, RzDBChk, Vcl.Menus;
+  uItem, uSupplier, RzDBCmbo, RzRadChk, RzDBChk, Vcl.Menus, System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmExpenseList = class(TfrmBasePopup, ISetUnboundControls, ISave, INew)
@@ -46,6 +47,9 @@ type
     sbtnSave: TRzShapeButton;
     pnlCancel: TRzPanel;
     sbtnCancel: TRzShapeButton;
+    alExpense: TActionList;
+    acSave: TAction;
+    acNew: TAction;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure grListTitleClick(Column: TColumn);
     procedure imgCloseClick(Sender: TObject);
@@ -68,7 +72,8 @@ type
     procedure bteItemEnter(Sender: TObject);
     procedure bteSupplierEnter(Sender: TObject);
     procedure Save1Click(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure acSaveExecute(Sender: TObject);
+    procedure acNewExecute(Sender: TObject);
   private
     { Private declarations }
     Expense: TExpense;
@@ -106,6 +111,18 @@ uses
 constructor TfrmExpenseList.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+end;
+
+procedure TfrmExpenseList.acNewExecute(Sender: TObject);
+begin
+  inherited;
+  New;
+end;
+
+procedure TfrmExpenseList.acSaveExecute(Sender: TObject);
+begin
+  inherited;
+  Save;
 end;
 
 procedure TfrmExpenseList.BindToObject;
@@ -361,14 +378,6 @@ procedure TfrmExpenseList.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
   if Key = #27 then Close;
-end;
-
-procedure TfrmExpenseList.FormKeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  inherited;
-   if (Key = 78) and (Shift = [ssCtrl]) then New
-   else if (Key = 83) and (Shift = [ssCtrl]) then Save;
 end;
 
 procedure TfrmExpenseList.FormShow(Sender: TObject);

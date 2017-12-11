@@ -25,8 +25,8 @@ inherited frmItemSearch: TfrmItemSearch
     ExplicitWidth = 627
     ExplicitHeight = 344
     inherited edSearchKey: TRzEdit
-      Width = 570
-      ExplicitWidth = 570
+      Width = 565
+      ExplicitWidth = 565
     end
     inherited pnlSearch: TRzPanel
       Width = 609

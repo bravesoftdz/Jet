@@ -16,7 +16,7 @@ procedure ExtendLastColumn(grid: TRzDBGrid); overload;
 procedure ExtendLastColumn(grid: TRzStringGrid); overload;
 procedure PopulateComboBox(source: TDataSet; comboBox: TRzComboBox;
   const codeField, nameField: string); overload;
-procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ASort: string = ''); overload;
+procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ascending: boolean = false); overload;
 procedure SortGrid(grid: TRzDBGrid; const AIndexFieldNames: string = ''); overload;
 
 function FirstRow(grid: TRzStringGrid): boolean;
@@ -141,7 +141,7 @@ begin
     Result := (RowCount = FixedRows + 1) and (not Assigned(Objects[0,1]));
 end;
 
-procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ASort: string);
+procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ascending: boolean = false);
 var
   currentIndex: string;
   LSort: string;
@@ -151,12 +151,12 @@ begin
   begin
     with grid.DataSource.DataSet as TFDTable do
     begin
-      if ASort <> '' then LSort := ASort
-      else LSort := Column.FieldName;
+      // if ASort <> '' then LSort := ASort
+      LSort := Column.FieldName;
 
       currentIndex := IndexFieldNames;
 
-      if currentIndex <> LSort then
+      if (currentIndex <> LSort) or (ascending) then
         IndexFieldNames := LSort          // ascending
       else
         IndexFieldNames := LSort + ':D';  // descending
@@ -166,12 +166,12 @@ begin
   begin
     with grid.DataSource.DataSet as TFDStoredProc do
     begin
-      if ASort <> '' then LSort := ASort
-      else LSort := Column.FieldName;
+      // if ASort <> '' then LSort := ASort
+      LSort := Column.FieldName;
 
       currentIndex := IndexFieldNames;
 
-      if currentIndex <> LSort then
+      if (currentIndex <> LSort) or (ascending) then
         IndexFieldNames := LSort          // ascending
       else
         IndexFieldNames := LSort + ':D';  // descending

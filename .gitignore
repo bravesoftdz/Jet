@@ -89,3 +89,12 @@
 *.lib
 *.dcp
 *.identcache
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.~1~
+*.identcache
+*.local

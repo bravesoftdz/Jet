@@ -29,6 +29,7 @@ type
     cbxActive: TRzDBCheckBox;
     pnlDelete: TRzPanel;
     sbtnDelete: TRzShapeButton;
+    urlExpenseList: TRzURLLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure bteClientButtonClick(Sender: TObject);
@@ -36,6 +37,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure grListDblClick(Sender: TObject);
     procedure sbtnDeleteClick(Sender: TObject);
+    procedure urlExpenseListClick(Sender: TObject);
   private
     { Private declarations }
     Project: TProject;
@@ -169,6 +171,12 @@ begin
 
     end;
   end;
+end;
+
+procedure TfrmProjectMain.urlExpenseListClick(Sender: TObject);
+begin
+  BindToObject;
+  ShowExpenses;
 end;
 
 function TfrmProjectMain.Save: boolean;

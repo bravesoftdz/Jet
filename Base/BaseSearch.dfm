@@ -34,9 +34,9 @@ inherited frmBaseSearch: TfrmBaseSearch
       Caption = 'Search'
     end
     object edSearchKey: TRzEdit
-      Left = 47
+      Left = 52
       Top = 8
-      Width = 257
+      Width = 252
       Height = 22
       Text = ''
       Anchors = [akLeft, akTop, akRight]
@@ -45,7 +45,7 @@ inherited frmBaseSearch: TfrmBaseSearch
       FramingPreference = fpCustomFraming
       TabOrder = 0
       OnChange = edSearchKeyChange
-      OnKeyDown = edSearchKeyKeyDown
+      OnKeyUp = edSearchKeyKeyUp
     end
     object pnlSearch: TRzPanel
       Left = 8

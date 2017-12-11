@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseSearch, Data.DB, RzButton,
   Vcl.Grids, Vcl.DBGrids, RzDBGrid, Vcl.StdCtrls, Vcl.Mask, RzEdit, RzLabel,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, uProject;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, RzPanel, uProject, System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmProjectSearch = class(TfrmBaseSearch)

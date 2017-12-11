@@ -4,7 +4,6 @@ inherited frmExpenseList: TfrmExpenseList
   ClientWidth = 954
   Position = poOwnerFormCenter
   OnCreate = FormCreate
-  OnKeyUp = FormKeyUp
   OnShow = FormShow
   ExplicitWidth = 954
   ExplicitHeight = 470
@@ -676,6 +675,20 @@ inherited frmExpenseList: TfrmExpenseList
       FrameVisible = True
       FramingPreference = fpCustomFraming
       TabOrder = 5
+    end
+  end
+  object alExpense: TActionList
+    Left = 54
+    Top = 361
+    object acSave: TAction
+      Caption = 'acSave'
+      ShortCut = 16467
+      OnExecute = acSaveExecute
+    end
+    object acNew: TAction
+      Caption = 'acNew'
+      ShortCut = 16462
+      OnExecute = acNewExecute
     end
   end
 end
