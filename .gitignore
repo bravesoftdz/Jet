@@ -98,3 +98,10 @@
 *.~1~
 *.identcache
 *.local
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.identcache

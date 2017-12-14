@@ -14,6 +14,7 @@ inherited frmProjectMain: TfrmProjectMain
   end
   inherited pnlList: TRzPanel
     Height = 442
+    ExplicitHeight = 442
     inherited grList: TRzDBGrid
       Height = 440
       DataSource = dmApplication.dscProjects
@@ -62,6 +63,7 @@ inherited frmProjectMain: TfrmProjectMain
   end
   inherited pnlDetail: TRzPanel
     Height = 470
+    ExplicitHeight = 470
     object Label2: TLabel [0]
       Left = 13
       Top = 31
@@ -169,16 +171,19 @@ inherited frmProjectMain: TfrmProjectMain
     end
     inherited pnlAdd: TRzPanel
       Top = 440
+      ExplicitTop = 440
     end
     inherited pnlSave: TRzPanel
       Top = 440
       TabOrder = 10
+      ExplicitTop = 440
     end
     inherited pnlCancel: TRzPanel
       Left = 163
       Top = 440
       TabOrder = 11
       ExplicitLeft = 163
+      ExplicitTop = 440
     end
     object edName: TRzDBEdit
       Tag = 1
@@ -335,13 +340,12 @@ inherited frmProjectMain: TfrmProjectMain
       Font.Style = []
       ParentFont = False
       TabOrder = 12
-      ExplicitTop = 401
       object sbtnDelete: TRzShapeButton
         Left = 0
         Top = 0
         Width = 50
         Height = 22
-        Hint = 'Cancel'
+        Hint = 'Delete'
         BorderStyle = bsNone
         Caption = 'Delete'
         ParentShowHint = False

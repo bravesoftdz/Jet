@@ -126,15 +126,23 @@ begin
 end;
 
 procedure TfrmProjectReport.SetUnboundControls;
+var
+  aggregate: TFDAggregate;
 begin
   inherited;
   // project name
   if Assigned(Project) then lblProject.Caption := 'PROJECT NAME: ' + Project.Name;
 
   // total
-  if (Assigned(fdspReport.Aggregates.FindAggregate('Total'))) and (fdspReport.Aggregates.FindAggregate('Total').Value <> null) then
-    lblTotal.Caption := FormatFloat('TOTAL: ###,###,##0.00', fdspReport.Aggregates[0].Value)
-  else lblTotal.Caption := 'TOTAL: 0.00';
+  // TODO: This is generating a Index out of bounds exception
+  try
+    aggregate := fdspReport.Aggregates.FindAggregate('Total');
+    if (Assigned(aggregate)) and (aggregate.Value <> null) then
+        lblTotal.Caption := FormatFloat('TOTAL: ###,###,##0.00', aggregate.Value)
+    else lblTotal.Caption := 'TOTAL: 0.00';
+  except
+
+  end;
 end;
 
 end.
