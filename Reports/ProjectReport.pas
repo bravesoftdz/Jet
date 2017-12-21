@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   RLReport, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls,
   Vcl.ExtCtrls, RLPreview, RzLabel, RzPanel, Vcl.DBCtrls, RzDBCmbo, RzButton,
-  RzDBEdit, RzEdit, RzBtnEdt, Vcl.Mask, BasePrint, uItem;
+  RzDBEdit, RzEdit, RzBtnEdt, Vcl.Mask, BasePrint, uItem, RzRadChk;
 
 type
   TfrmProjectReport = class(TfrmBaseReport)
@@ -37,6 +37,15 @@ type
     RLLabel5: TRLLabel;
     fdspReportR_EXPENSE_DATE: TSQLTimeStampField;
     RLDBText5: TRLDBText;
+    rbDescending: TRzRadioButton;
+    rbAscending: TRzRadioButton;
+    fdspReportR_RECEIPT: TStringField;
+    fdspReportR_SUPPLIER_NAME: TStringField;
+    fdspReportR_REMARKS: TStringField;
+    RLLabel6: TRLLabel;
+    RLDBText6: TRLDBText;
+    RLLabel7: TRLLabel;
+    RLDBText7: TRLDBText;
     procedure fdspReportBeforeOpen(DataSet: TDataSet);
     procedure fdspReportAfterOpen(DataSet: TDataSet);
     procedure bteItemButtonClick(Sender: TObject);
@@ -47,6 +56,7 @@ type
   protected
     procedure SetUnboundControls; override;
     procedure FilterReport; override;
+    procedure SortReport; override;
   public
     { Public declarations }
   end;
@@ -56,7 +66,7 @@ implementation
 {$R *.dfm}
 
 uses
-  SearchUtil;
+  SearchUtil, FormsUtil;
 
 procedure TfrmProjectReport.bteItemAltBtnClick(Sender: TObject);
 begin
@@ -134,7 +144,7 @@ begin
   if Assigned(Project) then lblProject.Caption := 'PROJECT NAME: ' + Project.Name;
 
   // total
-  // TODO: This is generating a Index out of bounds exception
+  // TODO: This is generating an "Index out of bounds" exception
   try
     aggregate := fdspReport.Aggregates.FindAggregate('Total');
     if (Assigned(aggregate)) and (aggregate.Value <> null) then
@@ -143,6 +153,12 @@ begin
   except
 
   end;
+end;
+
+procedure TfrmProjectReport.SortReport;
+begin
+  inherited;
+  SortData(dscReport,'R_EXPENSE_DATE',rbAscending.Checked);
 end;
 
 end.

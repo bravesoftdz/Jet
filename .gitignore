@@ -105,3 +105,12 @@
 *.dcp
 *.lib
 *.identcache
+*.exe
+*.bpl
+*.FDB
+*.bpi
+*.dcp
+*.lib
+*.dcp
+*.res
+*.stat

@@ -40,6 +40,7 @@ type
     procedure Print;
     procedure SetUnboundControls; virtual;
     procedure FilterReport; virtual;
+    procedure SortReport; virtual;
   public
     { Public declarations }
   end;
@@ -90,7 +91,9 @@ begin
 
       fdspReport.Close;
       fdspReport.Open;
+
       FilterReport;
+      SortReport;
 
       rlReport.Prepare;
       rlReport.Preview(rlPreview);
@@ -151,6 +154,11 @@ begin
     Left := Round((pnlReport.Width/2) - (Width/2));
     Visible := true;
   end;
+end;
+
+procedure TfrmBasePrint.SortReport;
+begin
+
 end;
 
 end.

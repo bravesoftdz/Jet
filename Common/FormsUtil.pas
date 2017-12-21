@@ -18,6 +18,7 @@ procedure PopulateComboBox(source: TDataSet; comboBox: TRzComboBox;
   const codeField, nameField: string); overload;
 procedure SortGrid(grid: TRzDBGrid; column: TColumn; const ascending: boolean = false); overload;
 procedure SortGrid(grid: TRzDBGrid; const AIndexFieldNames: string = ''); overload;
+procedure SortData(ASource: TDataSource; const column: string; const ascending: boolean = true);
 
 function FirstRow(grid: TRzStringGrid): boolean;
 
@@ -191,6 +192,18 @@ begin
       with grid.DataSource.DataSet as TFDStoredProc do IndexFieldNames := AIndexFieldNames;
   except
     on E: Exception do ShowErrorBox(E.Message);
+  end;
+end;
+
+procedure SortData(ASource: TDataSource; const column: string; const ascending: boolean = true);
+begin
+  if ASource.DataSet is TFDStoredProc then
+  begin
+    with ASource.DataSet as TFDStoredProc do
+    begin
+      if ascending then IndexFieldNames := column
+      else  IndexFieldNames := column + ':D';
+    end;
   end;
 end;
 

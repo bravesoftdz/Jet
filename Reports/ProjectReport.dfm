@@ -45,17 +45,18 @@ inherited frmProjectReport: TfrmProjectReport
           Width = 718
           Height = 16
           object RLDBText1: TRLDBText
-            Left = 0
+            Left = 264
             Top = 1
-            Width = 86
+            Width = 190
             Height = 15
+            AutoSize = False
             DataField = 'R_ITEM_NAME'
             DataSource = dscReport
             Text = ''
           end
           object RLDBText2: TRLDBText
-            Left = 392
-            Top = 1
+            Left = 459
+            Top = 0
             Width = 39
             Height = 15
             Alignment = taRightJustify
@@ -65,9 +66,9 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText3: TRLDBText
-            Left = 573
-            Top = 1
-            Width = 99
+            Left = 502
+            Top = 0
+            Width = 60
             Height = 15
             Alignment = taRightJustify
             AutoSize = False
@@ -77,21 +78,42 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText4: TRLDBText
-            Left = 438
+            Left = 568
             Top = 1
-            Width = 87
+            Width = 77
             Height = 15
-            DataField = 'R_UNIT_NAME'
+            DataField = 'R_REMARKS'
             DataSource = dscReport
-            DisplayMask = '0.00'
             Text = ''
           end
           object RLDBText5: TRLDBText
-            Left = 320
-            Top = 1
-            Width = 66
-            Height = 15
+            Left = 0
+            Top = 0
+            Width = 63
+            Height = 16
+            Align = faLeft
+            AutoSize = False
             DataField = 'R_EXPENSE_DATE'
+            DataSource = dscReport
+            Text = ''
+          end
+          object RLDBText6: TRLDBText
+            Left = 68
+            Top = 0
+            Width = 73
+            Height = 16
+            AutoSize = False
+            DataField = 'R_RECEIPT'
+            DataSource = dscReport
+            Text = ''
+          end
+          object RLDBText7: TRLDBText
+            Left = 144
+            Top = 0
+            Width = 114
+            Height = 16
+            AutoSize = False
+            DataField = 'R_SUPPLIER_NAME'
             DataSource = dscReport
             Text = ''
           end
@@ -114,15 +136,14 @@ inherited frmProjectReport: TfrmProjectReport
           Font.Style = [fsBold]
           ParentFont = False
           object RLLabel2: TRLLabel
-            Left = 0
+            Left = 264
             Top = 1
             Width = 28
-            Height = 14
-            Align = faLeft
+            Height = 15
             Caption = 'Item'
           end
           object RLLabel3: TRLLabel
-            Left = 409
+            Left = 476
             Top = 1
             Width = 22
             Height = 15
@@ -130,27 +151,41 @@ inherited frmProjectReport: TfrmProjectReport
             Caption = 'Qty'
           end
           object RLLabel4: TRLLabel
-            Left = 625
-            Top = 0
+            Left = 515
+            Top = 1
             Width = 47
             Height = 15
             Alignment = taRightJustify
             Caption = 'Amount'
           end
           object RLLabel1: TRLLabel
-            Left = 438
+            Left = 568
             Top = 1
-            Width = 25
+            Width = 55
             Height = 15
-            Alignment = taRightJustify
-            Caption = 'Unit'
+            Caption = 'Remarks'
           end
           object RLLabel5: TRLLabel
-            Left = 320
-            Top = -1
+            Left = 0
+            Top = 1
             Width = 29
-            Height = 15
+            Height = 14
+            Align = faLeft
             Caption = 'Date'
+          end
+          object RLLabel6: TRLLabel
+            Left = 68
+            Top = 1
+            Width = 56
+            Height = 15
+            Caption = 'Receipt #'
+          end
+          object RLLabel7: TRLLabel
+            Left = 145
+            Top = 1
+            Width = 50
+            Height = 15
+            Caption = 'Supplier'
           end
         end
       end
@@ -251,6 +286,24 @@ inherited frmProjectReport: TfrmProjectReport
       FramingPreference = fpCustomFraming
       TabOrder = 3
     end
+    object rbDescending: TRzRadioButton
+      Left = 13
+      Top = 186
+      Width = 108
+      Height = 16
+      Caption = 'Sort descending'
+      Checked = True
+      TabOrder = 6
+      TabStop = True
+    end
+    object rbAscending: TRzRadioButton
+      Left = 13
+      Top = 206
+      Width = 100
+      Height = 16
+      Caption = 'Sort ascending'
+      TabOrder = 7
+    end
   end
   inherited fdspReport: TFDStoredProc
     BeforeOpen = fdspReportBeforeOpen
@@ -299,6 +352,27 @@ inherited frmProjectReport: TfrmProjectReport
         Name = 'R_EXPENSE_DATE'
         DataType = ftTimeStamp
         ParamType = ptOutput
+      end
+      item
+        Position = 7
+        Name = 'R_RECEIPT'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 12
+      end
+      item
+        Position = 8
+        Name = 'R_SUPPLIER_NAME'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        Position = 9
+        Name = 'R_REMARKS'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 250
       end>
     object fdspReportR_ITEM_NAME: TStringField
       FieldName = 'R_ITEM_NAME'
@@ -326,6 +400,21 @@ inherited frmProjectReport: TfrmProjectReport
       FieldName = 'R_EXPENSE_DATE'
       Origin = 'R_EXPENSE_DATE'
       DisplayFormat = 'mm/dd/yyyy'
+    end
+    object fdspReportR_RECEIPT: TStringField
+      FieldName = 'R_RECEIPT'
+      Origin = 'R_RECEIPT'
+      Size = 12
+    end
+    object fdspReportR_SUPPLIER_NAME: TStringField
+      FieldName = 'R_SUPPLIER_NAME'
+      Origin = 'R_SUPPLIER_NAME'
+      Size = 50
+    end
+    object fdspReportR_REMARKS: TStringField
+      FieldName = 'R_REMARKS'
+      Origin = 'R_REMARKS'
+      Size = 250
     end
   end
 end
