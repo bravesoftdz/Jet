@@ -61,7 +61,7 @@ begin
   // initially was in the AfterOpen event of the DataSet
   // however, getting TOTAL values is an issue
   // not all records are added
-  SetUnboundControls;
+  // SetUnboundControls;
 end;
 
 procedure TfrmBasePrint.FilterReport;
@@ -91,6 +91,8 @@ begin
 
       fdspReport.Close;
       fdspReport.Open;
+
+      SetUnboundControls;
 
       FilterReport;
       SortReport;

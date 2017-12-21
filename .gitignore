@@ -114,3 +114,10 @@
 *.dcp
 *.res
 *.stat
+*.exe
+*.bpl
+*.FDB
+*.dcp
+*.lib
+*.bpi
+*.identcache
