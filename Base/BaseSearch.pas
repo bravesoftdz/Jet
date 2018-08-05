@@ -79,15 +79,12 @@ end;
 procedure TfrmBaseSearch.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  if ModalResult = mrOK then
-  begin
-    if grSearch.DataSource <> nil then
-      if grSearch.DataSource.DataSet <> nil then
-      begin
-        SetReturn;
-        grSearch.DataSource.DataSet.Close;
-      end;
-  end;
+  if grSearch.DataSource <> nil then
+    if grSearch.DataSource.DataSet <> nil then
+    begin
+      SetReturn;
+      grSearch.DataSource.DataSet.Close;
+    end;
 
   // remove any filters
   grSearch.DataSource.DataSet.Filter := '';

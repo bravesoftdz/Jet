@@ -1,0 +1,3 @@
+**** Used the command below when executing script files at the command line
+
+isql.exe -q -i script.sql

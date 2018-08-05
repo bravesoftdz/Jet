@@ -41,6 +41,7 @@ type
     procedure SetUnboundControls; virtual;
     procedure FilterReport; virtual;
     procedure SortReport; virtual;
+    procedure GetTotal; virtual;
   public
     { Public declarations }
   end;
@@ -92,10 +93,11 @@ begin
       fdspReport.Close;
       fdspReport.Open;
 
-      SetUnboundControls;
-
       FilterReport;
       SortReport;
+      GetTotal;
+
+      SetUnboundControls;
 
       rlReport.Prepare;
       rlReport.Preview(rlPreview);
@@ -159,6 +161,11 @@ begin
 end;
 
 procedure TfrmBasePrint.SortReport;
+begin
+
+end;
+
+procedure TfrmBasePrint.GetTotal;
 begin
 
 end;

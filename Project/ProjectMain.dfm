@@ -330,9 +330,9 @@ inherited frmProjectMain: TfrmProjectMain
       Height = 22
       Anchors = [akRight, akBottom]
       BorderOuter = fsNone
-      BorderColor = 6577975
+      BorderColor = clRed
       BorderWidth = 1
-      Color = clRed
+      Color = 4605695
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12

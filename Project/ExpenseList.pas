@@ -363,6 +363,10 @@ procedure TfrmExpenseList.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
+
+  // save supplier search param
+  App.Params.Supplier.Name := bteSupplierFilter.Text;
+
   dmProject.Free;
   Action := caFree;
 end;
@@ -372,6 +376,11 @@ begin
   // hide menu bar
   Self.Menu := nil;
   OpenDropdownDataSources(pnlDetail);
+
+  // set params
+  bteSupplierFilter.Text := App.Params.Supplier.Name;
+
+  FilterGrid;
 end;
 
 procedure TfrmExpenseList.FormKeyPress(Sender: TObject; var Key: Char);

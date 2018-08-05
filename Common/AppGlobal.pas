@@ -3,9 +3,16 @@ unit AppGlobal;
 interface
 
 uses
-  SysUtils, AppUser, Vcl.Graphics;
+  SysUtils, AppUser, Vcl.Graphics, uSupplier;
 
 type
+  TParams = class
+  private
+    FSupplier: TSupplier;
+  public
+    property Supplier: TSupplier read FSupplier write FSupplier;
+  end;
+
   TApp = class(TObject)
   private
     FAppName: string;
@@ -13,6 +20,7 @@ type
     FAppDate: TDate;
     FVersion: string;
     FUser: TAppUser;
+    FParams: TParams;
   public
 
     property AppDate: TDate read FAppDate write FAppDate;
@@ -20,6 +28,7 @@ type
     property AppName: string read FAppName write FAppName;
     property AppDescription: string read FAppDescription write FAppDescription;
     property User: TAppUser read FUser write FUser;
+    property Params: TParams read FParams write FParams;
 
     constructor Create;
     destructor Destroy; override;
@@ -42,6 +51,8 @@ begin
     FAppDescription := 'Jet Construction Expense Management System';
 
     FUser := TAppUser.Create;
+    FParams := TParams.Create;
+    FParams.Supplier := TSupplier.Create;
 
     App := self;
   end;

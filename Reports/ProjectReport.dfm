@@ -45,7 +45,7 @@ inherited frmProjectReport: TfrmProjectReport
           Width = 718
           Height = 16
           object RLDBText1: TRLDBText
-            Left = 264
+            Left = 259
             Top = 1
             Width = 190
             Height = 15
@@ -55,9 +55,9 @@ inherited frmProjectReport: TfrmProjectReport
             Text = ''
           end
           object RLDBText2: TRLDBText
-            Left = 459
+            Left = 450
             Top = 0
-            Width = 39
+            Width = 49
             Height = 15
             Alignment = taRightJustify
             AutoSize = False
@@ -136,14 +136,14 @@ inherited frmProjectReport: TfrmProjectReport
           Font.Style = [fsBold]
           ParentFont = False
           object RLLabel2: TRLLabel
-            Left = 264
+            Left = 259
             Top = 1
             Width = 28
             Height = 15
             Caption = 'Item'
           end
           object RLLabel3: TRLLabel
-            Left = 476
+            Left = 477
             Top = 1
             Width = 22
             Height = 15
@@ -307,7 +307,6 @@ inherited frmProjectReport: TfrmProjectReport
   end
   inherited fdspReport: TFDStoredProc
     BeforeOpen = fdspReportBeforeOpen
-    AfterOpen = fdspReportAfterOpen
     Filtered = True
     StoredProcName = 'P_RPT_PROJECT'
     ParamData = <

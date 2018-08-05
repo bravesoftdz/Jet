@@ -121,3 +121,6 @@
 *.lib
 *.bpi
 *.identcache
+*.exe
+*.bpl
+*.dcp

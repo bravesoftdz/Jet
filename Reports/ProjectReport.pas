@@ -47,7 +47,6 @@ type
     RLLabel7: TRLLabel;
     RLDBText7: TRLDBText;
     procedure fdspReportBeforeOpen(DataSet: TDataSet);
-    procedure fdspReportAfterOpen(DataSet: TDataSet);
     procedure bteItemButtonClick(Sender: TObject);
     procedure bteItemAltBtnClick(Sender: TObject);
   private
@@ -57,6 +56,7 @@ type
     procedure SetUnboundControls; override;
     procedure FilterReport; override;
     procedure SortReport; override;
+    procedure GetTotal; override;
   public
     { Public declarations }
   end;
@@ -79,22 +79,6 @@ begin
   LItem := TItem.Create;
   if SearchUtil.SearchItem(self,LItem) then bteItem.Text := LItem.Name
   else LItem.Free;
-end;
-
-procedure TfrmProjectReport.fdspReportAfterOpen(DataSet: TDataSet);
-begin
-  // compute total
-  fdspReport.Aggregates.Clear;
-  with fdspReport.Aggregates.Add do
-  begin
-    if not Assigned(fdspReport.Aggregates.FindAggregate('Total')) then
-    begin
-      Name := 'Total';
-      Expression := 'SUM(R_EXPENSE_AMOUNT)';
-      Active := True;
-    end;
-  end;
-  fdspReport.AggregatesActive := true;
 end;
 
 procedure TfrmProjectReport.fdspReportBeforeOpen(DataSet: TDataSet);
@@ -159,6 +143,22 @@ procedure TfrmProjectReport.SortReport;
 begin
   inherited;
   SortData(dscReport,'R_EXPENSE_DATE',rbAscending.Checked);
+end;
+
+procedure TfrmProjectReport.GetTotal;
+begin
+  // compute total
+  fdspReport.Aggregates.Clear;
+  with fdspReport.Aggregates.Add do
+  begin
+    if not Assigned(fdspReport.Aggregates.FindAggregate('Total')) then
+    begin
+      Name := 'Total';
+      Expression := 'SUM(R_EXPENSE_AMOUNT)';
+      Active := True;
+    end;
+  end;
+  fdspReport.AggregatesActive := true;
 end;
 
 end.
